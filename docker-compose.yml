@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+
+  apache:
+    container_name: $PROJECTNAME-apache
+    image: "gitlab.webchili.in:4567/docker-images/environment-dev:7.3"
+    ports:
+      - "${PROJECTPORT}01:80"
+      - "${PROJECTPORT}02:443"
+    restart: ${DOCKER_RESTART}
+    volumes:
+      - ./install/docker/:/etc/httpd/conf.d/vhosts.d/:ro
+      - ${DOCUMENTROOT}:/opt/project/:delegated
+    networks:
+      - platform
+
+  # https://github.com/deviantony/docker-elk
+  elasticsearch:
+    container_name:  $PROJECTNAME-elasticsearch
+    restart: ${DOCKER_RESTART}
+    image: "elasticsearch:6.4.3"
+    volumes:
+      - ./storage/elasticsearch/vol:/usr/share/elasticsearch/data
+    #      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    ports:
+      - "${PROJECTPORT}50:9200"
+      - "${PROJECTPORT}51:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      ELASTIC_PASSWORD: changeme
+    networks:
+      - platform
+
+  mysql:
+    container_name:  $PROJECTNAME-mysql
+    restart: ${DOCKER_RESTART}
+    image: "mysql:5"
+    volumes:
+      - ./storage/mysql/data:/var/lib/mysql
+    #      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+    ports:
+      - "${PROJECTPORT}10:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: "${DB_DATABASE}"
+      MYSQL_USER: "${DB_USERNAME}"
+      MYSQL_PASSWORD: "${DB_PASSWORD}"
+    networks:
+      - platform
+
+networks:
+  platform:
