@@ -1,7 +1,125 @@
 @extends('master_bookstore')
 @section('content')
 
-    <div class="row">
+    <form method="POST" action="{{'/bookstore/b'}}" class="text-center p-5">
+            @csrf
+        <p class="h4 mb-4">Formularz dodania książki</p>
+        <!-- Book titile-->
+        <div class="form-group">
+
+            <input type="text" id="title" class="form-control mb-3 @error('title') is-invalid @enderror" placeholder="{{ __('Tytuł Książki') }}" name="title" value="{{ old('book_title') }}" required autocomplete="title" autofocus>
+            @error('title')
+            <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+            @enderror
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <!-- Book author name -->
+                <input type="text" id="author_name" class="form-control @error('author_name') is-invalid @enderror"  name="author_name" placeholder="{{ __('Imię Autora') }}" value="{{ old('author_name') }}" required autocomplete="author_name">
+                @error('author_name')
+                <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                @enderror
+            </div>
+            <div class="col-md-6 mb-3">
+                <!-- Book autor surename -->
+                <input type="text" id="author_surname" class="form-control @error('author_surname') is-invalid @enderror" placeholder="{{ __('Nazwisko Autora') }}" name="author_surname" value="{{ old('author_surname') }}" required autocomplete="author_surname">
+                @error('author_surname')
+                <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                @enderror
+            </div>
+        </div>
+
+
+        <!-- Rok wydania -->
+        <div class="form-group">
+            <input type="text" id="year" class="form-control @error('year') is-invalid @enderror" placeholder="{{ __('Rok wydania') }}" name="year" value="{{ old('year') }}" required autocomplete="year" >
+
+            @error('year')
+            <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+            @enderror
+        </div>
+
+        <!-- Wydawnictwo -->
+        <div class="form-group">
+            <input type="text" id="print" class="form-control @error('print') is-invalid @enderror" placeholder="{{ __('Wydawnictwo') }}" name="print" value="{{ old('print') }}" required autocomplete="print" >
+
+            @error('print')
+            <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+            @enderror
+        </div>
+
+        <!-- Okładka -->
+        <div class="form-group">
+            <input type="text" id="content" class="form-control @error('content') is-invalid @enderror" placeholder="{{ __('Numer ISBN') }}" name="content" value="{{ old('content') }}" required autocomplete="content" >
+
+            @error('content')
+            <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+            @enderror
+        </div>
+
+        <!-- Okładka -->
+        <div class="form-group">
+            <input type="text" id="picture" class="form-control @error('picture') is-invalid @enderror" placeholder="{{ __('Okładka') }}" name="picture" value="{{ old('picture') }}" required autocomplete="picture" >
+
+            @error('picture')
+            <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+            @enderror
+        </div>
+
+        <!-- ID Kategori -->
+        <div class="form-group">
+            <input type="number" id="category_id" class="form-control @error('content') is-invalid @enderror" placeholder="{{ __('Kategoria') }}" name="category_id" value="{{ old('category_id') }}" required autocomplete="category_id" >
+
+            @error('category_id')
+            <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+            @enderror
+        </div>
+
+
+        <!-- Opis książki -->
+        <div class="form-group">
+            <textarea type="text" id="description" class="form-control @error('description') is-invalid @enderror" placeholder="{{ __('Opis Książki') }}" name="description" value="{{ old('description') }}" required autocomplete="content" row="3"></textarea>
+
+            @error('description')
+            <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+            @enderror
+        </div>
+    {{--  <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+          At least 8 characters and 1 digit
+      </small>--}}
+
+    <!-- Add quote -->
+        <button class="btn btn-primary my-4 btn-block" type="submit">{{ __('Dodaj nową książkę') }}</button>
+
+
+
+        <hr>
+
+
+    </form>
+
+
+
+  {{--  <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="card">
                 <div class="panel-body">
@@ -170,7 +288,7 @@
             </div>
         </div>
     </div>
-
+--}}
 
 
 @stop

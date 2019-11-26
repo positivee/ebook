@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Dto\OfferFetchInputFactory;
 use App\Elastic\SearchModel;
 use App\Model\BookstoreSearchOffer;
+use App\Model\BookstoreShowArticle;
+use App\Model\BookstoreAddArticle;
 use App\Model\UserSearchOffer;
 use Illuminate\Http\Request;
 
@@ -20,9 +22,12 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function showNews()
-    {
-        return view('welcome');
+    public function showNews(){
+        //metoda wyświetlająca wszystkie artykuly
+
+        $allArticles = new BookstoreShowArticle();
+        return view('welcome')->with('articles', $allArticles->showAllArticles());
+
     }
 
     public function contact()
@@ -42,6 +47,7 @@ class HomeController extends Controller
         return view('search');
     }
 
+
     public function find(Request $request)
     {
         //wyswietla wyszukane oferty wg danych z formularza zaawansowanego
@@ -50,6 +56,7 @@ class HomeController extends Controller
         $allOffers = new UserSearchOffer();
         return view('temporary_results')->with('offers', $allOffers->searchOffer($offerFetchInput));
     }
+
 
 
 }

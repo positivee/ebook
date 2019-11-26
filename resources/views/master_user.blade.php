@@ -28,12 +28,12 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light ">
         <a class="navbar-brand" href="#"><img src="{{ asset('img/open-book.png') }}" width="30" height="30" class="d-inline-block mr-1 align-bottom" alt=""> E-księgarnia</a>
 
-        {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
              <span class="navbar-toggler-icon"></span>
-         </button>--}}
+         </button>
 
 
-        <div class="collapse navbar-collapse mr-5" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse mr-lg-5" id="navbarSupportedContent">
             <div class="ml-auto">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
@@ -44,8 +44,11 @@
                         <a class="nav-link" href="{{'/user/offers'}}">Książki</a></li>
                     </li>
 
-                    <li class="nav-item mr-5">
+                    <li class="nav-item">
                         <a class="nav-link" href="{{'/user/search'}}">Wyszukiwarka</a></li>
+                    </li>
+                    <li class="nav-item mr-5">
+                        <a class="nav-link" href="{{'/user/quotes'}}">Cytaty</a></li>
                     </li>
 
                     <li class="nav-item dropdown mr-5">
@@ -54,10 +57,9 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{'/user'}}">Mój Profil</a>
-                            <a class="dropdown-item" href="{{'/user/quotes'}}">Cytaty</a>
                             <a class="dropdown-item" href="{{'/user/add_quote'}}">Dodaj cytat</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{'/user/logout'}}">Wyloguj</a>
+                            <a class="dropdown-item" href="{{'/logout'}}">Wyloguj</a>
                         </div>
                     </li>
                 </ul>

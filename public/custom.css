@@ -200,23 +200,25 @@
 
 
 
-/*
-    BORDER OUTLINE
-*/
-
-
-#content {position:relative;}
-#content:before, #content:after, #content>:first-child:before, #content>:first-child:after {
-    position:absolute;
-    width:80px; height: 80px;
-    border-color:red; /* or whatever colour */
-    border-style:solid; /* or whatever style */
-    content: ' ';
+.form-control-borderless {
+    border: none;
 }
-#content:before {top:0;left:0;border-width: 1px 0 0 1px}
-#content:after {top:0;right:0;border-width: 1px 1px 0 0}
-#content>:first-child:before {bottom:0;right:0;border-width: 0 1px 1px 0}
-#content>:first-child:after {bottom:0;left:0;border-width: 0 0 1px 1px}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.max-height{
+    position: relative;
+    height: 400px;
+    object-fit: cover;
+    /* background-position: 50% 50%;
+     background-repeat:   no-repeat;
+     background-size:     cover;*/
+}
+
 
 
 /*s

@@ -12,57 +12,81 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700&subset=latin,latin-ext" rel='stylesheet' type='text/css'>
 
     <!-- Styles -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <link href="{{\Illuminate\Support\Facades\URL::asset('custom.css')}}" rel="stylesheet">
 
-    <style>
-        body {
-            font-family: 'Lato';
-        }
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
 
-        .fa-btn {
-            margin-right: 6px;
-        }
-    </style>
+
 </head>
+
+
 <body id="app-layout">
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
 
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+<div class="mynav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+        <a class="navbar-brand" href="#"><img src="{{ asset('img/open-book.png') }}" width="30" height="30" class="d-inline-block mr-1 align-bottom" alt=""> E-księgarnia</a>
 
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse mr-lg-5" id="navbarSupportedContent">
+            <div class="ml-auto">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{'/bookstore/welcome'}}">Aktualności <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{'/bookstore/books'}}">Baza Książe</a></li>
+                    </li>
+
+                    <li class="nav-item mr-5">
+                        <a class="nav-link" href="{{'/bookstore/offers'}}">Nasze Oferty</a></li>
+                    </li>
+
+                    <li class="nav-item dropdown mr-5">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Opcje
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{'/bookstore/addarticle'}}">Dodaj Aktualność</a>
+                            <a class="dropdown-item" href="{{'/bookstore/addbook'}}">Dodaj Książkę</a>
+                            <a class="dropdown-item" href="{{'/bookstore/addoffer'}}">Dodaj ofertę</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{'/logout'}}">Wyloguj</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </nav>
 
-        <div class="collapse navbar-collapse" id="app-navbar-collapse">
-            <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav">
-                <li><a href="{{'/bookstore/welcome'}}">Aktualności</a></li>
-                <li><a href="{{'/bookstore/books'}}">Baza Książek</a></li>
-                <li><a href="{{'/bookstore/offers'}}">Nasze Oferty</a></li>
-                <li><a href="{{'/bookstore/addbook'}}">Dodaj książkę</a></li>
-                <li><a href="{{'/bookstore/addoffer'}}">Dodaj ofertę</a></li>
-            </ul>
 
-            <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-nav navbar-right">
-                <!-- Authentication Links -->
-                <li><a href="{{'/logout'}}">Wyloguj</a></li>
-            </ul>
+    <div class="banner mt-5">
+        <div class="container h-100">
+            <div class="row h-100  no-gutter align-items-center ">
+                <div class="col-12 text-center">
+                    <h1 class="logo-text mb-5">Znajdz swoją książkę</h1>
+                    <form  method="POST" action="{{'/search/findByElastic'}}">
+                        @csrf
+                        <div class="form-row justify-content-center">
+                            <input class="form-control-lg " name="query"  type="text" placeholder="Wpisz czego szukasz">
+                            <button class="btn btn-lg btn-primary btn-login text-uppercase font-weight-bold " type="submit">{{ __('Szukaj książki') }}</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-
     </div>
-</nav>
 
-<!-- wrapper -->
+</div>
+
 <div class="site-wrappper">
+
 
     <!-- .container -->
     <div class="container site-content">
@@ -83,7 +107,9 @@
 
 
 <!-- JavaScripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
+

@@ -79,14 +79,37 @@
             <div class="row h-100  no-gutter align-items-center ">
                 <div class="col-12 text-center">
                     <h1 class="logo-text mb-5">Znajdz swoją książkę</h1>
-                    <form  method="POST" action="{{'/search/findByElastic'}}">
+                    {{--<form  method="POST" action="{{'/search/findByElastic'}}">
                         @csrf
                         <div class="form-row justify-content-center">
                             <input class="form-control-lg " name="query"  type="text" placeholder="Wpisz czego szukasz">
                             <button class="btn btn-lg btn-primary btn-login text-uppercase font-weight-bold " type="submit">{{ __('Szukaj książki') }}</button>
 
                         </div>
-                    </form>
+                    </form>--}}
+
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-10 col-lg-8">
+                            <form class="card card-sm">
+                                <div class="card-body row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                       {{-- <i class="fas fa-search h4 text-body"></i>--}}
+                                        <img src="{{ asset('img/search_glass.png') }}" width="25" height="25" class="d-inline-block mr-1 align-bottom" alt="">
+                                    </div>
+                                    <!--end of col-->
+                                    <div class="col">
+                                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Znajdź swoją książkę">
+                                    </div>
+                                    <!--end of col-->
+                                    <div class="col-auto">
+                                        <button class="btn btn-lg btn-primary" type="submit">Search</button>
+                                    </div>
+                                    <!--end of col-->
+                                </div>
+                            </form>
+                        </div>
+                        <!--end of col-->
+                    </div>
                 </div>
             </div>
         </div>
@@ -107,12 +130,15 @@
 </div><!-- end of wrapper -->
 
 
+{{--
 <!-- Footer -->
 <footer class="site-footer">
     <div class="container">
         <p>&copy; Ola</p>
     </div>
 </footer>
+--}}
+
 
 
 <!-- JavaScripts -->

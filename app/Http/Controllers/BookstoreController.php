@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 
 use App\Bookstore;
 
+
+use App\Dto\CreateArticleFactory;
+use App\Model\BookstoreAddArticle;
+use App\Model\BookstoreShowArticle;
 use App\Dto\CreateBookFactory;
 use App\Dto\CreateOfferFactory;
 use App\Dto\OfferFetchInputFactory;
@@ -15,7 +19,6 @@ use App\Model\BookstoreSearchBook;
 use App\Model\BookstoreSearchOffer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 
 
 class BookstoreController extends Controller
@@ -92,12 +95,34 @@ class BookstoreController extends Controller
         return redirect('/bookstore/offers')->with('success', 'Dodano nową ofertę!');
     }
 
-    public function welcome() {
-        return view('bookstore.welcome');
-    }
+
 
     public function contact() {
         return view('bookstore.contact');
     }
+    public function welcome() {
+      /*  return view('bookstore.welcome');*/
+        $allArticels = new BookstoreShowArticle();
+        return view('bookstore.welcome')->with('articles',$allArticels->showAllArticles());
+    }
+
+    public function addArticle(){
+        //wyświetla formularz do dodawania agrtykułów
+        return view('bookstore.add_article');
+
+    }
+
+    public function storeArticle(Request $request){
+        //metoda zapisu nowego artykułu
+
+        $newArticle = CreateArticleFactory::create($request->all(),Bookstore::findOrFail(Auth::user()->bookstore_id));
+        $result = new BookstoreAddArticle();
+        $result->add($newArticle);
+
+        return redirect('/bookstore/welcome')->with('success', 'Dodano nową ofertę!');
+
+    }
+
+
 
 }

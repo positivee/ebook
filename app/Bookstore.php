@@ -18,6 +18,9 @@ class Bookstore extends Model
     public function user() {
         return $this->hasMany('User');
     }
+    public function article() {
+        return $this->hasMany('Article');
+    }
 
 
 

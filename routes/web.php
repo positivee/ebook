@@ -10,7 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'HomeController@showNews');
+use App\Books\BooksRepository;
+use App\Model\BookstoreSearchOffer;
+
 //widoki bez logowania:
 Route::get('/home', 'HomeController@index');
 Route::get('/welcome', 'HomeController@showNews');
@@ -45,7 +47,8 @@ Route::post('/user/quote', 'UserController@storeQuote');
 //widoki dla zalogowanej ksiegarni
 
 Route::get('/bookstore/welcome', 'BookstoreController@welcome');
-Route::get('/bookstore/contact', 'BookstoreController@contact');
+Route::get('/bookstore/addarticle', 'BookstoreController@addArticle');
+Route::post('/bookstore/a', 'BookstoreController@storeArticle');
 
 
 //dodawanie ofert i książek
@@ -60,4 +63,5 @@ Route::get('/bookstore/books', 'BookstoreController@showBooks');
 
 //widok dodanych ofert dla danej ksiegarni
 Route::get('/bookstore/offers', 'BookstoreController@showOffers');
+
 

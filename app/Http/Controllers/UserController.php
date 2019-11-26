@@ -7,6 +7,7 @@ use App\Dto\OfferFetchInputFactory;
 use App\Dto\QuoteFetchInputFactory;
 use App\Dto\UserFetchInputFactory;
 use App\Model\BookstoreSearchOffer;
+use App\Model\BookstoreShowArticle;
 use App\Model\UserAddQuote;
 use App\Model\UserSearchInfo;
 use App\Model\UserSearchOffer;
@@ -102,7 +103,9 @@ class UserController extends Controller
     }
 
     public function showNews() {
-        return view('user.welcome');
+        //wyswietlenie artykułów
+        $allArticles = new BookstoreShowArticle();
+        return view('user.welcome')->with('articles', $allArticles->showAllArticles());
     }
 
     public function offers() {
@@ -125,7 +128,7 @@ class UserController extends Controller
         $result->add($newQuote);
 
 
-        return redirect('/user/my_quotes')->with('success', 'Dodano nowy cytat!');
+        return redirect('/user/quotes')->with('success', 'Dodano nowy cytat!');
 
     }
 
