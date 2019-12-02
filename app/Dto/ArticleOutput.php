@@ -28,6 +28,10 @@ class ArticleOutput
      * @var string
      */
     protected $photo;
+    /**
+     * @var string
+     */
+    protected $created_at;
 
     /**
      * ArticleOutput constructor.
@@ -35,13 +39,15 @@ class ArticleOutput
      * @param string $title
      * @param string $content
      * @param string $photo
+     * @param string $created_at
      */
-    public function __construct(Bookstore $bookstore, string $title, string $content, string $photo)
+    public function __construct(Bookstore $bookstore, string $title, string $content, string $photo, string $created_at)
     {
         $this->bookstore = $bookstore;
         $this->title = $title;
         $this->content = $content;
         $this->photo = $photo;
+        $this->created_at=$created_at;
     }
 
     /**
@@ -74,6 +80,13 @@ class ArticleOutput
     public function getPhoto(): string
     {
         return $this->photo;
+    }
+    /**
+     * @return string
+     */
+    public function getDate(): string
+    {
+        return $this->created_at;
     }
 
 

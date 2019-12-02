@@ -18,7 +18,8 @@
 
         <!-- Article description -->
         <div class="form-group">
-            <input type="text" id="content" class="form-control @error('content') is-invalid @enderror" placeholder="{{ __('Treść') }}" name="content" value="{{ old('content') }}" required autocomplete="content" >
+            <textarea type="text" id="content" class="form-control @error('content') is-invalid @enderror" placeholder="{{ __('Treść') }}" name="content" value="{{ old('content') }}" required autocomplete="content" rows="4" ></textarea>
+
 
             @error('content')
             <span class="invalid-feedback" role="alert">

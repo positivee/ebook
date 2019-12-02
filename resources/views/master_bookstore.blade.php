@@ -40,7 +40,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{'/bookstore/books'}}">Baza Książe</a></li>
+                        <a class="nav-link" href="{{'/bookstore/books'}}">Baza Książek</a></li>
                     </li>
 
                     <li class="nav-item mr-5">
@@ -92,6 +92,7 @@
     <div class="container site-content">
 
         @yield('content')
+        @yield('articles')
 
     </div><!-- end of .container -->
 

@@ -19,6 +19,7 @@ class BookstoreAddArticle {
         $article->photo = $createArticle->getPhoto();
 
 
+
         $article->save();
     }
 

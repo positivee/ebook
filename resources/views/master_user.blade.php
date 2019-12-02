@@ -95,7 +95,6 @@
     <div class="container site-content">
 
         @yield('content')
-
     </div><!-- end of .container -->
 
 </div><!-- end of wrapper -->

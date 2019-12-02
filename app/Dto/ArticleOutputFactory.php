@@ -14,7 +14,8 @@ class ArticleOutputFactory
             Bookstore::findOrFail($data['bookstore_id']),
             $data['title'],
             $data['content'],
-            $data['photo']
+            $data['photo'],
+            $data['created_at'],
         );
 
     }
@@ -24,7 +25,8 @@ class ArticleOutputFactory
             'bookstore_id' => $dbRow->bookstore_id,
             'title' => $dbRow->title,
             'content' => $dbRow->content,
-            'photo' => $dbRow->photo
+            'photo' => $dbRow->photo,
+            'created_at' =>$dbRow->created_at
         ]);
     }
 
