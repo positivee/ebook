@@ -73,14 +73,28 @@
             <div class="row h-100  no-gutter align-items-center ">
                 <div class="col-12 text-center">
                     <h1 class="logo-text mb-5">Znajdz swoją książkę</h1>
-                    <form  method="POST" action="{{'/search/findByElastic'}}">
-                        @csrf
-                        <div class="form-row justify-content-center">
-                            <input class="form-control-lg " name="query"  type="text" placeholder="Wpisz czego szukasz">
-                            <button class="btn btn-lg btn-primary btn-login text-uppercase font-weight-bold " type="submit">{{ __('Szukaj książki') }}</button>
-
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-10 col-lg-8">
+                            <form class="card card-sm">
+                                <div class="card-body row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                        {{-- <i class="fas fa-search h4 text-body"></i>--}}
+                                        <img src="{{ asset('img/search_glass.png') }}" width="25" height="25" class="d-inline-block mr-1 align-bottom" alt="">
+                                    </div>
+                                    <!--end of col-->
+                                    <div class="col">
+                                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Znajdź swoją książkę">
+                                    </div>
+                                    <!--end of col-->
+                                    <div class="col-auto">
+                                        <button class="btn btn-lg btn-primary" type="submit">Search</button>
+                                    </div>
+                                    <!--end of col-->
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                        <!--end of col-->
+                    </div>
                 </div>
             </div>
         </div>
@@ -100,10 +114,41 @@
 </div><!-- end of wrapper -->
 
 
-<!-- Footer -->
-<footer class="site-footer">
+<!-- Site footer -->
+<footer class="site-footer mt-5">
     <div class="container">
-        <p>&copy; Ola</p>
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <h6>O nas</h6>
+                <p class="text-justify">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+            </div>
+
+            <div class="col-xs-6 col-md-3">
+                <h6 class="color">Quick Links</h6>
+                <ul class="footer-links">
+                    <li><a href="http://scanfcode.com/about/">Aktualności</a></li>
+                    <li><a href="http://scanfcode.com/contact/">Zaloguj się</a></li>
+                    <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Zarejestruj się</a></li>
+                    <li><a href="http://scanfcode.com/privacy-policy/">Książki</a></li>
+                </ul>
+            </div>
+
+            <div class="col-xs-6 col-md-3">
+                <h6 class="color">Gdzię się mieścimy</h6>
+                <p>Polska</p>
+                <p>Lublin, 20-452</p>
+                <p>Tel: 779-779-779</p>
+                <p>E-mail: kontakt@kontakt.pl</p>
+            </div>
+
+        </div>
+        <hr>
+    </div>
+    <p class="copyright-text text-center">
+        Copyright &copy; Inżynierka.
+    </p>
+
+
     </div>
 </footer>
 
