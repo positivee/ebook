@@ -7,7 +7,7 @@
         <!-- Article titile-->
         <div class="form-group">
 
-            <input type="text" id="title" class=" mb-3 @error('title') is-invalid @enderror" placeholder="{{ __('Tytuł artykułu') }}" name="title" value="{{ old('book_title') }}" required autocomplete="title" autofocus>
+            <input type="text" id="title" class="form-control mb-3 @error('title') is-invalid @enderror" placeholder="{{ __('Tytuł artykułu') }}" name="title" value="{{ old('book_title') }}" required autocomplete="title" autofocus>
             @error('title')
             <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
