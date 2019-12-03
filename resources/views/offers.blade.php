@@ -65,7 +65,7 @@
                             </h4>
                             <p class="card-text">{{Str::limit($offer->getDescription(),150)}}</p>
                             <p class="card-text">Autor: {{$offer->getAuthorName() ." ".$offer->getAuthorSurname()}}</p>
-                            <p class="card-text">Data wydania: {{$offer->getYear()}}</p>
+                            <p class="card-text">Rok wydania: {{$offer->getYear()}}</p>
 
                             <a href="#" class="btn btn-primary mt-auto">Sprawdź oferty</a>
                         </div>

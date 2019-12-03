@@ -59,11 +59,11 @@
             @enderror
         </div>
 
-        <!-- Okładka -->
+        <!-- ISBN -->
         <div class="form-group">
-            <input type="text" id="content" class="form-control @error('content') is-invalid @enderror" placeholder="{{ __('Numer ISBN') }}" name="content" value="{{ old('content') }}" required autocomplete="content" >
+            <input type="text" id="isbn_number" class="form-control @error('isbn_number') is-invalid @enderror" placeholder="{{ __('Numer ISBN') }}" name="isbn_number" value="{{ old('isbn_number') }}" required autocomplete="isbn_number" >
 
-            @error('content')
+            @error('isbn_number')
             <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>

@@ -1,49 +1,75 @@
 @extends('master_bookstore')
 @section('content')
 
-    <div class="videos-header card">
-        <h2>Wszystkie książki</h2>
-    </div>
-    <div class="row">
+    <div class="container">
 
-    @foreach($books as $book)
+            <!-- Page Heading -->
+            <h1 class="my-4">
+                <small>Wszystkie książki</small>
+            </h1>
 
-        <!-- Single book -->
-            <div class="col-xs-12 col-md-6 col-lg-4 single-video">
-                <div class="card">
+            <div class="row">
 
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="{{$book->getPicture()}}?showinfo=0" frameborder="0" allowfullscreen></iframe>
+                @foreach($books as $book)
+
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="card h-100">
+                            <a href="#"><img class="card-img-top d-block mx-auto p-1 image-size" src="{{$book->getPicture()}}?showinfo=0" frameborder="0" alt="" ></a>
+
+                            <div class="card-body d-flex flex-column">
+
+                                <h4 class="card-title">
+                                    <a href="#">{{ $book->getTitle() }}</a>
+                                </h4>
+                                <p class="card-text">ID Książki: {{$book->getId()}}</p>
+                                <p class="card-text">{{Str::limit($book->getDescription(),150)}}</p>
+                                <p class="card-text">Autor: {{$book->getAuthorName() ." ".$book->getAuthorSurname()}}</p>
+                                <p class="card-text">Rok wydania: {{$book->getYear()}}</p>
+
+
+
+                                <a href="#" class="btn btn-primary mt-auto">Sprawdź szczegóły</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-content">
-                        <a href="">
-                            <h4>{{ $book->getTitle() }}</h4>
-                        </a>
-                        <p>{{ $book->getDescription() }}</p>
-                        <span class="upper-label">ID Książki</span>
-                        <span class="video-author">{{$book->getId()}}</span>
-                        <span class="upper-label">Autor</span>
-                        <span class="video-author">{{$book->getAuthorName() . " " . $book->getAuthorSurname()}}</span>
-                        <span class="upper-label">Rok wydania</span>
-                        <span class="video-author">{{$book->getYear()}}</span>
-                        <span class="upper-label">Wydawnictwo</span>
-                        <span class="video-author">{{$book->getPrint()}}</span>
-                        <span class="upper-label">Numer ISBN</span>
-                        <span class="video-author">{{$book->getIsbnNumber()}}</span>
-                        <span class="upper-label">Kategoria</span>
-                        <span class="video-author">{{$book->getCategory()->name}}</span>
-                    </div>
+                @endforeach
 
-                </div>
             </div>
+            <!-- /.row -->
+    {{--               <!-- Pagination -->
+                   <ul class="pagination justify-content-center">
+                       <li class="page-item">
+                           <a class="page-link" href="#" aria-label="Previous">
+                               <span aria-hidden="true">&laquo;</span>
+                               <span class="sr-only">Previous</span>
+                           </a>
+                       </li>
+                       <li class="page-item">
+                           <a class="page-link" href="#">1</a>
+                       </li>
+                       <li class="page-item">
+                           <a class="page-link" href="#">2</a>
+                       </li>
+                       <li class="page-item">
+                           <a class="page-link" href="#">3</a>
+                       </li>
+                       <li class="page-item">
+                           <a class="page-link" href="#" aria-label="Next">
+                               <span aria-hidden="true">&raquo;</span>
+                               <span class="sr-only">Next</span>
+                           </a>
+                       </li>
+                   </ul>
 
-        @endforeach
+               </div>
+               <!-- /.container -->--}}
 
-    </div>
+
+
+
+
+
 
 
 
 @stop
-
-
-

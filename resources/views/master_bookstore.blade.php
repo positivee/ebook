@@ -54,7 +54,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{'/bookstore/addarticle'}}">Dodaj Aktualność</a>
                             <a class="dropdown-item" href="{{'/bookstore/addbook'}}">Dodaj Książkę</a>
-                            <a class="dropdown-item" href="{{'/bookstore/addoffer'}}">Dodaj ofertę</a>
+                            <a class="dropdown-item" href="{{'/bookstore/addoffer'}}">Dodaj Ofertę</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{'/logout'}}">Wyloguj</a>
                         </div>

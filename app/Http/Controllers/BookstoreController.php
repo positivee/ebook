@@ -97,11 +97,12 @@ class BookstoreController extends Controller
 
 
 
+
     public function contact() {
         return view('bookstore.contact');
     }
     public function welcome() {
-      /*  return view('bookstore.welcome');*/
+
         $allArticels = new BookstoreShowArticle();
         return view('bookstore.welcome')->with('articles',$allArticels->showAllArticles());
     }
