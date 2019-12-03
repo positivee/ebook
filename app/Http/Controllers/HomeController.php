@@ -41,10 +41,14 @@ class HomeController extends Controller
         return view('offers')->with('offers', $allOffers->showAllOffer());
     }
 
-    public function search()
+    public function search(Request $request)
     {
-        //wyswietla strone z formularzem do wyszukiwania
-        return view('search');
+        //wyswietla strone z formularzem do wyszukiwania i wyszukane oferty
+
+        $offerFetchInput = OfferFetchInputFactory::createFromRequest($request, null);
+        $allOffers = new UserSearchOffer();
+
+        return view('search')->with('offers', $allOffers->searchOffer($offerFetchInput));
     }
 
 
@@ -54,7 +58,7 @@ class HomeController extends Controller
 
         $offerFetchInput = OfferFetchInputFactory::createFromRequest($request, null);
         $allOffers = new UserSearchOffer();
-        return view('temporary_results')->with('offers', $allOffers->searchOffer($offerFetchInput));
+        return view('search')->with('offers', $allOffers->searchOffer($offerFetchInput));
     }
 
 

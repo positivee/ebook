@@ -39,7 +39,7 @@
                     <div class="row">
                         <div class="col-md-9 mx-auto">
                             <div class="text-left mb-1">
-                                <a class="" href="/">	&larr; Wróć do strony głównej</a></div>
+                                <a class="" href="/welcome">	&larr; Wróć do strony głównej</a></div>
                             </form>
 
                             @yield('panel')

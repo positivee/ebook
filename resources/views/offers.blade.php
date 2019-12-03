@@ -46,8 +46,8 @@
     <div class="container">
 
         <!-- Page Heading -->
-        <h1 class="my-4">Oferty
-            <small>Znajdź swoją oferte</small>
+        <h1 class="my-4">
+            <small>Nasze książki</small>
         </h1>
 
         <div class="row">
@@ -61,7 +61,7 @@
                         <div class="card-body d-flex flex-column">
 
                             <h4 class="card-title">
-                                <a href="#">Tytuł: {{ $offer->getTitle() }}</a>
+                                <a href="#">{{ $offer->getTitle() }}</a>
                             </h4>
                             <p class="card-text">{{Str::limit($offer->getDescription(),150)}}</p>
                             <p class="card-text">Autor: {{$offer->getAuthorName() ." ".$offer->getAuthorSurname()}}</p>

@@ -2,134 +2,122 @@
 @section('content')
 
 
-    <div class="col-xs-8 col-md-8 single-video">
-        <div class="card">
-            <div class="embed-responsive embed-responsive-16by9">
-                <div class="card-content">
+    <div class="container py-4">
+        <div class="row text-center pb-4">
+            <div class="col-md-12">
+                <h2>Zaawasowane wyszukiwanie książki</h2>
+            </div>
+        </div>
+        <form method="POST" action="{{'/search/find'}}">
+            @csrf
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <!--pole na tytuł książki-->
+                                <div class="col-md-4">
+                                    <div class="form-group ">
+                                        <input type="text" id="title"  class="form-control" name="title" placeholder="{{ __('Tytuł Książki') }}" autofocus >
 
-                    <h4>Wyszukiwanie</h4>
-
-                    <!-- Formularz do wyszukiwania zaawansowanego -->
-
-                    <form method="POST" action="{{'/search/find'}}">
-                    @csrf
-
-                        <!--pole na tytuł-->
-
-                        <div class="form-group">
-                            <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Tytuł') }}</label>
-                            <div class="col-md-6">
-                                <input id="title" type="text" name="title" >
+                                    </div>
+                                </div>
+                                <!--pole na imie autora-->
+                                <div class="col-md-4">
+                                    <div class="form-group ">
+                                        <input type="text" id="author_name" class="form-control"  name="author_name" placeholder="{{ __('Imię Autora') }}">
+                                    </div>
+                                </div>
+                                <!--pole na nazwisko autora -->
+                                <div class="col-md-4">
+                                    <div class="form-group ">
+                                        <input type="text" id="author_surname" class="form-control"  name="author_surname" placeholder="{{ __('Nazwisko Autora') }}">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                            <div class="row">
+                                <!--pole na numer ISBN -->
+                                <div class="col-md-4">
+                                    <div class="form-group ">
+                                        <input type="text" id="isbn_number" class="form-control"  name="isbn_number" placeholder="{{ __('Numer ISBN') }}" >
+                                    </div>
+                                </div>
+                                <!--pole na wydawnictwo -->
+                                <div class="col-md-4">
+                                    <div class="form-group ">
+                                        <input type="text" id="print" class="form-control"  name="print" placeholder="{{ __('Wydawnictwo') }}">
+                                    </div>
+                                </div>
+                                <!--pole na cene -->
+                                <div class="col-md-4">
+                                    <div class="form-group ">
+                                        <div class="form-row">
+                                            <div class="col-md-6 mb-2">
+                                                <input type="number"  min="0" max="999.00" step="0.01" id="price_from" class="form-control"  name="price_from" placeholder="{{ __('Cena Od') }}">
 
-                        <!--pole na imie autora-->
+                                            </div>
+                                            <div class="col-md-6 ">
+                                                <input type="number"  min="0" max="999.00" step="0.01" id="price_to" class="form-control" placeholder="{{ __('Do') }}" name="price_to">
 
-                        <div class="form-group">
-                            <label for="author_name" class="col-md-4 col-form-label text-md-right">{{ __('Imię Autora') }}</label>
-                            <div class="col-md-6">
-                                <input id="author_name" type="text" name="author_name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-
-                        <!--pole na nazwisko autora-->
-
-                        <div class="form-group">
-                            <label for="author_surname" class="col-md-4 col-form-label text-md-right">{{ __('Nazwisko Autora') }}</label>
-                            <div class="col-md-6">
-                                <input id="author_surname" type="text" name="author_surname">
-                            </div>
-                        </div>
-
-                        <!--pole na numer ISBN-->
-
-                        <div class="form-group">
-                            <label for="isbn_number" class="col-md-4 col-form-label text-md-right">{{ __('Numer ISBN') }}</label>
-                            <div class="col-md-6">
-                                <input id="isbn_number" type="text" name="isbn_number">
-                            </div>
-                        </div>
-
-
-                        <!--pole na wydawnictwo-->
-
-                        <div class="form-group">
-                            <label for="print" class="col-md-4 col-form-label text-md-right">{{ __('Wydawnictwo') }}</label>
-                            <div class="col-md-6">
-                                <input id="print" type="text" name="print">
-                            </div>
-                        </div>
-
-
-                        <!-- pole na cene od-->
-
-                        <div class="form-group">
-                            <label for="price_from" class="col-md-4 col-form-label text-md-right">{{ __('Cena od') }}</label>
-                            <div class="col-md-6">
-                                <input id="price_from" type="number" min="0" max="999.00" step="0.01" name="price_from">
-                            </div>
-                        </div>
-
-                        <!-- pole na cene do-->
-
-                        <div class="form-group">
-                            <label for="price_to" class="col-md-4 col-form-label text-md-right">{{ __('Cena do') }}</label>
-                            <div class="col-md-6">
-                                <input id="price_to" type="number" min="0" max="999.00" step="0.01" name="price_to">
-                            </div>
-                        </div>
-
-
-
-                        <!-- pole na kategorie-->
-                        <div class="form-group">
-                            <label for="category" class="col-md-4 col-form-label text-md-right">{{ __('Kategoria') }}</label>
-
-                                <?php
-                                    $hostname = "localhost";
-                                    $username = "olaola";
-                                    $password = "root";
-                                    $databaseName = "ebook";
-
-                                    $connection = mysqli_connect($hostname, $username, $password, $databaseName);
-                                    $query = "SELECT * from `categories`";
-                                    $result = mysqli_query($connection, $query);
-                                ?>
-
-                            <select name="category">
-                                   <?php while($row = mysqli_fetch_array($result)):;?>
-                                <option><?php echo $row[1]; ?></option>
-                                <?php endwhile;?>
-
-                            </select>
-
-                        </div>
-
-
-
-                        <!--przycisk-->
-                        <div class="form-group">
-                            <div class="col-md-4 col-form-label text-md-right">
-                                <div class="col-md-6">
-                                    <button type="submit" class="btn btn-primary col-md-20">
-                                        {{ __('Szukaj') }}
-                                    </button>
+                            <div class="row">
+                                <!-- pole na kategorie-->
+                                <div class="col-md-4">
+                                    <div class="form-group ">
+                                        <select id="category" type="text" name="category" class="col-12 form-control">
+                                            <option value="" class="hidden" >Kategoria</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--pole na wyszukiwanie zaawasowane jak będzie -->
+                                <div class="col-md-5">
+                                    <div class="form-group ">
+                                        <input type="text" id="print" class="form-control"  name="print" placeholder="{{ __('Wpisz dowolne słowa kluczowe') }}">
+                                    </div>
+                                </div>
+                                <!-- pole na przycisk-->
+                                <div class="col-md-3">
+                                    <button type="submit" class="btn btn-primary btn-block ">Wyszukaj</button>
                                 </div>
                             </div>
                         </div>
-                    </form>
-
-                    <?php
-                    if(isset($_POST['submit'])){
-                        $selected_val = $_POST['category'];  // Storing Selected Value In Variable
-                        echo "You have selected :" .$selected_val;  // Displaying Selected Value
-                    }
-                    ?>
+                    </div>
 
                 </div>
             </div>
-        </div>
+        </form>
     </div>
+
+    {{--wyniki wyszukiwania--}}
+    <div class="row">
+
+        @foreach($offers as $offer)
+
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <div class="card h-100">
+                    <a href="#"><img class="card-img-top d-block mx-auto p-1 image-size" src="{{$offer->getPicture()}}?showinfo=0" frameborder="0" alt="" ></a>
+
+                    <div class="card-body d-flex flex-column">
+
+                        <h4 class="card-title">
+                            <a href="#">{{ $offer->getTitle() }}</a>
+                        </h4>
+                        <p class="card-text">{{Str::limit($offer->getDescription(),150)}}</p>
+                        <p class="card-text">Autor: {{$offer->getAuthorName() ." ".$offer->getAuthorSurname()}}</p>
+                        <p class="card-text">Data wydania: {{$offer->getYear()}}</p>
+
+                        <a href="#" class="btn btn-primary mt-auto">Sprawdź oferty</a>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+
+    </div>
+
 
 
 @stop

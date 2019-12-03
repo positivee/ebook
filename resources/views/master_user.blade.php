@@ -57,7 +57,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{'/user'}}">Mój Profil</a>
-                            <a class="dropdown-item" href="{{'/user/add_quote'}}">Dodaj cytat</a>
+                            <a class="dropdown-item" href="{{'/user/add_quote'}}">Dodaj Cytat</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{'/logout'}}">Wyloguj</a>
                         </div>

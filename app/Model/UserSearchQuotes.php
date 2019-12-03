@@ -16,7 +16,7 @@ class UserSearchQuotes
             ->join('users', 'users.id', '=', 'quotes.user_id')
             ->select('user_id','quotes.id', 'quotes.content', 'quotes.book_title', 'quotes.book_author_name',
                 'quotes.book_author_surname', 'users.name', 'users.surname')
-            ->orderBy('quotes.book_title', 'ASC')
+            ->orderBy('quotes.created_at', 'DESC')
             ->get();
 
         $quoteOutputArray = [];
@@ -34,7 +34,7 @@ class UserSearchQuotes
         $myQuotes = DB::table('quotes')
             ->select( 'user_id','id','content', 'book_title', 'book_author_name',
                 'book_author_surname')
-            ->orderBy('book_title', 'ASC');
+            ->orderBy('created_at', 'DESC');
 
         if($fetchInput->getUser()) {
             $myQuotes->where('quotes.user_id', '=' , $fetchInput->getUser()->id);

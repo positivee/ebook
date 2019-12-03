@@ -3,14 +3,14 @@
 
 
 
-        <div class="container py-4">
-            <div class="row text-center pb-4">
-                <div class="col-md-12">
-                    <h2>Zaawasowane wyszukiwanie książki</h2>
-                </div>
+    <div class="container py-4">
+        <div class="row text-center pb-4">
+            <div class="col-md-12">
+                <h2>Zaawasowane wyszukiwanie książki</h2>
             </div>
-            <form method="POST" action="{{'/user/search/find'}}">
-                @csrf
+        </div>
+        <form method="POST" action="{{'/user/search/find'}}">
+            @csrf
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -26,13 +26,13 @@
                                 <!--pole na imie autora-->
                                 <div class="col-md-4">
                                     <div class="form-group ">
-                                        <input type="text" id="author_name" class="form-control"  name="author_name" placeholder="{{ __('Autor Książk') }}">
+                                        <input type="text" id="author_name" class="form-control"  name="author_name" placeholder="{{ __('Imię Autora') }}">
                                     </div>
                                 </div>
                                 <!--pole na nazwisko autora -->
                                 <div class="col-md-4">
                                     <div class="form-group ">
-                                        <input type="text" id="author_surname" class="form-control"  name="author_surname" placeholder="{{ __('Naziwsko Autora') }}">
+                                        <input type="text" id="author_surname" class="form-control"  name="author_surname" placeholder="{{ __('Nazwisko Autora') }}">
                                     </div>
                                 </div>
                             </div>
@@ -77,41 +77,47 @@
                                 <!--pole na wyszukiwanie zaawasowane jak będzie -->
                                 <div class="col-md-5">
                                     <div class="form-group ">
-                                        <input type="text" id="print" class="form-control"  name="print" placeholder="{{ __('Wyszukiwanie zaawsaowane') }}">
+                                        <input type="text" id="print" class="form-control"  name="print" placeholder="{{ __('Wpisz dowolne słowa kluczowe') }}">
                                     </div>
                                 </div>
                                 <!-- pole na przycisk-->
                                 <div class="col-md-3">
-                                    <button type="button" class="btn btn-primary btn-block ">Wyszukaj</button>
+                                    <button type="submit" class="btn btn-primary btn-block ">Wyszukaj</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                 </div>
-                </div>
-            </form>
-        </div>
-        {{--wyniki wyszukiwania--}}
-        <div class="col-lg-4 col-sm-6 mb-4">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top d-block mx-auto p-1 image-size" src="?showinfo=0" frameborder="0" alt="" ></a>
-
-                <div class="card-body d-flex flex-column">
-
-                    <h4 class="card-title">
-                        <a href="#">Tytuł: </a>
-                    </h4>
-                    <p class="card-text">fasd</p>
-                    <p class="card-text">Autor:</p>
-                    <p class="card-text">Data wydania: </p>
-
-                    <a href="#" class="btn btn-primary mt-auto">Sprawdź oferty</a>
                 </div>
             </div>
-        </div>
+        </form>
+    </div>
 
+    {{--wyniki wyszukiwania--}}
+    <div class="row">
 
+        @foreach($offers as $offer)
+
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <div class="card h-100">
+                    <a href="#"><img class="card-img-top d-block mx-auto p-1 image-size" src="{{$offer->getPicture()}}?showinfo=0" frameborder="0" alt="" ></a>
+
+                    <div class="card-body d-flex flex-column">
+
+                        <h4 class="card-title">
+                            <a href="#">{{ $offer->getTitle() }}</a>
+                        </h4>
+                        <p class="card-text">{{Str::limit($offer->getDescription(),150)}}</p>
+                        <p class="card-text">Autor: {{$offer->getAuthorName() ." ".$offer->getAuthorSurname()}}</p>
+                        <p class="card-text">Data wydania: {{$offer->getYear()}}</p>
+
+                        <a href="#" class="btn btn-primary mt-auto">Sprawdź oferty</a>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+
+    </div>
 
 
 

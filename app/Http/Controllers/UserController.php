@@ -84,9 +84,14 @@ class UserController extends Controller
         return redirect('/user');
     }
 
-    public function search() {
-        //wyswietla strone z formularzem do wyszukiwania
-        return view('user.search');
+    public function search(Request $request) {
+        //wyswietla strone z formularzem do wyszukiwania zaawansowanego oraz wyniki wyszukiwania
+
+        $offerFetchInput = OfferFetchInputFactory::createFromRequest($request, null);
+        $allOffers = new UserSearchOffer();
+        return view('user.search')->with('offers', $allOffers->searchOffer($offerFetchInput));
+
+
     }
 
     public function findOffer(Request $request){
@@ -94,7 +99,7 @@ class UserController extends Controller
 
         $offerFetchInput = OfferFetchInputFactory::createFromRequest($request, null);
         $allOffers = new UserSearchOffer();
-        return view('user.temporary_results')->with('offers', $allOffers->searchOffer($offerFetchInput));
+        return view('user.search')->with('offers', $allOffers->searchOffer($offerFetchInput));
     }
 
 
