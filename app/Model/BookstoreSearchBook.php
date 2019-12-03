@@ -5,7 +5,7 @@ namespace App\Model;
 
 //model dla księgarni do wyszukiwania dodanych przez nią ksiązek
 
-use App\Dto\BookOutputFactory;
+use App\Dto\Book\BookOutputFactory;
 use Illuminate\Support\Facades\DB;
 
 class BookstoreSearchBook

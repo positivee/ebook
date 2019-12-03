@@ -3,10 +3,8 @@
 
 namespace App\Model;
 
-
-
-use App\Dto\UserFetchInput;
-use App\Dto\UserOutputFactory;
+use App\Dto\User\UserFetchInput;
+use App\Dto\User\UserOutputFactory;
 use Illuminate\Support\Facades\DB;
 
 class UserSearchInfo

@@ -4,8 +4,8 @@
 
 namespace App\Model;
 
-use App\Dto\QuoteFetchInput;
-use App\Dto\QuoteOutputFactory;
+use App\Dto\Quote\QuoteFetchInput;
+use App\Dto\Quote\QuoteOutputFactory;
 use Illuminate\Support\Facades\DB;
 
 class UserSearchQuotes

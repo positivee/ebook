@@ -2,9 +2,7 @@
 
 namespace App\Model;
 
-
-
-use App\Dto\CreateArticle;
+use App\Dto\Article\CreateArticle;
 use App\Article;
 
 class BookstoreAddArticle {

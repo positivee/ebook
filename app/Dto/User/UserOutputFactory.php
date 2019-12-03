@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Dto;
+namespace App\Dto\User;
 
 
 use App\User;

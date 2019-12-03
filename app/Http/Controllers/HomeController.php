@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Dto\OfferFetchInputFactory;
-use App\Elastic\SearchModel;
+use App\Dto\Offer\OfferFetchInputFactory;
 use App\Model\BookstoreSearchOffer;
 use App\Model\BookstoreShowArticle;
-use App\Model\BookstoreAddArticle;
 use App\Model\UserSearchOffer;
 use Illuminate\Http\Request;
 

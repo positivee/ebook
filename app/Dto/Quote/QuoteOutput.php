@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Dto;
+namespace App\Dto\Quote;
 
 //model wyjściowy do pobierania cytatów
 

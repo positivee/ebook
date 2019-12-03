@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Dto;
+namespace App\Dto\Quote;
 
 use App\User;
 use Illuminate\Http\Request;

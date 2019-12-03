@@ -6,12 +6,12 @@ namespace App\Http\Controllers;
 use App\Bookstore;
 
 
-use App\Dto\CreateArticleFactory;
+use App\Dto\Article\CreateArticleFactory;
 use App\Model\BookstoreAddArticle;
 use App\Model\BookstoreShowArticle;
-use App\Dto\CreateBookFactory;
-use App\Dto\CreateOfferFactory;
-use App\Dto\OfferFetchInputFactory;
+use App\Dto\Book\CreateBookFactory;
+use App\Dto\Offer\CreateOfferFactory;
+use App\Dto\Offer\OfferFetchInputFactory;
 use App\Model\BookstoreAddBook;
 use App\Model\BookstoreAddOffer;
 

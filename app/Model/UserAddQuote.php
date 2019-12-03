@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-use App\Dto\CreateQuote;
+use App\Dto\Quote\CreateQuote;
 use App\Quote;
 
 class UserAddQuote

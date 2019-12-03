@@ -5,7 +5,7 @@ namespace App\Model;
 
 
 use App\Book;
-use App\Dto\CreateBook;
+use App\Dto\Book\CreateBook;
 
 class BookstoreAddBook
 {

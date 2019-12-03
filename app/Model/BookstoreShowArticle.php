@@ -2,11 +2,8 @@
 
 namespace App\Model;
 
-use App\Dto\ArticleOutputFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Dto\Article\ArticleOutputFactory;
 use Illuminate\Support\Facades\DB;
-use App\Article;
-
 
 //model do wyswietlania artykułów
 

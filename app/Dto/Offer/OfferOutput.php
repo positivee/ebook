@@ -1,18 +1,44 @@
 <?php
 
 
-namespace App\Dto;
+namespace App\Dto\Offer;
 
-//model wyjściowy do pobierania książek
+//model wyjściowy do pobierania ofert
 
+
+use App\Book;
+use App\Bookstore;
 use App\Category;
+use DateTime;
 
-class BookOutput
+
+class OfferOutput
 {
+
     /**
-     * @var int
+     * @var Bookstore
      */
-    protected $id;
+    protected $bookstore;
+    /**
+     * @var Book
+     */
+    protected $book;
+    /**
+     * @var float
+     */
+    protected $price;
+    /**
+     * @var DateTime
+     */
+    protected $date_from;
+    /**
+     * @var DateTime
+     */
+    protected $date_to;
+    /**
+     * @var string
+     */
+    protected $link;
     /**
      * @var string
      */
@@ -51,8 +77,13 @@ class BookOutput
     protected $category;
 
     /**
-     * BookOutput constructor.
-     * @param int $id
+     * OfferOutput constructor.
+     * @param Bookstore $bookstore
+     * @param Book $book
+     * @param float $price
+     * @param DateTime $date_from
+     * @param DateTime $date_to
+     * @param string $link
      * @param string $title
      * @param string $year
      * @param string $print
@@ -63,10 +94,17 @@ class BookOutput
      * @param string $isbn_number
      * @param Category $category
      */
-    public function __construct(int $id, string $title, string $year, string $print, string $picture, string $description,
-                                string $author_name, string $author_surname, string $isbn_number, Category $category)
+    public function __construct(Bookstore $bookstore, Book $book, float $price, DateTime $date_from, DateTime $date_to,
+                                string $link, string $title, string $year, string $print, string $picture,
+                                string $description, string $author_name, string $author_surname, string $isbn_number,
+                                Category $category)
     {
-        $this->id = $id;
+        $this->bookstore = $bookstore;
+        $this->book = $book;
+        $this->price = $price;
+        $this->date_from = $date_from;
+        $this->date_to = $date_to;
+        $this->link = $link;
         $this->title = $title;
         $this->year = $year;
         $this->print = $print;
@@ -79,13 +117,52 @@ class BookOutput
     }
 
     /**
-     * @return int
+     * @return Bookstore
      */
-    public function getId(): int
+    public function getBookstore(): Bookstore
     {
-        return $this->id;
+        return $this->bookstore;
     }
 
+    /**
+     * @return Book
+     */
+    public function getBook(): Book
+    {
+        return $this->book;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrice(): float
+    {
+        return $this->price;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getDateFrom(): DateTime
+    {
+        return $this->date_from;
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getDateTo(): DateTime
+    {
+        return $this->date_to;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLink(): string
+    {
+        return $this->link;
+    }
 
     /**
      * @return string
@@ -158,8 +235,6 @@ class BookOutput
     {
         return $this->category;
     }
-
-
 
 
 }

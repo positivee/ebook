@@ -1,13 +1,13 @@
 <?php
 
 
-namespace App\Dto;
+namespace App\Dto\Article;
 
+//model wyjściowy do pobierania artykułów
 
-use App\Book;
 use App\Bookstore;
 
-class CreateArticle
+class ArticleOutput
 {
     /**
      * @var Bookstore
@@ -28,20 +28,26 @@ class CreateArticle
      * @var string
      */
     protected $photo;
+    /**
+     * @var string
+     */
+    protected $created_at;
 
     /**
-     * CreateArticle constructor.
+     * ArticleOutput constructor.
      * @param Bookstore $bookstore
      * @param string $title
      * @param string $content
      * @param string $photo
+     * @param string $created_at
      */
-    public function __construct(Bookstore $bookstore, string $title, string $content, string $photo)
+    public function __construct(Bookstore $bookstore, string $title, string $content, string $photo, string $created_at)
     {
         $this->bookstore = $bookstore;
         $this->title = $title;
         $this->content = $content;
         $this->photo = $photo;
+        $this->created_at=$created_at;
     }
 
     /**
@@ -75,6 +81,14 @@ class CreateArticle
     {
         return $this->photo;
     }
+    /**
+     * @return string
+     */
+    public function getDate(): string
+    {
+        return $this->created_at;
+    }
+
 
 
 

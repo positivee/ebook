@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Dto;
+namespace App\Dto\Offer;
 
 use App\Bookstore;
 use App\Category;

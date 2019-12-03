@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Dto;
+namespace App\Dto\Article;
 
 use App\Bookstore;
 use Illuminate\Database\Eloquent\ModelNotFoundException;

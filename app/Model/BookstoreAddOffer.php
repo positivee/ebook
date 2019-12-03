@@ -4,7 +4,7 @@
 namespace App\Model;
 
 
-use App\Dto\CreateOffer;
+use App\Dto\Offer\CreateOffer;
 use App\Offer;
 
 class BookstoreAddOffer

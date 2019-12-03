@@ -10,8 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\Books\BooksRepository;
-use App\Model\BookstoreSearchOffer;
+
+
 
 //widoki bez logowania:
 Route::get('/home', 'HomeController@index');

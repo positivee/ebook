@@ -5,8 +5,8 @@ namespace App\Model;
 
 //model dla księgarni do wyszukiwania dodanych przez nią ofert
 
-use App\Dto\OfferFetchInput;
-use App\Dto\OfferOutputFactory;
+use App\Dto\Offer\OfferFetchInput;
+use App\Dto\Offer\OfferOutputFactory;
 use Illuminate\Support\Facades\DB;
 
 class BookstoreSearchOffer

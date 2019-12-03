@@ -1,11 +1,10 @@
 <?php
 
 
-namespace App\Dto;
+namespace App\Dto\Offer;
 
 //model wejściowy do wyszukiwania ofert dla użytkownika
 
-use App\Book;
 use App\Bookstore;
 use App\Category;
 
