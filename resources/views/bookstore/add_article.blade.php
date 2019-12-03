@@ -27,8 +27,8 @@
                                                 </span>
             @enderror
         </div>
-
         <!-- Link do zdjeci artykułu -->
+        cokolwiek
         <div class="form-group">
             <input type="text" id="photo" class="form-control @error('photo') is-invalid @enderror" placeholder="{{ __('Link do zdjęcia') }}" name="photo" value="{{ old('photo') }}" required autocomplete="photo" >
 
