@@ -3,11 +3,11 @@
 
     <form method="POST" action="{{'/bookstore/a'}}" class="text-center p-5">
         @csrf
-        <p class="h4 mb-4">Formularz goowna nowego artykułu</p>
+        <p class="h4 mb-4">Formularz dodawania nowego artykułu</p>
         <!-- Article titile-->
         <div class="form-group">
 
-            <input type="text" id="title" class="form-control mb-3 @error('title') is-invalid @enderror" placeholder="{{ __('Tytuł artykułu') }}" name="title" value="{{ old('book_title') }}" required autocomplete="title" autofocus>
+            <input type="text" id="title" class=" mb-3 @error('title') is-invalid @enderror" placeholder="{{ __('Tytuł artykułu') }}" name="title" value="{{ old('book_title') }}" required autocomplete="title" autofocus>
             @error('title')
             <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
