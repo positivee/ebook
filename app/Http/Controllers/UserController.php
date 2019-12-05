@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Dto\CreateQuoteFactory;
-use App\Dto\OfferFetchInputFactory;
-use App\Dto\QuoteFetchInputFactory;
-use App\Dto\UserFetchInputFactory;
+use App\Dto\Quote\CreateQuoteFactory;
+use App\Dto\Offer\OfferFetchInputFactory;
+use App\Dto\Quote\QuoteFetchInputFactory;
+use App\Dto\User\UserFetchInputFactory;
 use App\Model\BookstoreSearchOffer;
 use App\Model\BookstoreShowArticle;
 use App\Model\UserAddQuote;
@@ -110,7 +110,7 @@ class UserController extends Controller
     public function showNews() {
         //wyswietlenie artykułów
         $allArticles = new BookstoreShowArticle();
-        return view('user.welcome')->with('articles', $allArticles->showAllArticles());
+        return view('welcome')->with('articles', $allArticles->showAllArticles());
     }
 
     public function offers() {

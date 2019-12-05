@@ -32,46 +32,121 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class=" ml-auto justify-content-end">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{'/welcome'}}">Aktualności <span class="sr-only">(current)</span></a>
-                    </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{'/offers'}}">Książki</a></li>
-                    </li>
+       {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class=" ml-auto justify-content-end">--}}
+                    @if (Auth::guest())
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <div class=" ml-auto justify-content-end">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="{{'/welcome'}}">Aktualności <span class="sr-only">(current)</span></a>
+                                    </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{'/search'}}">Wyszukiwarka zaawansowana</a></li>
-                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{'/offers'}}">Książki</a></li>
+                                    </li>
 
-                    {{--<li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{'/search'}}">Wyszukiwarka zaawansowana</a></li>
+                                    </li>
+
+                                    {{--<li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Dropdown
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </li>--}} {{-- wysuwane jak będzie potrzebne--}}
+                                </ul>
+                            </div>
+                            <div class="ml-auto">{{--do prawej--}}
+                                <ul class="navbar-nav ">
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="{{'/login'}}">Logowanie</a></li>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link reg-color" href="{{'/register'}}">Zarejestruj się</a></li>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                    </li>--}} {{-- wysuwane jak będzie potrzebne--}}
-                </ul>
-            </div>
-            <div class="ml-auto">{{--do prawej--}}
-                <ul class="navbar-nav ">
-                    <li class="nav-item">
-                        <a class="nav-link " href="{{'/login'}}">Logowanie</a></li>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link reg-color" href="{{'/register'}}">Zarejestruj się</a></li>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+                    @else
+                        @if (Auth::user()->bookstore_id == null)
+                            <div class="collapse navbar-collapse mr-lg-5" id="navbarSupportedContent">
+                                <div class="ml-auto">
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item active">
+                                            <a class="nav-link" href="{{'/welcome'}}">Aktualności <span class="sr-only">(current)</span></a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{'/user/offers'}}">Książki</a></li>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{'/user/search'}}">Wyszukiwarka</a></li>
+                                        </li>
+                                        <li class="nav-item mr-5">
+                                            <a class="nav-link" href="{{'/user/quotes'}}">Cytaty</a></li>
+                                        </li>
+
+                                        <li class="nav-item dropdown mr-5">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Opcje
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" href="{{'/user'}}">Mój Profil</a>
+                                                <a class="dropdown-item" href="{{'/user/add_quote'}}">Dodaj Cytat</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="{{'/logout'}}">Wyloguj</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        @elseif (Auth::user()->bookstore_id != null)
+                            <div class="collapse navbar-collapse mr-lg-5" id="navbarSupportedContent">
+                                <div class="ml-auto">
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item active">
+                                            <a class="nav-link" href="{{'/welcome'}}">Aktualności <span class="sr-only">(current)</span></a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{'/bookstore/books'}}">Baza Książek</a></li>
+                                        </li>
+
+                                        <li class="nav-item mr-5">
+                                            <a class="nav-link" href="{{'/bookstore/offers'}}">Nasze Oferty</a></li>
+                                        </li>
+
+                                        <li class="nav-item dropdown mr-5">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Opcje
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" href="{{'/bookstore/addarticle'}}">Dodaj Aktualność</a>
+                                                <a class="dropdown-item" href="{{'/bookstore/addbook'}}">Dodaj Książkę</a>
+                                                <a class="dropdown-item" href="{{'/bookstore/addoffer'}}">Dodaj Ofertę</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="{{'/logout'}}">Wyloguj</a>
+                                            </div>
+                                        </li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        @endif
+                    @endif
+
+
+</nav>
 
 
     <div class="banner mt-5">
@@ -130,43 +205,8 @@
 </div><!-- end of wrapper -->
 
 
-<!-- Site footer -->
-<footer class="site-footer mt-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-6">
-                <h6>O nas</h6>
-                <p class="text-justify">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-            </div>
-
-            <div class="col-xs-6 col-md-3">
-                <h6 class="color">Quick Links</h6>
-                <ul class="footer-links">
-                    <li><a href="http://scanfcode.com/about/">Aktualności</a></li>
-                    <li><a href="http://scanfcode.com/contact/">Zaloguj się</a></li>
-                    <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Zarejestruj się</a></li>
-                    <li><a href="http://scanfcode.com/privacy-policy/">Książki</a></li>
-                </ul>
-            </div>
-
-            <div class="col-xs-6 col-md-3">
-                <h6 class="color">Gdzię się mieścimy</h6>
-                <p>Polska</p>
-                <p>Lublin, 20-452</p>
-                <p>Tel: 779-779-779</p>
-                <p>E-mail: kontakt@kontakt.pl</p>
-            </div>
-
-        </div>
-        <hr>
-    </div>
-    <p class="copyright-text text-center">
-        Copyright &copy; Inżynierka.
-    </p>
-
-
-    </div>
-</footer>
+<!-- footer -->
+@include('include.footer')
 
 
 

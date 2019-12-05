@@ -104,7 +104,7 @@ class BookstoreController extends Controller
     public function welcome() {
 
         $allArticels = new BookstoreShowArticle();
-        return view('bookstore.welcome')->with('articles',$allArticels->showAllArticles());
+        return view('welcome')->with('articles',$allArticels->showAllArticles());
     }
 
     public function addArticle(){

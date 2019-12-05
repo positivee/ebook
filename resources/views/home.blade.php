@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{--@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -20,4 +20,12 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection--}}
+@extends('master')
+@section('content')
+
+    <div class="alert alert-danger my-5" role="alert">
+        Jesteś już zalogowany!
+    </div>
+
+@stop

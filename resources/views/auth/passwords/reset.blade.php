@@ -1,5 +1,5 @@
-@extends('master_bookstore')
-
+@extends('master')
+{{-- dlaczego tu bookstore--}}
 @section('content')
     <div class="row">
         <div class="col-md-8 col-md-offset-2">

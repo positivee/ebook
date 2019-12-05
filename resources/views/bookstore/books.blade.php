@@ -1,4 +1,4 @@
-@extends('master_bookstore')
+@extends('master')
 @section('content')
 
     <div class="container">

@@ -29,7 +29,7 @@ class LoginController extends Controller
             return redirect('/bookstore/offers');
         }
         else
-            return redirect('/user/welcome');
+            return redirect('/welcome');
     }
 
     public function logout(Request $request)

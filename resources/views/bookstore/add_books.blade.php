@@ -1,4 +1,4 @@
-@extends('master_bookstore')
+@extends('master')
 @section('content')
 
     <form method="POST" action="{{'/bookstore/b'}}" class="text-center p-5">
