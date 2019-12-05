@@ -24,7 +24,7 @@
                                          <span class="post-date">{{Str::limit($article->getDate(),10,$end = '')}}</span>
                                      </div>
 
-                                     <h3 class="post-title"><a href="#">{{ $article->getTitle() }}</a></h3>
+                                     <h3 class="post-title"><a href="{{ action('HomeController@showOneArticle', $article->getId()) }}">{{ $article->getTitle() }}</a></h3>
                                  </div>
                              </div>
                          </div>
@@ -47,7 +47,7 @@
                                          <a class="post-category cat-1" href="#">{{$article->getBookstore()->name}}</a>
                                          <span class="post-date">{{$article->getDate()}}</span>
                                      </div>
-                                     <h3 class="post-title"><a href="#">{{ $article->getTitle() }}</a></h3>
+                                     <h3 class="post-title"><a href="{{ action('HomeController@showOneArticle', $article->getId()) }}">{{ $article->getTitle() }}</a></h3>
                                  </div>
                              </div>
                          </div>

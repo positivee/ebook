@@ -10,6 +10,10 @@ use App\Bookstore;
 class ArticleOutput
 {
     /**
+     * @var int
+     */
+    protected $id;
+    /**
      * @var Bookstore
      */
     protected $bookstore;
@@ -35,19 +39,29 @@ class ArticleOutput
 
     /**
      * ArticleOutput constructor.
+     * @param int $id
      * @param Bookstore $bookstore
      * @param string $title
      * @param string $content
      * @param string $photo
      * @param string $created_at
      */
-    public function __construct(Bookstore $bookstore, string $title, string $content, string $photo, string $created_at)
+    public function __construct(int $id, Bookstore $bookstore, string $title, string $content, string $photo, string $created_at)
     {
+        $this->id = $id;
         $this->bookstore = $bookstore;
         $this->title = $title;
         $this->content = $content;
         $this->photo = $photo;
         $this->created_at=$created_at;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
     }
 
     /**

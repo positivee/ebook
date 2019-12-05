@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use App\Dto\Offer\OfferFetchInputFactory;
 use App\Model\BookstoreSearchOffer;
 use App\Model\BookstoreShowArticle;
@@ -26,6 +27,11 @@ class HomeController extends Controller
         $allArticles = new BookstoreShowArticle();
         return view('welcome')->with('articles', $allArticles->showAllArticles());
 
+    }
+
+    public function showOneArticle($id) {
+        $article = Article::findOrFail($id);
+        return view('full_article')->with('article',$article);
     }
 
     public function contact()
