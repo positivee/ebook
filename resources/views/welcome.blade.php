@@ -20,9 +20,10 @@
                                  <a class="post-img" href="#"><img class="max-height" src="{{$article->getPhoto()}}?showinfo=0" frameborder="0" alt=""></a>
                                  <div class="post-body">
                                      <div class="post-meta">
-                                         <a class="post-category cat-2" href="#">{{$article->getBookstore()->name}}</a>
-                                         <span class="post-date">{{$article->getDate()}}</span>
+                                      <a class="post-category cat-2" href="#">{{$article->getBookstore()->name}}</a>
+                                         <span class="post-date">{{Str::limit($article->getDate(),10,$end = '')}}</span>
                                      </div>
+
                                      <h3 class="post-title"><a href="#">{{ $article->getTitle() }}</a></h3>
                                  </div>
                              </div>

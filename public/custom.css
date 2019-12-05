@@ -110,16 +110,17 @@
     margin-bottom: 15px;
 }
 .post-meta .post-category {
-    font-size: 13px;
+   font-size: 13px;
     font-weight: 500;
     text-transform: uppercase;
-    padding: 1% 2%;
+
     border-radius: 2px;
-    margin-right: 3%;
+
     color: white;
     text-decoration: none;
 }
 .post-meta .post-date {
+
     font-size: 13px;
     font-weight: 500;
 }
