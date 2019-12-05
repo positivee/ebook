@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'aleksandra.kondraciuk13@gmail.com'),
-        'name' => env('MAIL_FROM_NAME', 'Ola'),
+        'address' => env('MAIL_FROM_ADDRESS', 'ebookbookstore@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'Ebook - Księgarnia mobilna i internetowa'),
     ],
 
     /*

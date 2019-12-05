@@ -198,7 +198,7 @@
     <!-- .container -->
     <div class="container site-content">
 
-        @yield('content')
+       @yield('content')
 
     </div><!-- end of .container -->
 
