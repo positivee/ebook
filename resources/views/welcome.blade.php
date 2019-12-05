@@ -17,7 +17,7 @@
                      <!-- post -->
                          <div class="col-md-6 ">
                              <div class="post post-thumb">
-                                 <a class="post-img" href="#"><img class="max-height" src="{{$article->getPhoto()}}?showinfo=0" frameborder="0" alt=""></a>
+                                 <a class="post-img" href="/article/{{ $article->getId() }}"><img class="max-height" src="{{$article->getPhoto()}}?showinfo=0" frameborder="0" alt=""></a>
                                  <div class="post-body">
                                      <div class="post-meta">
                                       <a class="post-category cat-2" href="#">{{$article->getBookstore()->name}}</a>
@@ -41,13 +41,13 @@
                      <!-- post -->
                          <div class="col-md-4">
                              <div class="post">
-                                 <a class="post-img" href="#"><img class="max-height" src="{{$article->getPhoto()}}?showinfo=0" frameborder="0" alt=""></a>
+                                 <a class="post-img" href="/article/{{ $article->getId() }}"><img class="max-height" src="{{$article->getPhoto()}}?showinfo=0" frameborder="0" alt=""></a>
                                  <div class="post-body">
                                      <div class="post-meta">
                                          <a class="post-category cat-1" href="#">{{$article->getBookstore()->name}}</a>
                                          <span class="post-date">{{$article->getDate()}}</span>
                                      </div>
-                                     <h3 class="post-title"><a href="#{{--{{ action('HomeController@showOneArticle', $article->getId()) }}--}}">{{ $article->getTitle() }}</a></h3>
+                                     <h3 class="post-title"><a href="/article/{{ $article->getId() }}">{{ $article->getTitle() }}</a></h3>
                                  </div>
                              </div>
                          </div>

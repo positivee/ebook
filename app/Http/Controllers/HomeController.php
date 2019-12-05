@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Dto\Article\ArticleOutputFactory;
 use App\Dto\Offer\OfferFetchInputFactory;
 use App\Model\BookstoreSearchOffer;
 use App\Model\BookstoreShowArticle;
@@ -31,7 +32,7 @@ class HomeController extends Controller
 
     public function showNewsDetail($id) {
         $article = Article::findOrFail($id);
-     return view('full_article')->with('article',$article);
+        return view('full_article')->with('article', $article);
     }
 
     public function contact()
