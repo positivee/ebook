@@ -16,7 +16,7 @@
 //widoki bez logowania:
 Route::get('/home', 'HomeController@index');
 Route::get('/welcome', 'HomeController@showNews');
-Route::get('/welcome/article', 'HomeController@showOneArticle');
+Route::get('/article/{id}', 'HomeController@showNewsDetail');
 
 Route::get('/offers', 'HomeController@offers');
 Route::get('/search', 'HomeController@search');

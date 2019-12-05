@@ -29,9 +29,9 @@ class HomeController extends Controller
 
     }
 
-    public function showOneArticle($id) {
+    public function showNewsDetail($id) {
         $article = Article::findOrFail($id);
-        return view('full_article')->with('article',$article);
+     return view('full_article')->with('article',$article);
     }
 
     public function contact()
