@@ -7,12 +7,13 @@
             <h2 class="title mb-2">Artykuł</h2>
             <div class="mb-3">
                 <span class="date">Opublikowano: {{Str::limit($article->created_at,10,$end = '')}} </span>
+                <span class="float-right"> Księgarnia: {{$article->bookstore_id}}  {{!! Form::select('product_id', $product_array , null, ['class'=>'form-control'])!! }}</span>
             </div>
         </header>
 
         <div class="blog-post-body">
-            <figure class="figure">
-                <a href="#"><img class="img-fluid" src="{{$article->photo}}" alt="image"></a>
+            <figure class="text-center">
+                <img class="img-fluid" src="{{$article->photo}}" alt="image">
                 <figcaption class="figure-caption text-center"></figcaption>
             </figure>
 

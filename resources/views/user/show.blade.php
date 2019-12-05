@@ -1,7 +1,7 @@
 @extends('master')
 @section('content')
 
-    <div class="row my-5">
+    <div class="row my-5 mb-2">
         <div class="col-md-2">
             <div class="list-group" id="list-tab" role="tablist">
                 <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Profil</a>
@@ -9,7 +9,7 @@
 
             </div>
         </div>
-        <div class="col-md-10 mt-3">
+        <div class="col-md-10">
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
 
