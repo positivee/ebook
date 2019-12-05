@@ -153,7 +153,7 @@
         <div class="container h-100">
             <div class="row h-100  no-gutter align-items-center ">
                 <div class="col-12 text-center">
-                    <h1 class="logo-text mb-5">Znajdz swoją książkę</h1>
+                    <h1 class="logo-text mb-5">Znajdź swoją książkę</h1>
                     {{--<form  method="POST" action="{{'/search/findByElastic'}}">
                         @csrf
                         <div class="form-row justify-content-center">

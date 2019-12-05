@@ -45,7 +45,7 @@
                                  <div class="post-body">
                                      <div class="post-meta">
                                          <a class="post-category cat-1" href="#">{{$article->getBookstore()->name}}</a>
-                                         <span class="post-date">{{$article->getDate()}}</span>
+                                         <span class="post-date">{{Str::limit($article->getDate(),10,$end = '')}}</span>
                                      </div>
                                      <h3 class="post-title"><a href="/article/{{ $article->getId() }}">{{ $article->getTitle() }}</a></h3>
                                  </div>
