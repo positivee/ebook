@@ -18,6 +18,9 @@ Route::get('/home', 'HomeController@index');
 Route::get('/welcome', 'HomeController@showNews');
 Route::get('/article/{id}', 'HomeController@showNewsDetail');
 
+
+
+
 Route::get('/offers', 'HomeController@offers');
 Route::get('/search', 'HomeController@search');
 Route::post('/search/find', 'HomeController@find');

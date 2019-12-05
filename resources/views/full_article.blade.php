@@ -7,7 +7,7 @@
             <h2 class="title mb-2">Artykuł</h2>
             <div class="mb-3">
                 <span class="date">Opublikowano: {{Str::limit($article->created_at,10,$end = '')}} </span>
-                <span class="float-right"> Księgarnia: {{$article->bookstore_id}}  {{!! Form::select('product_id', $product_array , null, ['class'=>'form-control'])!! }}</span>
+                <span class="float-right"> Księgarnia: {{$BookStoreName->name  }} </span>
             </div>
         </header>
 
