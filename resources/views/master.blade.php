@@ -198,8 +198,8 @@
     <!-- .container -->
     <div class="container site-content">
 
-     {{--  @yield('content')--}}
-        @include('detail_offer')
+     @yield('content')
+
     </div><!-- end of .container -->
 
 </div><!-- end of wrapper -->

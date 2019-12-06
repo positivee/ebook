@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Book;
 use App\Bookstore;
+use App\Category;
 use App\Dto\Article\ArticleOutputFactory;
 use App\Dto\Offer\OfferFetchInputFactory;
 use App\Model\BookstoreSearchOffer;
@@ -32,9 +34,8 @@ class HomeController extends Controller
     }
 
     public function showNewsDetail($id) {
-        $allArticles = new BookstoreShowArticle();
         $article = Article::findOrFail($id);
-         $BookStoreName = Bookstore::findOrFail($article->bookstore_id);
+        $BookStoreName = Bookstore::findOrFail($article->bookstore_id);
 
         return view('full_article')->with(compact('article','BookStoreName'));
     }
@@ -49,6 +50,15 @@ class HomeController extends Controller
         $allOffers = new BookstoreSearchOffer();
         return view('offers')->with('offers', $allOffers->showAllOffer());
     }
+
+    public function showOffersToBook($id) {
+        $offer = Book::findOrFail($id);
+        $category = Category::findOrFail($id);
+        $offers = new BookstoreSearchOffer();
+        return view('detail_offer')->with(compact('offer', 'category'))->with('offers', $offers->showOfferToCheckedBook($id));
+
+    }
+
 
     public function search(Request $request)
     {

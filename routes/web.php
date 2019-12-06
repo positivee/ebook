@@ -19,9 +19,9 @@ Route::get('/welcome', 'HomeController@showNews');
 Route::get('/article/{id}', 'HomeController@showNewsDetail');
 
 
-
-
 Route::get('/offers', 'HomeController@offers');
+Route::get('/offer/{id}', 'HomeController@showOffersToBook');
+
 Route::get('/search', 'HomeController@search');
 Route::post('/search/find', 'HomeController@find');
 

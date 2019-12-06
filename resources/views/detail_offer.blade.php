@@ -1,18 +1,18 @@
-{{--
+
 @extends('master')
 @section('content')
---}}
+
 
 <div class="card my-5">
     <div class="row">
              <div class="col-md-6 row mx-auto justify-content-center align-items-center flex-column border-right">
               {{--  <div class="row mx-auto justify-content-center align-items-center flex-column ">    col d-flex align-items-center justify-content-center --}}
-                    <img  class="img-fluid m-2" src="https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/37836/large_thumb_stage.jpg" >
+                    <img  class="img-fluid m-2" src="{{$offer->picture}}" >
           {{--      </div>--}}
              </div>
         <div class="col-md-6">
             <div class="card-body p-5">
-                <h3 class="title mb-1">Tytuł: Lalka</h3>
+                <h3 class="title mb-1">{{$offer->title}}</h3>
 
                     <div class="text-warning">
                         <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
@@ -27,27 +27,27 @@
 
                 <dl>
                     <dt>Opis Książki:</dt>
-                    <dd><p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </p></dd>
+                    <dd><p>{{$offer->description}}</p></dd>
                 </dl>
                 <dl >
                     <dt>Rok wydania:</dt>
-                    <dd>2019</dd>
+                    <dd>{{$offer->year}}</dd>
                 </dl>
                 <dl >
                     <dt>Wydawnictwo:</dt>
-                    <dd>Agora</dd>
+                    <dd>{{$offer->print}}</dd>
                 </dl>
                 <dl>
                     <dt>Autor:</dt>
-                    <dd>Jan Matejko</dd>
+                    <dd>{{$offer->author_name . " " . $offer->author_surname}}</dd>
                 </dl>
                 <dl>
                     <dt>ISBN numer:</dt>
-                    <dd>9780781801584</dd>
+                    <dd>{{$offer->isbn_number}}</dd>
                 </dl>
                 <dl>
                     <dt>Kategoria:</dt>
-                    <dd>DRAMAT</dd>
+                    <dd>{{$category->name}}</dd>
                 </dl>
                 <hr>
 
@@ -85,28 +85,21 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>EMPIK</td>
-                <td>10-12-2012</td>
-                <td>10-12-2019</td>
-                <td>99 zł</td>
-                <td>
-                    <a href="#">Link</a>
 
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>EMPIK</td>
-                <td>10-12-2012</td>
-                <td>10-12-2019</td>
-                <td>99 zł</td>
-                <td>
-                    <a href="#">Link</a>
-                </td>
-            </tr>
+            @foreach($offers as $of)
+                <tr>
+                    <td>1</td>
+                    <td>{{$of->getBookstore()->name}}</td>
+                    <td>{{$of->getDateFrom()->format('Y-m-d')}}</td>
+                    <td>{{$of->getDateTo()->format('Y-m-d')}}</td>
+                    <td>{{$of->getPrice() . " zł" }}</td>
+                    <td>
+                        <a href="{{$of->getLink()}}">Link</a>
 
+                    </td>
+                </tr>
+
+            @endforeach
             </tbody>
         </table>
     </table>
@@ -215,5 +208,4 @@
     </div>
 </div>
 
-{{--
-@stop--}}
+@stop

@@ -67,7 +67,7 @@
                             <p class="card-text">Autor: {{$offer->getAuthorName() ." ".$offer->getAuthorSurname()}}</p>
                             <p class="card-text">Rok wydania: {{$offer->getYear()}}</p>
 
-                            <a href="#" class="btn btn-primary mt-auto">Sprawdź oferty</a>
+                            <a href="/offer/{{$offer->getBook()->id}}" class="btn btn-primary mt-auto">Sprawdź oferty</a>
                         </div>
                     </div>
                 </div>
