@@ -7,7 +7,7 @@
             </div>
 
             <div class="col-xs-6 col-md-3">
-                <h6 class="color">Quick Links</h6>
+                <h6 class="color">szybkie menu</h6>
                 <ul class="footer-links">
                     <li><a href="http://scanfcode.com/about/">Aktualności</a></li>
                     <li><a href="http://scanfcode.com/contact/">Zaloguj się</a></li>
