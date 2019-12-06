@@ -5,6 +5,7 @@ namespace App\Dto\Book;
 
 //model wyjściowy do pobierania książek
 
+use App\Book;
 use App\Category;
 
 class BookOutput
@@ -85,7 +86,6 @@ class BookOutput
     {
         return $this->id;
     }
-
 
     /**
      * @return string

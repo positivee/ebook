@@ -55,6 +55,8 @@ class HomeController extends Controller
         $offer = Book::findOrFail($id);
         $category = Category::findOrFail($id);
         $offers = new BookstoreSearchOffer();
+
+
         return view('detail_offer')->with(compact('offer', 'category'))->with('offers', $offers->showOfferToCheckedBook($id));
 
     }

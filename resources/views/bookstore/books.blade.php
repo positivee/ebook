@@ -10,7 +10,8 @@
 
             <div class="row">
 
-                @foreach($books as $book)
+
+               @foreach($books as $book)
 
                     <div class="col-lg-4 col-sm-6 mb-4">
                         <div class="card h-100">
@@ -21,17 +22,35 @@
                                 <h4 class="card-title">
                                     <a href="#">{{ $book->getTitle() }}</a>
                                 </h4>
-                                <p class="card-text">ID Książki: {{$book->getId()}}</p>
-                                <p class="card-text">{{Str::limit($book->getDescription(),150)}}</p>
-                                <p class="card-text">Autor: {{$book->getAuthorName() ." ".$book->getAuthorSurname()}}</p>
-                                <p class="card-text">Rok wydania: {{$book->getYear()}}</p>
+                                <dl>
+                                    <dt>ID Książki:</dt>
+                                    <dd><p>{{$book->getId()}}</p></dd>
+                                </dl>
+                                <dl>
+                                    <dt >Ocena:</dt>
+                                    <dd ><div class="text-warning">
+                                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>Opis Książki:</dt>
+                                    <dd><p>{{Str::limit($book->getDescription(),150)}}</p></dd>
+                                </dl>
+                                <dl>
+                                    <dt>Autor:</dt>
+                                    <dd><p >{{$book->getAuthorName() ." ".$book->getAuthorSurname()}}</p></dd>
+                                </dl>
+                                <dl>
+                                    <dt>Data wydania:</dt>
+                                    <dd><p>{{$book->getYear()}}</p></dd>
+                                </dl>
 
-
-
-                                <a href="#" class="btn btn-primary mt-auto">Sprawdź szczegóły</a>
+                                <a href="#" class="btn btn-primary mt-auto">Sprawdź oferty</a>
                             </div>
                         </div>
                     </div>
+
                 @endforeach
 
             </div>

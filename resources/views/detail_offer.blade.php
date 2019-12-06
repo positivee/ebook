@@ -19,9 +19,9 @@
                     </div>
 
                     <hr>
-                    <span>Najniższa cena: </span>
+                    <span>Cena: </span>
                        <span class="text-success h4">
-                            30 PLN
+                          30 - 55 PLN
                         </span>
                     <hr>
 
@@ -87,8 +87,9 @@
             <tbody>
 
             @foreach($offers as $of)
+
                 <tr>
-                    <td>1</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{$of->getBookstore()->name}}</td>
                     <td>{{$of->getDateFrom()->format('Y-m-d')}}</td>
                     <td>{{$of->getDateTo()->format('Y-m-d')}}</td>

@@ -1,23 +1,23 @@
 @extends('master')
 @section('content')
 
-    <div class="row my-5 mb-2">
-        <div class="col-md-2">
+    <div class="row my-5">
+        <div class="col-md-2 mb-3">
             <div class="list-group" id="list-tab" role="tablist">
-                <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Profil</a>
-                <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Cytaty</a>
-
+                <a class="list-group-item list-group-item-action active" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profil</a>
+                <a class="list-group-item list-group-item-action" id="list-quote-list" data-toggle="list" href="#list-quote" role="tab" aria-controls="quote">Cytaty</a>
+                <a class="list-group-item list-group-item-action" id="list-password-list" data-toggle="list" href="#list-password" role="tab" aria-controls="password">Zmień hasło</a>
             </div>
         </div>
         <div class="col-md-10">
             <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                <div class="tab-pane fade show active" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
 
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <h4>Your Profile</h4>
+                                <h4>Twój Profil</h4>
                                 <hr>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                                             <input id="email" name="email" value="{{ $user->email }}" class="form-control here" type="email">
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                               {{--     <div class="form-group row">
                                         <label for="password" class="col-4 col-form-label">Hasło</label>
                                         <div class="col-8">
                                             <input id="password" name="password" placeholder="Hasło" class="form-control here" required="required" type="password">
@@ -57,7 +57,7 @@
                                         <div class="col-8">
                                             <input id="password_confirmation" name="password_confirmation" placeholder="Powtórz hasło" class="form-control here" required="required" type="password">
                                         </div>
-                                    </div>
+                                    </div>--}}
 
 
                                     <div class="form-group row">
@@ -71,22 +71,70 @@
                     </div>
                 </div>
                 </div>
-                <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                <div class="tab-pane fade" id="list-quote" role="tabpanel" aria-labelledby="list-quote-list">
+
+                      @foreach($myQuotes as $quote)
+                          <blockquote class="quote-card shadow my-3 ">
+                              <cite class="col-9 text-justify">
+                                  {{$quote->getContent()}}
+                              </cite>
+                              <p>
+                                   Z Książki {{$quote->getBookTitle()}} autora {{$quote->getBookAuthorName() ." ".$quote->getBookAuthorSurname()}}
+                              </p>
+                                <div class="mt-2">
+                                    <button type="button" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-success btn-sm">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </button>
+                                 </div>
+
+                          </blockquote>
+                      @endforeach
+                </div>
+                <div class="tab-pane fade" id="list-password" role="tabpanel" aria-labelledby="list-password-list">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4>Zmień hasło</h4>
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form method="post" >
+                                        {{-- moze tu jescze stare--}}
+                                        <div class="form-group row">
+                                            <label for="password" class="col-4 col-form-label">Hasło</label>
+                                            <div class="col-8">
+                                                <input id="password" name="password" placeholder="Hasło" class="form-control here" required="required" type="password">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="password_confirmation" class="col-4 col-form-label">Powtórz hasło</label>
+                                            <div class="col-8">
+                                                <input id="password_confirmation" name="password_confirmation" placeholder="Powtórz hasło" class="form-control here" required="required" type="password">
+                                            </div>
+                                        </div>
 
 
-                    @foreach($myQuotes as $quote)
-                        <div class="card mb-3 quote">
-                            <div class="card-body">
-                                <p class="card-title">
-                                    Książka <a class="" href="#"> {{$quote->getBookTitle()}}</a> autora <a class="" href="#"> {{$quote->getBookAuthorName() ." ".$quote->getBookAuthorSurname()}}</a>
-                                </p>
-                                <p class="card-text font-italic">"{{$quote->getContent()}}"</p>
+                                        <div class="form-group row">
+                                            <div class="offset-4 col-8">
+                                                <button name="submit" type="submit" class="btn btn-primary">Zmień hasło</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    @endforeach
-
+                    </div>
 
                 </div>
+
+
+
 
             </div>
         </div>
