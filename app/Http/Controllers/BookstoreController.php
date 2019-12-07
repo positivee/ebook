@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 
+use App\Article;
+use App\Book;
 use App\Bookstore;
 
 
+use App\Category;
 use App\Dto\Article\CreateArticleFactory;
 use App\Model\BookstoreAddArticle;
 use App\Model\BookstoreShowArticle;
@@ -32,10 +35,15 @@ class BookstoreController extends Controller
     }
 
     public function showOffers(Request $request) {
-        //wyswietla oferty dodane przez zalogowaną ksiegarnie
+        //wyswietla wszystkie oferty
+
+        $allOffers = new BookstoreSearchOffer();
+        return view('bookstore.offers')->with('offers', $allOffers->showAllOffer());
+
+        /* //wyswietla oferty tylko zalogowanej ksiegarni
         $offerFetchInput = OfferFetchInputFactory::createFromRequest($request, Bookstore::findOrFail(Auth::user()->bookstore_id));
         $allOffers = new BookstoreSearchOffer();
-        return view('bookstore.offers')->with('offers', $allOffers->showBookstoreOffer($offerFetchInput));
+        return view('bookstore.offers')->with('offers', $allOffers->showBookstoreOffer($offerFetchInput)); */
     }
 
     public function showBooks()
@@ -122,6 +130,12 @@ class BookstoreController extends Controller
 
         return redirect('/bookstore/welcome')->with('success', 'Dodano nową ofertę!');
 
+    }
+
+    public function showDetailOfBook($id) {
+        $book = Book::findOrFail($id);
+        $bookCategory = Category::findOrFail($book->category_id);
+        return view('bookstore.book_detail')->with(compact('book', 'bookCategory'));
     }
 
 

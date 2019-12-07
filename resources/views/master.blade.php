@@ -122,7 +122,7 @@
                                         </li>
 
                                         <li class="nav-item mr-5">
-                                            <a class="nav-link" href="{{'/bookstore/offers'}}">Nasze Oferty</a></li>
+                                            <a class="nav-link" href="{{'/bookstore/offers'}}">Wszystkie Oferty</a></li>
                                         </li>
 
                                         <li class="nav-item dropdown mr-5">

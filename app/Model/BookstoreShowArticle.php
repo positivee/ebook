@@ -3,7 +3,6 @@
 namespace App\Model;
 
 use App\Dto\Article\ArticleOutputFactory;
-use App\Dto\Article\CreateArticleFactory;
 use Illuminate\Support\Facades\DB;
 
 //model do wyswietlania artykułów

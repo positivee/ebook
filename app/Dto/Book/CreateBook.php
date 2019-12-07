@@ -9,35 +9,35 @@ class CreateBook
 {
 
     /**
-     * @var string
+     * @var String
      */
     protected $title;
     /**
-     * @var string
+     * @var String
      */
     protected $year;
     /**
-     * @var string
+     * @var String
      */
     protected $print;
     /**
-     * @var string
+     * @var String
      */
     protected $picture;
     /**
-     * @var string
+     * @var String
      */
     protected $description;
     /**
-     * @var string
+     * @var String
      */
     protected $author_name;
     /**
-     * @var string
+     * @var String
      */
     protected $author_surname;
     /**
-     * @var string
+     * @var String
      */
     protected $isbn_number;
     /**
@@ -47,18 +47,17 @@ class CreateBook
 
     /**
      * CreateBook constructor.
-     * @param string $title
-     * @param string $year
-     * @param string $print
-     * @param string $picture
-     * @param string $description
-     * @param string $author_name
-     * @param string $author_surname
-     * @param string $isbn_number
+     * @param String $title
+     * @param String $year
+     * @param String $print
+     * @param String $picture
+     * @param String $description
+     * @param String $author_name
+     * @param String $author_surname
+     * @param String $isbn_number
      * @param Category $category
      */
-    public function __construct(string $title, string $year, string $print, string $picture, string $description,
-                                string $author_name, string $author_surname, string $isbn_number, Category $category)
+    public function __construct(String $title, String $year, String $print, String $picture, String $description, String $author_name, String $author_surname, String $isbn_number, Category $category)
     {
         $this->title = $title;
         $this->year = $year;
@@ -71,66 +70,66 @@ class CreateBook
         $this->category = $category;
     }
 
-     /**
-     * @return string
+    /**
+     * @return String
      */
-    public function getTitle(): string
+    public function getTitle(): String
     {
         return $this->title;
     }
 
     /**
-     * @return string
+     * @return String
      */
-    public function getYear(): string
+    public function getYear(): String
     {
         return $this->year;
     }
 
     /**
-     * @return string
+     * @return String
      */
-    public function getPrint(): string
+    public function getPrint(): String
     {
         return $this->print;
     }
 
     /**
-     * @return string
+     * @return String
      */
-    public function getPicture(): string
+    public function getPicture(): String
     {
         return $this->picture;
     }
 
     /**
-     * @return string
+     * @return String
      */
-    public function getDescription(): string
+    public function getDescription(): String
     {
         return $this->description;
     }
 
     /**
-     * @return string
+     * @return String
      */
-    public function getAuthorName(): string
+    public function getAuthorName(): String
     {
         return $this->author_name;
     }
 
     /**
-     * @return string
+     * @return String
      */
-    public function getAuthorSurname(): string
+    public function getAuthorSurname(): String
     {
         return $this->author_surname;
     }
 
     /**
-     * @return string
+     * @return String
      */
-    public function getIsbnNumber(): string
+    public function getIsbnNumber(): String
     {
         return $this->isbn_number;
     }
@@ -142,7 +141,6 @@ class CreateBook
     {
         return $this->category;
     }
-
 
 
 

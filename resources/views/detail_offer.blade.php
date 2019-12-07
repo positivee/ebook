@@ -114,32 +114,37 @@
                 <hr>
             </div>
         </div>
+        @foreach($evaluations as $ev)
+
         <div class="row">
             <div class="col-md-12">
-                <div class="one-reivew">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <small>2018-11-12</small>
+                   <div class="one-reivew">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <small>{{Str::limit($ev->getDate(),10,$end = '')}}</small>
+                            </div>
+                            <div class="col-md-6">
+                                <small class="float-right">Czytelnik: {{$ev->getUser()->name . " " . $ev->getUser()->surname}}</small>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <small class="float-right">Czytelnik: Kamil Biernacki</small>
+                        <div class="row text-success">
+                            <div class="col-md-12">
+                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="col-md-12">
+                                <h6>{{$ev->getTitle()}}</h6>
+                                <p>{{$ev->getContent()}}</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="row text-success">
-                        <div class="col-md-12">
-                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>
-                        </div>
-                    </div>
-                    <div class="row pt-2">
-                        <div class="col-md-12">
-                            <h6>Worse web hosting company</h6>
-                            <p>I think I started out at under $3 per month 5 or 6 years ago. The price has steadily increased and my latest renewal offer was $16.99 per month. Additionally last year my wife started having spam problems and it seems like someone gained access to all her email correspondence. The only place that we could pin it down to was the justhost SMTP server. Support was very evasive when I tried to explain what I thought happened.</p>
-                        </div>
-                    </div>
-                </div>
+
+
                 <hr>
             </div>
         </div>
+        @endforeach
 
         <div class="row">
             <div class="col-6">
@@ -156,22 +161,22 @@
 
         <div class="row">
             <div class="col collapse"  id="collapseReview">
-                <form method="POST" >
+                <form method="POST" {{'/user/evaluation'}} >
                     <div class="form-group row ">
 
                         <label for="email" class="col-4 col-form-label">{{ __('Ocena Książki') }}</label>
 
 
                         <div class="rate text-center">
-                            <input type="radio" id="star5" name="rate" value="5" />
+                            <input type="radio" id="star5" name="evaluation" value="5" />
                             <label for="star5" title="Ocena 5"></label>
-                            <input type="radio" id="star4" name="rate" value="4" />
+                            <input type="radio" id="star4" name="evaluation" value="4" />
                             <label for="star4" title="Ocena 4"></label>
-                            <input type="radio" id="star3" name="rate" value="3" />
+                            <input type="radio" id="star3" name="evaluation" value="3" />
                             <label for="star3" title="Ocena 3"></label>
-                            <input type="radio" id="star2" name="rate" value="2" />
+                            <input type="radio" id="star2" name="evaluation" value="2" />
                             <label for="star2" title="Ocena 2"></label>
-                            <input type="radio" id="star1" name="rate" value="1" />
+                            <input type="radio" id="star1" name="evaluation" value="1" />
                             <label for="star1" title="Ocena 1"></label>
                         </div>
 
@@ -180,16 +185,16 @@
 
                     </div>
                     <div class="form-group row">
-                        <label for="email" class="col-4 col-form-label">{{ __('Tytuł Recenzji') }}</label>
+                        <label for="title" class="col-4 col-form-label">{{ __('Tytuł Recenzji') }}</label>
                         <div class="col-8">
-                            <input id="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror"  type="text" required autocomplete="email" >
+                            <input id="title" name="title" value="{{ old('title') }}" class="form-control @error('title') is-invalid @enderror"  type="text" required autocomplete="title" >
 
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="email" class="col-4 col-form-label">{{ __('Recenzja') }}</label>
+                        <label for="content" class="col-4 col-form-label">{{ __('Recenzja') }}</label>
                         <div class="col-8">
-                            <textarea id="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror"  type="text" required autocomplete="email" rows="6"></textarea>
+                            <textarea id="content" name="content" value="{{ old('content') }}" class="form-control @error('content') is-invalid @enderror"  type="text" required autocomplete="content" rows="6"></textarea>
 
                         </div>
                     </div>

@@ -5,7 +5,7 @@
 
         <!-- Page Heading -->
         <h1 class="my-4">
-            <small>Nasze oferty</small>
+            <small>Wszystkie Oferty</small>
         </h1>
 
         <div class="row">

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class BookstoreSearchOffer
 {
-    public function showBookstoreOffer(OfferFetchInput $fetchInput) : array {
+    /*public function showBookstoreOffer(OfferFetchInput $fetchInput) : array {
         //metoda do wyswietlania ofert dla zalogowanej ksiegarni
 
         $allOffersSelect = DB::table('offers')
@@ -35,7 +35,7 @@ class BookstoreSearchOffer
         }
 
         return $offerOutputArray;
-    }
+    }*/
 
 
     public function showAllOffer() : array {
@@ -49,6 +49,7 @@ class BookstoreSearchOffer
                 'books.category_id','offers.bookstore_id', 'offers.book_id', 'offers.price',
                 'offers.date_from', 'offers.date_to', 'offers.link', 'books.isbn_number')
             ->orderBy('books.title', 'ASC');
+
 
         $offerOutputArray = [];
 

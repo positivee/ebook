@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Dto\Evaluation\CreateEvaluation;
+use App\Dto\Evaluation\CreateEvaluationFactory;
 use App\Dto\Quote\CreateQuoteFactory;
 use App\Dto\Offer\OfferFetchInputFactory;
 use App\Dto\Quote\QuoteFetchInputFactory;
 use App\Dto\User\UserFetchInputFactory;
+use App\Model\AddEvaluation;
 use App\Model\BookstoreSearchOffer;
 use App\Model\BookstoreShowArticle;
 use App\Model\UserAddQuote;
@@ -120,6 +123,15 @@ class UserController extends Controller
 
     }
 
+    public function addEvaluation(Request $request) {
+        ///metoda zapisywania nowej recenzji z formularza
+        $newEvaluation = CreateEvaluationFactory::create($request->all(), User::findOrFail(Auth::user()->id));
+        $result = new AddEvaluation();
+        $result->add($newEvaluation);
+
+        return view('/user/offers');
+    }
+
     public function addQuote() {
         //formularz dodawania cytatu
         return view('user.add_quote');
@@ -127,7 +139,6 @@ class UserController extends Controller
 
     public function storeQuote(Request $request){
         //metoda do zapisywania nowego cytatu z formularza
-
         $newQuote = CreateQuoteFactory::create($request->all(),User::findOrFail(Auth::user()->id));
         $result = new UserAddQuote();
         $result->add($newQuote);

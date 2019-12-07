@@ -8,8 +8,10 @@ use App\Bookstore;
 use App\Category;
 use App\Dto\Article\ArticleOutputFactory;
 use App\Dto\Offer\OfferFetchInputFactory;
+use App\Evaluation;
 use App\Model\BookstoreSearchOffer;
 use App\Model\BookstoreShowArticle;
+use App\Model\ShowEvaluation;
 use App\Model\UserSearchOffer;
 use Illuminate\Http\Request;
 
@@ -52,12 +54,17 @@ class HomeController extends Controller
     }
 
     public function showOffersToBook($id) {
+
+        //zwraca oferty i recenzje w szczegółach wybranej ksiązki
+
         $offer = Book::findOrFail($id);
         $category = Category::findOrFail($id);
         $offers = new BookstoreSearchOffer();
 
+        $evaluation = Book::findOrFail($id);
+        $evaluations = new ShowEvaluation();
 
-        return view('detail_offer')->with(compact('offer', 'category'))->with('offers', $offers->showOfferToCheckedBook($id));
+        return view('detail_offer')->with(compact('offer', 'category', 'evaluation' ))->with('offers', $offers->showOfferToCheckedBook($id))->with('evaluations', $evaluations->showAllEvaluations($id));
 
     }
 

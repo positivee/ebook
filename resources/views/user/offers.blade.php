@@ -1,6 +1,8 @@
 @extends('master')
 @section('content')
 
+
+    <!-- Page Content -->
     <div class="container">
 
         <!-- Page Heading -->
@@ -41,12 +43,6 @@
 
                </div>
                <!-- /.container -->--}}
-
-
-
-
-
-
 
 
 

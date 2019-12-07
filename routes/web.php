@@ -47,6 +47,8 @@ Route::get('/user/quotes', 'UserController@showAllQuotes');
 Route::get('/user/add_quote', 'UserController@addQuote');
 Route::post('/user/quote', 'UserController@storeQuote');
 
+Route::post('/user/evaluation', 'UserController@addEvaluation');
+
 
 //widoki dla zalogowanej ksiegarni
 
@@ -67,5 +69,7 @@ Route::get('/bookstore/books', 'BookstoreController@showBooks');
 
 //widok dodanych ofert dla danej ksiegarni
 Route::get('/bookstore/offers', 'BookstoreController@showOffers');
+
+Route::get('/bookstore/book/{id}', 'BookstoreController@showDetailOfBook');
 
 

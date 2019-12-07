@@ -15,9 +15,9 @@ class CreateEvaluationsTable extends Migration
     {
         Schema::create('evaluations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('content', '100')->nullable();
-            $table->date('date');
-            $table->enum('evaluation', ['1', '2', '3', '4', '5']);
+            $table->string('title', '500');
+            $table->string('content', '3000');
+            $table->Integer('evaluation');
 
             $table->bigInteger('book_id')->unsigned()->index();
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
