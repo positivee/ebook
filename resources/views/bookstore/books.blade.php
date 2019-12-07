@@ -15,8 +15,7 @@
 
                     <div class="col-lg-4 col-sm-6 mb-4">
                         <div class="card h-100">
-                            <a href="#"><img class="card-img-top d-block mx-auto p-1 image-size" src="{{$book->getPicture()}}?showinfo=0" frameborder="0" alt="" ></a>
-
+                           
                             <div class="card-body d-flex flex-column">
 
                                 <h4 class="card-title">
