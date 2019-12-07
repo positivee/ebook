@@ -51,17 +51,6 @@
                                         <a class="nav-link" href="{{'/search'}}">Wyszukiwarka zaawansowana</a></li>
                                     </li>
 
-                                    {{--<li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Dropdown
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </li>--}} {{-- wysuwane jak będzie potrzebne--}}
                                 </ul>
                             </div>
                             <div class="ml-auto">{{--do prawej--}}
@@ -89,7 +78,7 @@
                                         </li>
 
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{'/user/search'}}">Wyszukiwarka</a></li>
+                                            <a class="nav-link" href="{{'/search'}}">Wyszukiwarka</a></li>
                                         </li>
                                         <li class="nav-item mr-5">
                                             <a class="nav-link" href="{{'/user/quotes'}}">Cytaty</a></li>
@@ -130,6 +119,7 @@
                                                 Opcje
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" href="{{'/bookstore'}}">Panel Księgarni</a>
                                                 <a class="dropdown-item" href="{{'/bookstore/addarticle'}}">Dodaj Aktualność</a>
                                                 <a class="dropdown-item" href="{{'/bookstore/addbook'}}">Dodaj Książkę</a>
                                                 <a class="dropdown-item" href="{{'/bookstore/addoffer'}}">Dodaj Ofertę</a>
@@ -153,36 +143,29 @@
         <div class="container h-100">
             <div class="row h-100  no-gutter align-items-center ">
                 <div class="col-12 text-center">
-                    <h1 class="logo-text mb-5">Znajdź swoją książkę</h1>
-                    {{--<form  method="POST" action="{{'/search/findByElastic'}}">
-                        @csrf
-                        <div class="form-row justify-content-center">
-                            <input class="form-control-lg " name="query"  type="text" placeholder="Wpisz czego szukasz">
-                            <button class="btn btn-lg btn-primary btn-login text-uppercase font-weight-bold " type="submit">{{ __('Szukaj książki') }}</button>
-
-                        </div>
-                    </form>--}}
-
-                    <div class="row justify-content-center">
-                        <div class="col-12 col-md-10 col-lg-8">
-                            <form class="card card-sm">
-                                <div class="card-body row no-gutters align-items-center">
-                                    <div class="col-auto">
-                                       {{-- <i class="fas fa-search h4 text-body"></i>--}}
-                                        <img src="{{ asset('img/search_glass.png') }}" width="25" height="25" class="d-inline-block mr-1 align-bottom" alt="">
+                    @if (Auth::guest() || Auth::user()->bookstore_id == null)
+                        <h1 class="logo-text mb-5">Znajdź swoją książkę</h1>
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-md-10 col-lg-8">
+                                <form class="card card-sm">
+                                    <div class="card-body row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <i class="fa fa-search h4 text-body"></i>
+                                        </div>
+                                        <div class="col">
+                                            <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Znajdź swoją książkę">
+                                        </div>
+                                        <div class="col-auto">
+                                            <button class="btn btn-lg btn-primary" type="submit">Wyszukaj</button>
+                                        </div>
                                     </div>
-                                    <!--end of col-->
-                                    <div class="col">
-                                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Znajdź swoją książkę">
-                                    </div>
-                                    <!--end of col-->
-                                    <div class="col-auto">
-                                        <button class="btn btn-lg btn-primary" type="submit">Search</button>
-                                    </div>
-                                    <!--end of col-->
-                                </div>
-                            </form>
-                        </div>
+                                </form>
+                            </div>
+                    @else
+                        @if (Auth::user()->bookstore_id != null)
+                    <h1 class="logo-text mb-5">Witamy księgarnio!</h1>
+                            @endif
+                        @endif
                         <!--end of col-->
                     </div>
                 </div>

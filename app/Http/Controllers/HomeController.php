@@ -22,6 +22,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+    public function __construct() {
+   /*     $this->middleware('quest');*/
+
+    }
+
     public function index()
     {
         return view('home');
@@ -64,6 +70,7 @@ class HomeController extends Controller
         $evaluation = Book::findOrFail($id);
         $evaluations = new ShowEvaluation();
 
+
         return view('detail_offer')->with(compact('offer', 'category', 'evaluation' ))->with('offers', $offers->showOfferToCheckedBook($id))->with('evaluations', $evaluations->showAllEvaluations($id));
 
     }
@@ -88,6 +95,7 @@ class HomeController extends Controller
         $allOffers = new UserSearchOffer();
         return view('search')->with('offers', $allOffers->searchOffer($offerFetchInput));
     }
+
 
 
 

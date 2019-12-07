@@ -16,7 +16,7 @@ class CreateEvaluationFactory
         $validator = Validator::make($data, [
             'title' => 'string|required|max:500',
             'content' => 'string|required|max:3000',
-            'evaluation' => 'enum|required|min:1|max:5',
+            'evaluation' => 'int|required|min:1|max:5',
             'book_id' => 'required|int',
             'user_id' => 'int|required'
         ]);

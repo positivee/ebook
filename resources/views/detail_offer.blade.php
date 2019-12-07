@@ -111,11 +111,13 @@
         <div class="row">
             <div class="col-md-12">
                 <h4>Komentarze:</h4>
+
                 <hr>
             </div>
         </div>
-        @foreach($evaluations as $ev)
 
+        @if($evaluations == null) <div class="my-2">Brak komenatrzy</div> @endif
+        @foreach($evaluations as $ev)
         <div class="row">
             <div class="col-md-12">
                    <div class="one-reivew">
@@ -127,11 +129,22 @@
                                 <small class="float-right">Czytelnik: {{$ev->getUser()->name . " " . $ev->getUser()->surname}}</small>
                             </div>
                         </div>
-                        <div class="row text-success">
-                            <div class="col-md-12">
-                                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>
-                            </div>
-                        </div>
+                       <div class="row text-success">
+                           <div class="col-md-12">
+                               @for ($i = 0; $i < 5; $i++)
+                                   @if($i<($ev->getEvaluation()))
+                                       <i class="fa fa-star"></i>
+                                   @else
+                                       <i class="fa fa-star-o"></i>
+                                   @endif
+                               @endfor
+                           </div>
+                       </div>
+                     {{--   <div class="row text-success">
+                           <div class="col-md-12">
+                               <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>
+                           </div>
+                       </div>--}}
                         <div class="row pt-2">
                             <div class="col-md-12">
                                 <h6>{{$ev->getTitle()}}</h6>
@@ -146,6 +159,9 @@
         </div>
         @endforeach
 
+       @if (Auth::guest())
+        @else
+            @if (Auth::user()->bookstore_id == null)
         <div class="row">
             <div class="col-6">
                 <h4 >Dodaj Swoją Ocenę</h4>
@@ -161,7 +177,9 @@
 
         <div class="row">
             <div class="col collapse"  id="collapseReview">
-                <form method="POST" {{'/user/evaluation'}} >
+                <form method="POST" action="{{'/user/evaluation'}}" >
+
+
                     <div class="form-group row ">
 
                         <label for="email" class="col-4 col-form-label">{{ __('Ocena Książki') }}</label>
@@ -208,7 +226,8 @@
                 </form>
             </div>
         </div>
-
+                @endif
+        @endif
 
         </div>
     </div>

@@ -15,14 +15,19 @@ class CheckBookstoreId
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+  public function handle($request, Closure $next)
     {
 
-        if($request->user() && $request->user()->bookstore_id == null) {
+      if($request->user() && $request->user()->bookstore_id == null) {
             return new Response(view('unauthorized')->with('role', 'Pracownik Księgarni'));
         }
 
         return $next($request);
+
+
+
+
     }
+
 
 }

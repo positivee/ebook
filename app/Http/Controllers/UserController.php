@@ -26,6 +26,7 @@ class UserController extends Controller
     //ograniczenie dostępu za pomocą middleware
 
     public function __construct() {
+
         $this->middleware('checkUser');
         $this->middleware('auth');
     }
@@ -52,7 +53,7 @@ class UserController extends Controller
 
     }
 
-    public function update(Request $request)
+    /*public function update(Request $request)
     {
         //pobranie aktualnego uzytkownika
         $userId = Auth::id();
@@ -83,9 +84,67 @@ class UserController extends Controller
         //zapis do bazy
         $user->save();
 
+        return redirect('/user');
+    }*/
+    public function updateProfile(Request $request)
+    {
+        //pobranie aktualnego uzytkownika
+        $userId = Auth::id();
+        $user = User::findOrFail($userId);
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:100',
+            'surname' => 'required|max:100',
+            'email' => 'required|email|unique:users,email,'.$user->id,
+        ]);
+
+        //walidacja wprowadzonych do formularza danych
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        //uzupełnienie nowymi danymi
+        $user->fill([
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'email' => $request->email,
+        ]);
+        //zapis do bazy
+        $user->save();
+        return redirect('/user');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        //pobranie aktualnego uzytkownika
+        $userId = Auth::id();
+        $user = User::findOrFail($userId);
+
+        $validator = Validator::make($request->all(), [
+            'password' => 'required|min:8|confirmed'
+        ]);
+
+        //walidacja wprowadzonych do formularza danych
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        //uzupełnienie nowymi danymi
+        $user->fill([
+            'password' => bcrypt($request->password)
+        ]);
+
+        //zapis do bazy
+        $user->save();
 
         return redirect('/user');
     }
+
+
 
     public function search(Request $request) {
         //wyswietla strone z formularzem do wyszukiwania zaawansowanego oraz wyniki wyszukiwania

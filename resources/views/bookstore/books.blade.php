@@ -7,15 +7,18 @@
             <h1 class="my-4">
                 <small>Wszystkie książki</small>
             </h1>
-
+            @if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="row">
-
 
                @foreach($books as $book)
 
                     <div class="col-lg-4 col-sm-6 mb-4">
                         <div class="card h-100">
-                           
+
                             <div class="card-body d-flex flex-column">
 
                                 <h4 class="card-title">
@@ -39,41 +42,6 @@
                 @endforeach
 
             </div>
-            <!-- /.row -->
-    {{--               <!-- Pagination -->
-                   <ul class="pagination justify-content-center">
-                       <li class="page-item">
-                           <a class="page-link" href="#" aria-label="Previous">
-                               <span aria-hidden="true">&laquo;</span>
-                               <span class="sr-only">Previous</span>
-                           </a>
-                       </li>
-                       <li class="page-item">
-                           <a class="page-link" href="#">1</a>
-                       </li>
-                       <li class="page-item">
-                           <a class="page-link" href="#">2</a>
-                       </li>
-                       <li class="page-item">
-                           <a class="page-link" href="#">3</a>
-                       </li>
-                       <li class="page-item">
-                           <a class="page-link" href="#" aria-label="Next">
-                               <span aria-hidden="true">&raquo;</span>
-                               <span class="sr-only">Next</span>
-                           </a>
-                       </li>
-                   </ul>
-
-               </div>
-               <!-- /.container -->--}}
-
-
-
-
-
-
-
 
 
 @stop

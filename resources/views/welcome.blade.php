@@ -2,6 +2,7 @@
  @section('content')
 
 <!-- section -->
+
      <div class="section">
          <!-- container -->
          <div class="container">
@@ -10,8 +11,15 @@
                  <div class="col-md-12">
                      <div class="section-title my-4">
                          <h2>Aktualności</h2>
+
+                         @if (session('success'))
+                             <div class="alert alert-success" role="alert">
+                                 {{ session('success') }}
+                             </div>
+                         @endif
                      </div>
                  </div>
+
 
              @foreach($articles as $k => $article)
                  @if($k<2)

@@ -10,6 +10,8 @@ use App\Bookstore;
 
 use App\Category;
 use App\Dto\Article\CreateArticleFactory;
+use App\Dto\Quote\QuoteFetchInputFactory;
+use App\Dto\User\UserFetchInputFactory;
 use App\Model\BookstoreAddArticle;
 use App\Model\BookstoreShowArticle;
 use App\Dto\Book\CreateBookFactory;
@@ -20,8 +22,12 @@ use App\Model\BookstoreAddOffer;
 
 use App\Model\BookstoreSearchBook;
 use App\Model\BookstoreSearchOffer;
+use App\Model\UserSearchInfo;
+use App\Model\UserSearchQuotes;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 
 class BookstoreController extends Controller
@@ -30,6 +36,7 @@ class BookstoreController extends Controller
     //ograniczenie dostępu za pomocą middleware
 
     public function __construct() {
+        /*$this->middleware('bookstoreUser');*/
         $this->middleware('checkBookstoreId');
         $this->middleware('auth');
     }
@@ -44,6 +51,20 @@ class BookstoreController extends Controller
         $offerFetchInput = OfferFetchInputFactory::createFromRequest($request, Bookstore::findOrFail(Auth::user()->bookstore_id));
         $allOffers = new BookstoreSearchOffer();
         return view('bookstore.offers')->with('offers', $allOffers->showBookstoreOffer($offerFetchInput)); */
+    }
+    public function show(Request $request) {
+        //metoda zwraca dane o zalogowanym użytkowniku + formularz edycji + widok swoich cytatów
+
+        $user = Auth::user();
+
+        $userFetchInput = UserFetchInputFactory::createFromRequest($request, User::findOrFail(Auth::user()->id));
+        $userInfo = new UserSearchInfo();
+
+        //wyswietla cytaty dodane przez zalogowanego użytkownika
+        $quoteFetchInput = QuoteFetchInputFactory::createFromRequest($request, User::findOrFail(Auth::user()->id));
+        $myQuotes = new UserSearchQuotes();
+
+        return view('bookstore.bookstore_panel', compact('user'))->with('userInfo', $userInfo->showUserInfo($userFetchInput))->with('myQuotes', $myQuotes->showMyQuotes($quoteFetchInput));
     }
 
     public function showBooks()
@@ -128,7 +149,7 @@ class BookstoreController extends Controller
         $result = new BookstoreAddArticle();
         $result->add($newArticle);
 
-        return redirect('/bookstore/welcome')->with('success', 'Dodano nową ofertę!');
+        return redirect('/welcome')->with('success', 'Dodano nową ofertę!');
 
     }
 
@@ -138,6 +159,63 @@ class BookstoreController extends Controller
         return view('bookstore.book_detail')->with(compact('book', 'bookCategory'));
     }
 
+    public function updateProfile(Request $request)
+    {
+        //pobranie aktualnego uzytkownika
+        $userId = Auth::id();
+        $user = User::findOrFail($userId);
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:100',
+            'surname' => 'required|max:100',
+            'email' => 'required|email|unique:users,email,'.$user->id,
+        ]);
+
+        //walidacja wprowadzonych do formularza danych
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        //uzupełnienie nowymi danymi
+        $user->fill([
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'email' => $request->email,
+        ]);
+        //zapis do bazy
+        $user->save();
+        return redirect('/bookstore');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        //pobranie aktualnego uzytkownika
+        $userId = Auth::id();
+        $user = User::findOrFail($userId);
+
+        $validator = Validator::make($request->all(), [
+            'password' => 'required|min:8|confirmed'
+        ]);
+
+        //walidacja wprowadzonych do formularza danych
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        //uzupełnienie nowymi danymi
+        $user->fill([
+            'password' => bcrypt($request->password)
+        ]);
+
+        //zapis do bazy
+        $user->save();
+
+        return redirect('/bookstore');
+    }
 
 
 }

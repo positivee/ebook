@@ -4,6 +4,11 @@
 
     <div class="p-3">
         <h2>Cytaty naszych użytkowników</h2>
+        @if (session('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+        @endif
     </div>
     <div class="row">
 

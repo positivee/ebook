@@ -22,7 +22,7 @@ Route::get('/article/{id}', 'HomeController@showNewsDetail');
 Route::get('/offers', 'HomeController@offers');
 Route::get('/offer/{id}', 'HomeController@showOffersToBook');
 
-Route::get('/search', 'HomeController@search');
+Route::get('/search', 'HomeController@search')->middleware('checkUser');
 Route::post('/search/find', 'HomeController@find');
 
 
@@ -34,13 +34,15 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 //widoki dla uzytkownka zalogowanego
 Route::get('/user', 'UserController@show');
-Route::patch('/user/update','UserController@update');
+/*Route::patch('/user/update','UserController@update');*/
+Route::patch('/user/updateProfile','UserController@updateProfile');
+Route::patch('/user/updatePassword','UserController@updatePassword');
 
 Route::get('/user/search', 'UserController@search');
 Route::get('/user/welcome', 'UserController@showNews');
 
 Route::get('/user/offers', 'UserController@offers');
-Route::post('/user/search/find', 'UserController@findOffer');
+Route::post('/user/search/find', 'UserController@findOffer');                                        //dadadada
 
 Route::get('/user/quotes', 'UserController@showAllQuotes');
 
@@ -50,7 +52,11 @@ Route::post('/user/quote', 'UserController@storeQuote');
 Route::post('/user/evaluation', 'UserController@addEvaluation');
 
 
+
 //widoki dla zalogowanej ksiegarni
+Route::get('/bookstore', 'BookstoreController@show');
+Route::patch('/bookstore/updateProfile','BookstoreController@updateProfile');
+Route::patch('/bookstore/updatePassword','BookstoreController@updatePassword');
 
 Route::get('/bookstore/welcome', 'BookstoreController@welcome');
 Route::get('/bookstore/addarticle', 'BookstoreController@addArticle');

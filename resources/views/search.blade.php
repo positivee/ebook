@@ -2,16 +2,17 @@
 @section('content')
 
 
-    <div class="container py-4">
+    <div class="py-4">
         <div class="row text-center pb-4">
             <div class="col-md-12">
                 <h2>Zaawasowane wyszukiwanie książki</h2>
             </div>
         </div>
+
         <form method="POST" action="{{'/search/find'}}">
             @csrf
-            <div class="row">
-                <div class="col-md-12">
+            <div class="search-panel shadow">
+
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
@@ -88,15 +89,15 @@
                     </div>
 
                 </div>
-            </div>
+
         </form>
     </div>
 
     {{--wyniki wyszukiwania--}}
     <div class="row">
-
+        {{--<div class="col-12">--}}
         @include('include.book')
-
+        {{--</div>--}}
     </div>
 
 

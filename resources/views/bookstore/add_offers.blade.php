@@ -29,7 +29,7 @@
         {{--data --}}
 
         <div class="form-row">
-            <div class="col-md-6 mb-4">
+            <div class="col-lg-6 mb-4">
                 <!-- Book author name -->
                 <label for="date_from" class="col-md-6  ">{{ __('Oferta obowiązuje od dnia:') }}</label>
                 <input type="date" id="date_from" class="form-control @error('date_from') is-invalid @enderror"  name="date_from" placeholder="{{ __('Od Dnia') }}" value="{{ old('date_from') }}" required autocomplete="date_from">
@@ -39,7 +39,7 @@
                                             </span>
                 @enderror
             </div>
-            <div class="col-md-6 mb-4">
+            <div class="col-lg-6 mb-4">
                 <!-- Book autor surename -->
                 <label for="date_to" class="col-md-6 ">{{ __('do dnia:') }}</label>
                 <input type="date" id="date_to" class="form-control @error('date_to') is-invalid @enderror" placeholder="{{ __('Do dnia') }}" name="date_to" value="{{ old('date_to') }}" required autocomplete="date_to">
