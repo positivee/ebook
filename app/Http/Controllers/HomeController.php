@@ -96,6 +96,21 @@ class HomeController extends Controller
     }
 
 
+    public function searchx(Request $request) {
+        //$offers = Book::search($request->name)->get();
+        //return view('search', compact('offers'));
+
+        $book = Book::search($request->name)->get();
+
+        $offerFetchInput = OfferFetchInputFactory::createFromRequest($book, null);
+        $allOffers = new UserSearchOffer();
+        $offers = $allOffers->searchOffer($offerFetchInput);
+
+
+        return view('search',compact('offers'));
+    }
+
+
     public function find(Request $request)
     {
         //wyswietla wyszukane oferty wg danych z formularza zaawansowanego

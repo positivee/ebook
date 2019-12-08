@@ -25,6 +25,11 @@ Route::post('/search/find', 'HomeController@find');
 
 
 
+//wyszukiwarka ogólna
+Route::post('/searchtwo', 'HomeController@searchx');
+
+
+
 Auth::routes();
 
 Route::get('/logout', 'Auth\LoginController@logout');

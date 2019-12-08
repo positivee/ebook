@@ -61,7 +61,7 @@ class OfferFetchInput
      * @param Category $category
      */
     public function __construct(?Bookstore $bookstore = null,?string $title = '', ?string $author_name = '', ?string $author_surname = '', ?string $isbn_number = '',
-                                ?string $print = '', ?float $price_from = null, ?float $price_to = null, ?Category $category = null)
+                                ?string $print ='', ?float $price_from = null, ?float $price_to = null, ?Category $category = null)
     {
         $this->bookstore = $bookstore;
         $this->title = $title;

@@ -6,6 +6,7 @@ namespace App\Model;
 
 use App\Dto\Offer\OfferFetchInput;
 use App\Dto\Offer\OfferOutputFactory;
+use Elastica\Request;
 use Illuminate\Support\Facades\DB;
 
 class UserSearchOffer
@@ -69,5 +70,6 @@ class UserSearchOffer
        return $offerOutputArray;
 
     }
+
 
 }

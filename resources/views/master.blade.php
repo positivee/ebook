@@ -148,12 +148,24 @@
                                         <div class="col-auto">
                                             <i class="fa fa-search h4 text-body"></i>
                                         </div>
-                                        <div class="col">
-                                            <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Znajdź swoją książkę">
-                                        </div>
-                                        <div class="col-auto">
-                                            <button class="btn btn-lg btn-primary" type="submit">Wyszukaj</button>
-                                        </div>
+
+                                        <form method="post" action="{{'/searchtwo'}}">
+                                            @csrf
+
+                                            <div class="col">
+                                                <div class="form-group ">
+                                                    <input class="form-control form-control-lg form-control-borderless" name="name" type="text" placeholder="Wpisz czego szukasz">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group ">
+                                                <div class="col-auto">
+                                                    <button type="submit" class="btn btn-lg btn-primary">Wyszukaj</button>
+                                                </div>
+                                            </div>
+
+                                        </form>
+
                                     </div>
                                 </form>
                             </div>
