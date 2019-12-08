@@ -5,6 +5,7 @@
 
             <!-- Page Heading -->
             <h1 class="my-4">
+                <hr>
                 <small>Wszystkie książki</small>
             </h1>
             @if (session('success'))
@@ -43,5 +44,5 @@
 
             </div>
 
-
+{{$pagination->links()}}
 @stop

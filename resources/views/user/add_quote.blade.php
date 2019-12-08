@@ -4,6 +4,7 @@
 
     <form method="POST" action="{{'/user/quote'}}" class="text-center p-5">
         @csrf
+        <hr>
         <p class="h4 mb-4">Dodaj swój cytat</p>
         <div class="form-row">
             <div class="col-md-6 mb-4">

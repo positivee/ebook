@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class BookstoreSearchOffer
 {
     /*public function showBookstoreOffer(OfferFetchInput $fetchInput) : array {
-        //metoda do wyswietlania ofert dla zalogowanej ksiegarni
+        //metoda do wyswietlania ofert dla zalogowanej ksiegarni - tylko te co dodała
 
         $allOffersSelect = DB::table('offers')
             ->join('bookstores', 'bookstores.id', '=', 'offers.bookstore_id')
@@ -48,12 +48,13 @@ class BookstoreSearchOffer
                 'books.description', 'books.author_name', 'books.author_surname',
                 'books.category_id','offers.bookstore_id', 'offers.book_id', 'offers.price',
                 'offers.date_from', 'offers.date_to', 'offers.link', 'books.isbn_number')
-            ->orderBy('books.title', 'ASC');
+            ->orderBy('books.title', 'ASC')
+            ->get();
 
 
         $offerOutputArray = [];
 
-        foreach ($allOffersSelect->get() as $offer) {
+        foreach ($allOffersSelect as $offer) {
 
             $offerOutputArray[] = OfferOutputFactory::createFromRow($offer);
         }

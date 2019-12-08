@@ -17,7 +17,8 @@ class UserSearchQuotes
             ->select('user_id','quotes.id', 'quotes.content', 'quotes.book_title', 'quotes.book_author_name',
                 'quotes.book_author_surname', 'users.name', 'users.surname')
             ->orderBy('quotes.created_at', 'DESC')
-            ->get();
+            ->paginate(6);
+
 
         $quoteOutputArray = [];
 

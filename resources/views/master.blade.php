@@ -44,13 +44,8 @@
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{'/offers'}}">Książki</a></li>
+                                        <a class="nav-link" href="{{'/search'}}">Nasze Książki</a></li>
                                     </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{'/search'}}">Wyszukiwarka zaawansowana</a></li>
-                                    </li>
-
                                 </ul>
                             </div>
                             <div class="ml-auto">{{--do prawej--}}
@@ -66,24 +61,24 @@
                         </div>
                     @else
                         @if (Auth::user()->bookstore_id == null)
-                            <div class="collapse navbar-collapse mr-lg-5" id="navbarSupportedContent">
-                                <div class="ml-auto">
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <div class=" ml-auto justify-content-end">
                                     <ul class="navbar-nav">
                                         <li class="nav-item active">
                                             <a class="nav-link" href="{{'/welcome'}}">Aktualności <span class="sr-only">(current)</span></a>
                                         </li>
 
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{'/user/offers'}}">Książki</a></li>
+                                            <a class="nav-link" href="{{'/search'}}">Książki</a></li>
                                         </li>
 
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{'/search'}}">Wyszukiwarka</a></li>
-                                        </li>
                                         <li class="nav-item mr-5">
                                             <a class="nav-link" href="{{'/user/quotes'}}">Cytaty</a></li>
                                         </li>
-
+                                    </ul>
+                                </div>
+                                <div class="ml-auto">{{--do prawej--}}
+                                    <ul class="navbar-nav">
                                         <li class="nav-item dropdown mr-5">
                                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Opcje
@@ -100,7 +95,7 @@
                             </div>
                         @elseif (Auth::user()->bookstore_id != null)
                             <div class="collapse navbar-collapse mr-lg-5" id="navbarSupportedContent">
-                                <div class="ml-auto">
+                                <div class=" ml-auto justify-content-end">
                                     <ul class="navbar-nav">
                                         <li class="nav-item active">
                                             <a class="nav-link" href="{{'/welcome'}}">Aktualności <span class="sr-only">(current)</span></a>
@@ -113,7 +108,10 @@
                                         <li class="nav-item mr-5">
                                             <a class="nav-link" href="{{'/bookstore/offers'}}">Wszystkie Oferty</a></li>
                                         </li>
-
+                                    </ul>
+                                </div>
+                                <div class="ml-auto">{{--do prawej--}}
+                                    <ul class="navbar-nav">
                                         <li class="nav-item dropdown mr-5">
                                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Opcje
@@ -127,8 +125,6 @@
                                                 <a class="dropdown-item" href="{{'/logout'}}">Wyloguj</a>
                                             </div>
                                         </li>
-
-
                                     </ul>
                                 </div>
                             </div>

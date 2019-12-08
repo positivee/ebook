@@ -18,8 +18,6 @@ Route::get('/home', 'HomeController@index');
 Route::get('/welcome', 'HomeController@showNews');
 Route::get('/article/{id}', 'HomeController@showNewsDetail');
 
-
-Route::get('/offers', 'HomeController@offers');
 Route::get('/offer/{id}', 'HomeController@showOffersToBook');
 
 Route::get('/search', 'HomeController@search')->middleware('checkUser');
@@ -38,12 +36,7 @@ Route::get('/user', 'UserController@show');
 Route::patch('/user/updateProfile','UserController@updateProfile');
 Route::patch('/user/updatePassword','UserController@updatePassword');
 
-Route::get('/user/search', 'UserController@search');
 Route::get('/user/welcome', 'UserController@showNews');
-
-Route::get('/user/offers', 'UserController@offers');
-Route::post('/user/search/find', 'UserController@findOffer');                                        //dadadada
-
 Route::get('/user/quotes', 'UserController@showAllQuotes');
 
 Route::get('/user/add_quote', 'UserController@addQuote');

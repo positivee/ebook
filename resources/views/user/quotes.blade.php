@@ -3,6 +3,7 @@
 
 
     <div class="p-3">
+        <hr>
         <h2>Cytaty naszych użytkowników</h2>
         @if (session('success'))
             <div class="alert alert-success" role="alert">
@@ -29,10 +30,11 @@
             <div class="col-lg-6">
                 <blockquote class="quote-card shadow my-3 ">
                     <cite class="col-9 text-justify">
-                        {{$quote->getContent()}} Lorem ipsuem  Lorem ipsuem Lorem ipsuem Lorem ipsuem Lorem ipsuem Lorem ipsuem Lorem ipsu.
+                        {{$quote->getContent()}}
                     </cite>
                     <p>
-                        Z Książki {{$quote->getBookTitle()}} autora {{$quote->getBookAuthorName() ." ".$quote->getBookAuthorSurname()}}
+                       <hr>
+                    „ {{$quote->getBookTitle()}} ” - {{$quote->getBookAuthorName() ." ".$quote->getBookAuthorSurname()}}
                     </p>
                 </blockquote>
             </div>
@@ -41,7 +43,7 @@
     </div>
 
 
-
+{{$pagination->links()}}
 
 
 @stop

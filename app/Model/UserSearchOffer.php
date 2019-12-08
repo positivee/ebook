@@ -23,6 +23,7 @@ class UserSearchOffer
                             'offers.date_from', 'offers.date_to', 'offers.link', 'books.isbn_number')
                         ->orderBy('books.title', 'ASC');
 
+
         if ($fetchInput->getTitle() !== '') {
             $booksTable->where('title', 'like', '%' . $fetchInput->getTitle() . '%');
         }

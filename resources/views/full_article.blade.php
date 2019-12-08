@@ -4,6 +4,7 @@
 <article class="blog-post px-3 py-5 p-md-5">
     <div class="container">
         <header class="blog-post-header">
+            <hr>
             <h2 class="title mb-2">Artykuł</h2>
             <div class="mb-3">
                 <span class="date">Opublikowano: {{Str::limit($article->created_at,10,$end = '')}} </span>

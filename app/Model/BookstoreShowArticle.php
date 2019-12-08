@@ -13,9 +13,10 @@ class BookstoreShowArticle
 
           $allArticles= DB::table('articles')
                 ->join('bookstores', 'bookstores.id', '=', 'articles.bookstore_id')
-                ->select('articles.id','bookstore_id','articles.title', 'articles.content', 'articles.photo', 'articles.created_at', 'bookstores.name')
+                ->select('articles.id','bookstore_id','articles.title', 'articles.content', 'articles.photo',
+                    'articles.created_at', 'bookstores.name')
                 ->orderBy('created_at', 'DESC')
-                ->paginate(3);
+                ->paginate(5);
 
           $articleOutputArray = [];
 

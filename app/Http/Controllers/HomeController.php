@@ -38,25 +38,16 @@ class HomeController extends Controller
         //metoda wyświetlająca wszystkie artykuly
 
        $allArticles = new BookstoreShowArticle();
-        $articlese = $allArticles->showAllArticles();
-
-    /*    $articles = new BookstoreShowArticle();
-        $articles = $articles->showAllArticles();
+       $articlese = $allArticles->showAllArticles();
 
         $allArticlesTwo= DB::table('articles')
             ->join('bookstores', 'bookstores.id', '=', 'articles.bookstore_id')
-            ->select('articles.id','bookstore_id','articles.title', 'articles.content', 'articles.photo', 'articles.created_at', 'bookstores.name')
+            ->select('articles.id','bookstore_id','articles.title', 'articles.content', 'articles.photo',
+                'articles.created_at', 'bookstores.name')
             ->orderBy('created_at', 'DESC')
-            ->paginate(2);*/
-        $allArticlesTwo= DB::table('articles')
-            ->join('bookstores', 'bookstores.id', '=', 'articles.bookstore_id')
-            ->select('articles.id','bookstore_id','articles.title', 'articles.content', 'articles.photo', 'articles.created_at', 'bookstores.name')
-            ->orderBy('created_at', 'DESC')
-            ->paginate(3);
-
+            ->paginate(5);
 
         return view('welcome')->with(compact('articlese', 'allArticlesTwo'));
-     /*  return view('welcome')->with('articles', $allArticles->showAllArticles());*/
 
     }
 
@@ -72,11 +63,11 @@ class HomeController extends Controller
         return view('contact');
     }
 
-    public function offers()
+   /* public function offers()
     {
         $allOffers = new BookstoreSearchOffer();
         return view('offers')->with('offers', $allOffers->showAllOffer());
-    }
+    }*/
 
     public function showOffersToBook($id) {
 
@@ -90,19 +81,18 @@ class HomeController extends Controller
         $evaluations = new ShowEvaluation();
 
 
-        return view('detail_offer')->with(compact('offer', 'category', 'evaluation' ))->with('offers', $offers->showOfferToCheckedBook($id))->with('evaluations', $evaluations->showAllEvaluations($id));
+        return view('detail_offer')->with(compact('offer', 'category',
+            'evaluation' ))->with('offers', $offers->showOfferToCheckedBook($id))->with('evaluations',
+            $evaluations->showAllEvaluations($id));
 
     }
 
 
-    public function search(Request $request)
+    public function search()
     {
-        //wyswietla strone z formularzem do wyszukiwania i wyszukane oferty
+        $allOffers = new BookstoreSearchOffer();
+        return view('search')->with('offers', $allOffers->showAllOffer());
 
-        $offerFetchInput = OfferFetchInputFactory::createFromRequest($request, null);
-        $allOffers = new UserSearchOffer();
-
-        return view('search')->with('offers', $allOffers->searchOffer($offerFetchInput));
     }
 
 

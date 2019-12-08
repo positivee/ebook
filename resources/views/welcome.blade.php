@@ -10,6 +10,7 @@
              <div class="row">
                  <div class="col-md-12">
                      <div class="section-title my-4">
+                         <hr>
                          <h2>Aktualności</h2>
 
                          @if (session('success'))
@@ -67,7 +68,7 @@
              </div>
          </div>
      </div>
-{{ $allArticlesTwo->links() }}
+{{$allArticlesTwo->links() }}
 
 
 @stop

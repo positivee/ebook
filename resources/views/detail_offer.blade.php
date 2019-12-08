@@ -178,12 +178,9 @@
         <div class="row">
             <div class="col collapse"  id="collapseReview">
                 <form method="POST" action="{{'/user/evaluation'}}" >
-
-
+                @csrf
                     <div class="form-group row ">
-
-                        <label for="email" class="col-4 col-form-label">{{ __('Ocena Książki') }}</label>
-
+                        <label for="evaluation" class="col-4 col-form-label">{{ __('Ocena Książki') }}</label>
 
                         <div class="rate text-center">
                             <input type="radio" id="star5" name="evaluation" value="5" />
@@ -197,9 +194,6 @@
                             <input type="radio" id="star1" name="evaluation" value="1" />
                             <label for="star1" title="Ocena 1"></label>
                         </div>
-
-
-
 
                     </div>
                     <div class="form-group row">

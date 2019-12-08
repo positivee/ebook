@@ -16,7 +16,7 @@ class BookstoreSearchBook
             ->select('id', 'title', 'year', 'print' ,'picture', 'description', 'author_name',
                 'author_surname', 'isbn_number', 'category_id')
             ->orderBy('id', 'DESC')
-            ->get();
+            ->paginate(9);
 
         $bookOutputArray = [];
 

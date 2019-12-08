@@ -3,6 +3,7 @@
 
     <form method="POST" action="{{'/bookstore/b'}}" class="text-center p-5">
             @csrf
+        <hr>
         <p class="h4 mb-4">Formularz dodania książki</p>
         <!-- Book titile-->
         <div class="form-group">

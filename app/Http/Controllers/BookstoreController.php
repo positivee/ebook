@@ -27,6 +27,7 @@ use App\Model\UserSearchQuotes;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -45,7 +46,21 @@ class BookstoreController extends Controller
         //wyswietla wszystkie oferty
 
         $allOffers = new BookstoreSearchOffer();
-        return view('bookstore.offers')->with('offers', $allOffers->showAllOffer());
+        $offers = $allOffers->showAllOffer();
+
+        $pagination = DB::table('offers')
+            ->join('bookstores', 'bookstores.id', '=', 'offers.bookstore_id')
+            ->join('books', 'books.id', '=', 'offers.book_id')
+            ->select('books.id','books.title', 'books.year', 'books.print', 'books.picture',
+                'books.description', 'books.author_name', 'books.author_surname',
+                'books.category_id','offers.bookstore_id', 'offers.book_id', 'offers.price',
+                'offers.date_from', 'offers.date_to', 'offers.link', 'books.isbn_number')
+            ->orderBy('books.title', 'ASC')
+            ->paginate(9);
+
+        return view('bookstore.offers')->with(compact('offers', 'pagination'));
+
+
 
         /* //wyswietla oferty tylko zalogowanej ksiegarni
         $offerFetchInput = OfferFetchInputFactory::createFromRequest($request, Bookstore::findOrFail(Auth::user()->bookstore_id));
@@ -70,7 +85,16 @@ class BookstoreController extends Controller
     public function showBooks()
     {
         $allBooks = new BookstoreSearchBook();
-        return view('bookstore.books')->with('books', $allBooks->showAllBooks());
+        $books = $allBooks->showAllBooks();
+
+        $pagination = DB::table('books')
+            ->select('id', 'title', 'year', 'print' ,'picture', 'description', 'author_name',
+                'author_surname', 'isbn_number', 'category_id')
+            ->orderBy('id', 'DESC')
+            ->paginate(9);
+
+
+        return view('bookstore.books')->with(compact('books', 'pagination'));
     }
 
 
@@ -87,23 +111,6 @@ class BookstoreController extends Controller
 
     public function storeBook(Request $request){
         //metoda do zapisywania nowej książki z fromularza
-
-       /*
-        ręczny sposób (to znajduje się w moim modelu BookstoreAddBook.php)
-
-        $book = new Book();
-        $book->title = \request('title');
-        $book->year = \request('year');
-        $book->print = \request('print');
-        $book->picture = \request('picture');
-        $book->description = \request('description');
-        $book->author_name = \request('author_name');
-        $book->author_surname = \request('author_surname');
-        $book->isbn_number = \request('isbn_number');
-        $book->category_id = \request('category_id');
-
-        $book->save();
-        */
 
         $newBook = CreateBookFactory::create($request->all());
         $result = new BookstoreAddBook();
