@@ -15,7 +15,7 @@ class BookstoreShowArticle
                 ->join('bookstores', 'bookstores.id', '=', 'articles.bookstore_id')
                 ->select('articles.id','bookstore_id','articles.title', 'articles.content', 'articles.photo', 'articles.created_at', 'bookstores.name')
                 ->orderBy('created_at', 'DESC')
-                ->get();
+                ->paginate(3);
 
           $articleOutputArray = [];
 

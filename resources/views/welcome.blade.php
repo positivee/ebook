@@ -21,7 +21,7 @@
                  </div>
 
 
-             @foreach($articles as $k => $article)
+             @foreach($articlese as $k => $article)
                  @if($k<2)
                      <!-- post -->
                          <div class="col-md-6 ">
@@ -45,7 +45,7 @@
              </div>
              <!-- /row -->
              <div class="row">
-             @foreach($articles as $k => $article)
+             @foreach($articlese as $k => $article)
                  @if($k>1)
 
                      <!-- post -->
@@ -67,7 +67,7 @@
              </div>
          </div>
      </div>
-
+{{ $allArticlesTwo->links() }}
 
 
 @stop

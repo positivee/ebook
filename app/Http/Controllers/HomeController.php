@@ -14,6 +14,7 @@ use App\Model\BookstoreShowArticle;
 use App\Model\ShowEvaluation;
 use App\Model\UserSearchOffer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -36,8 +37,26 @@ class HomeController extends Controller
     public function showNews(){
         //metoda wyświetlająca wszystkie artykuly
 
-        $allArticles = new BookstoreShowArticle();
-        return view('welcome')->with('articles', $allArticles->showAllArticles());
+       $allArticles = new BookstoreShowArticle();
+        $articlese = $allArticles->showAllArticles();
+
+    /*    $articles = new BookstoreShowArticle();
+        $articles = $articles->showAllArticles();
+
+        $allArticlesTwo= DB::table('articles')
+            ->join('bookstores', 'bookstores.id', '=', 'articles.bookstore_id')
+            ->select('articles.id','bookstore_id','articles.title', 'articles.content', 'articles.photo', 'articles.created_at', 'bookstores.name')
+            ->orderBy('created_at', 'DESC')
+            ->paginate(2);*/
+        $allArticlesTwo= DB::table('articles')
+            ->join('bookstores', 'bookstores.id', '=', 'articles.bookstore_id')
+            ->select('articles.id','bookstore_id','articles.title', 'articles.content', 'articles.photo', 'articles.created_at', 'bookstores.name')
+            ->orderBy('created_at', 'DESC')
+            ->paginate(3);
+
+
+        return view('welcome')->with(compact('articlese', 'allArticlesTwo'));
+     /*  return view('welcome')->with('articles', $allArticles->showAllArticles());*/
 
     }
 
