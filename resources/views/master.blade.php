@@ -149,7 +149,7 @@
                                             <i class="fa fa-search h4 text-body"></i>
                                         </div>
 
-                                        <form method="post" action="{{'/searchtwo'}}">
+                                        <form method="post" action="{{route('search')}}">
                                             @csrf
 
                                             <div class="col">

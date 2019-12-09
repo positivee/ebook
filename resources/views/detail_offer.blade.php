@@ -111,6 +111,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h4>Komentarze:</h4>
+                    {{ $avg = \App\Evaluation::avg('evaluation')}}
 
                 <hr>
             </div>

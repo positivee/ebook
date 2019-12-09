@@ -13,6 +13,7 @@ use App\Model\BookstoreSearchOffer;
 use App\Model\BookstoreShowArticle;
 use App\Model\ShowEvaluation;
 use App\Model\UserSearchOffer;
+use App\Offer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -100,11 +101,11 @@ class HomeController extends Controller
         //$offers = Book::search($request->name)->get();
         //return view('search', compact('offers'));
 
-        $book = Book::search($request->name)->get();
+        $offers = Book::search($request->name)->get();
 
-        $offerFetchInput = OfferFetchInputFactory::createFromRequest($book, null);
-        $allOffers = new UserSearchOffer();
-        $offers = $allOffers->searchOffer($offerFetchInput);
+        //$offerFetchInput = OfferFetchInputFactory::createFromRequest($book, null);
+        //$allOffers = new UserSearchOffer();
+        //$offers = $allOffers->searchOffer($offerFetchInput);
 
 
         return view('search',compact('offers'));
