@@ -31,13 +31,13 @@
                                     </tr>
                                     </thead>
 
-
+                                    @foreach($myArticles as $article)
 
                                     <tr>
-                                        <td>1</td>
-                                        <td>Patronaty tygodnia (18-24.11.2019)</td>
-                                        <td>Motyw wędrówki...</td>
-                                        <td>2019-12-05</td>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$article->getTitle()}}</td>
+                                        <td>{{Str::limit($article->getContent(),50)}}</td>
+                                        <td>{{Str::limit($article->getDate(),10,$end = '')}}</td>
                                         <td>
                                             {{-- <button type="button" class="btn btn-primary btn-sm">
                                                  <i class="fa fa-search" aria-hidden="true"></i>
@@ -64,6 +64,7 @@
                                         </td>
 
                                     </tr>
+                                    @endforeach
 
 
                                     </tbody>

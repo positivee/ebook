@@ -9,6 +9,8 @@ use App\Bookstore;
 
 
 use App\Category;
+use App\Dto\Article\ArticleFetchInputFactory;
+use App\Dto\Article\ArticleOutputFactory;
 use App\Dto\Article\CreateArticleFactory;
 use App\Dto\Quote\QuoteFetchInputFactory;
 use App\Dto\User\UserFetchInputFactory;
@@ -63,7 +65,14 @@ class BookstoreController extends Controller
         $quoteFetchInput = QuoteFetchInputFactory::createFromRequest($request, User::findOrFail(Auth::user()->id));
         $myQuotes = new UserSearchQuotes();
 
-        return view('bookstore.bookstore_panel', compact('user'))->with('userInfo', $userInfo->showUserInfo($userFetchInput))->with('myQuotes', $myQuotes->showMyQuotes($quoteFetchInput));
+        //wyswietla artykuły dodane przez zalogowaną księgarnię
+        $articleFetchInput = ArticleFetchInputFactory::createFromRequest($request, Bookstore::findOrFail(Auth::user()->bookstore_id));
+        $myArticles = new BookstoreShowArticle();
+
+        return view('bookstore.bookstore_panel', compact('user'))
+            ->with('userInfo', $userInfo->showUserInfo($userFetchInput))
+            ->with('myQuotes', $myQuotes->showMyQuotes($quoteFetchInput))
+            ->with('myArticles', $myArticles->showMyArticles($articleFetchInput));
     }
 
     public function showBooks()
