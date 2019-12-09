@@ -17,5 +17,8 @@ class Offer extends Model
         return $this->belongsTo('Bookstore');
     }
 
+    public function transaction() {
+        return $this->hasMany('Transaction');
+    }
 
 }

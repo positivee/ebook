@@ -48,4 +48,8 @@ class User extends Authenticatable //implements MustVerifyEmail
     public function bookstore() {
         return $this->belongsTo('Bookstore');
     }
+
+    public function transaction() {
+        return $this->hasMany('Transaction');
+    }
 }

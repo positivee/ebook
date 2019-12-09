@@ -31,7 +31,9 @@
                                     </tr>
                                     </thead>
 
-
+                                    <!-- wyświetlać foreachem transakcje zalogowanego usera
+                                     pobieranie np. getOffer()->download - nazwa kolumny w tabeli offers z linkiem
+                                      do pobrania ksiązki -->
 
                                     <tr>
                                         <td>1</td>
