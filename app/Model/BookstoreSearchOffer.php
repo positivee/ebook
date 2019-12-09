@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class BookstoreSearchOffer
 {
-    /*public function showBookstoreOffer(OfferFetchInput $fetchInput) : array {
+    public function showBookstoreOffer(OfferFetchInput $fetchInput) : array {
         //metoda do wyswietlania ofert dla zalogowanej ksiegarni - tylko te co dodała
 
         $allOffersSelect = DB::table('offers')
@@ -35,7 +35,7 @@ class BookstoreSearchOffer
         }
 
         return $offerOutputArray;
-    }*/
+    }
 
 
     public function showAllOffer() : array {

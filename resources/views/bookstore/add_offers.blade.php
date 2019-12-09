@@ -3,7 +3,6 @@
 
     <form method="POST" action="{{'/bookstore/o'}}" class="text-center p-5">
         @csrf
-        <hr>
         <p class="h4 mb-4">Dodaj ofertę do wybranej książki</p>
         <!-- Książka-->
         <div class="form-group">

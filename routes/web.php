@@ -14,19 +14,20 @@
 
 
 //widoki bez logowania:
+use Illuminate\Http\Request;
+
 Route::get('/home', 'HomeController@index');
 Route::get('/welcome', 'HomeController@showNews');
 Route::get('/article/{id}', 'HomeController@showNewsDetail');
 
 Route::get('/offer/{id}', 'HomeController@showOffersToBook');
 
-Route::get('/search', 'HomeController@search')->middleware('checkUser');
+Route::get('/search', 'HomeController@search');
 Route::post('/search/find', 'HomeController@find');
 
 
-
 //wyszukiwarka ogólna
-Route::post('/searchtwo', 'HomeController@searchx');
+Route::post('/search', 'HomeController@searchx')->name('search');
 
 
 

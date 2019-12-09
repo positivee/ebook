@@ -43,29 +43,13 @@ class BookstoreController extends Controller
     }
 
     public function showOffers(Request $request) {
-        //wyswietla wszystkie oferty
+        //wyswietla oferty dodane przez zalogowaną księgarnie
 
-        $allOffers = new BookstoreSearchOffer();
-        $offers = $allOffers->showAllOffer();
-
-        $pagination = DB::table('offers')
-            ->join('bookstores', 'bookstores.id', '=', 'offers.bookstore_id')
-            ->join('books', 'books.id', '=', 'offers.book_id')
-            ->select('books.id','books.title', 'books.year', 'books.print', 'books.picture',
-                'books.description', 'books.author_name', 'books.author_surname',
-                'books.category_id','offers.bookstore_id', 'offers.book_id', 'offers.price',
-                'offers.date_from', 'offers.date_to', 'offers.link', 'books.isbn_number')
-            ->orderBy('books.title', 'ASC')
-            ->paginate(9);
-
-        return view('bookstore.offers')->with(compact('offers', 'pagination'));
-
-
-
-        /* //wyswietla oferty tylko zalogowanej ksiegarni
         $offerFetchInput = OfferFetchInputFactory::createFromRequest($request, Bookstore::findOrFail(Auth::user()->bookstore_id));
         $allOffers = new BookstoreSearchOffer();
-        return view('bookstore.offers')->with('offers', $allOffers->showBookstoreOffer($offerFetchInput)); */
+        $offers = $allOffers->showBookstoreOffer($offerFetchInput);
+
+        return view('bookstore.offers')->with('offers', $offers);
     }
     public function show(Request $request) {
         //metoda zwraca dane o zalogowanym użytkowniku + formularz edycji + widok swoich cytatów

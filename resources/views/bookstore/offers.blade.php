@@ -5,8 +5,8 @@
 
         <!-- Page Heading -->
         <h1 class="my-4">
+            <small>Nasze Oferty</small>
             <hr>
-            <small>Wszystkie Oferty</small>
         </h1>
         @if (session('success'))
             <div class="alert alert-success" role="alert">
@@ -64,6 +64,5 @@
 
         </div>
     </div>
-{{$pagination->links()}}
 
 @stop

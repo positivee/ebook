@@ -102,7 +102,8 @@
                                   {{$quote->getContent()}}
                               </cite>
                               <p>
-                                   Z Książki {{$quote->getBookTitle()}} autora {{$quote->getBookAuthorName() ." ".$quote->getBookAuthorSurname()}}
+                                  <hr>
+                                  „ {{$quote->getBookTitle()}} ” - {{$quote->getBookAuthorName() ." ".$quote->getBookAuthorSurname()}}
                               </p>
                                 <div class="mt-2">
                                     <button type="button" class="btn btn-danger btn-sm">

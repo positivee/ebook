@@ -5,8 +5,9 @@
 
             <!-- Page Heading -->
             <h1 class="my-4">
-                <hr>
+
                 <small>Wszystkie książki</small>
+                <hr>
             </h1>
             @if (session('success'))
                 <div class="alert alert-success" role="alert">

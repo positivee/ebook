@@ -97,6 +97,7 @@
                             <div class="collapse navbar-collapse mr-lg-5" id="navbarSupportedContent">
                                 <div class=" ml-auto justify-content-end">
                                     <ul class="navbar-nav">
+
                                         <li class="nav-item active">
                                             <a class="nav-link" href="{{'/welcome'}}">Aktualności <span class="sr-only">(current)</span></a>
                                         </li>
@@ -105,9 +106,14 @@
                                             <a class="nav-link" href="{{'/bookstore/books'}}">Baza Książek</a></li>
                                         </li>
 
-                                        <li class="nav-item mr-5">
-                                            <a class="nav-link" href="{{'/bookstore/offers'}}">Wszystkie Oferty</a></li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{'/search'}}">Wszystkie Oferty</a></li>
                                         </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{'/bookstore/offers'}}">Nasze Oferty</a></li>
+                                        </li>
+
                                     </ul>
                                 </div>
                                 <div class="ml-auto">{{--do prawej--}}

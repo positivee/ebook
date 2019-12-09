@@ -5,7 +5,6 @@
     <div class="py-4">
         <div class="row text-center pb-4">
             <div class="col-md-12">
-                <hr>
                 <h2>Zaawasowane wyszukiwanie książki</h2>
             </div>
         </div>

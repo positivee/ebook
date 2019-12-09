@@ -3,8 +3,9 @@
 
 
     <div class="p-3">
-        <hr>
+
         <h2>Cytaty naszych użytkowników</h2>
+        <hr>
         @if (session('success'))
             <div class="alert alert-success" role="alert">
                 {{ session('success') }}

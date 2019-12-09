@@ -33,7 +33,7 @@ class UserFetchInput
      * @param string $surname
      * @param string $email
      */
-    public function __construct(?User $user = null, ?string $name = '', ?string $surname = '', ?string $email ='')
+    public function __construct(?User $user = null, ?string $name ='', ?string $surname = '', ?string $email ='')
     {
         $this->user = $user;
         $this->name = $name;
