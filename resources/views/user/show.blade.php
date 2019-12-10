@@ -28,6 +28,7 @@
                                         <th scope="col">Data Zakupu</th>
                                         <th scope="col">Książka</th>
                                         <th scope="col">Opcje</th>
+                                        <th scope="col">ID Oferty dla sprawdzenia tylko</th>
                                     </tr>
                                     </thead>
 
@@ -35,15 +36,15 @@
                                      pobieranie np. getOffer()->download - nazwa kolumny w tabeli offers z linkiem
                                       do pobrania ksiązki -->
 
+                                    @foreach($myBooks as $b)
                                     <tr>
-                                        <td>1</td>
-                                        <td>2019-12-05</td>
-                                        <td>Beond</td>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{Str::limit($b->getDate(),10,$end = '')}}</td>
+                                        <td><a href={{$b->getOffer()->link}}>Link</a></td> <!--problem z wyświetleniem tytułu :/ -->
                                         <td>#</td>
+                                        <td>{{$b->getOffer()->id}}</td>
                                     </tr>
-
-
-                                    </tbody>
+                                    @endforeach
                                 </table>
                             </table>
                         </div>

@@ -7,6 +7,7 @@ use App\Dto\Evaluation\CreateEvaluationFactory;
 use App\Dto\Quote\CreateQuoteFactory;
 use App\Dto\Offer\OfferFetchInputFactory;
 use App\Dto\Quote\QuoteFetchInputFactory;
+use App\Dto\Transaction\TransactionFetchInputFactory;
 use App\Dto\User\UserFetchInputFactory;
 use App\Model\AddEvaluation;
 use App\Model\BookstoreSearchOffer;
@@ -15,6 +16,8 @@ use App\Model\UserAddQuote;
 use App\Model\UserSearchInfo;
 use App\Model\UserSearchOffer;
 use App\Model\UserSearchQuotes;
+use App\Model\UserShowTransactions;
+use App\Transaction;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,10 +36,13 @@ class UserController extends Controller
     }
 
     public function show(Request $request) {
-        //metoda zwraca dane o zalogowanym użytkowniku + formularz edycji + widok swoich cytatów
+        // metoda zwraca dane o zalogowanym użytkowniku
+        // widok swoich cytatów
+        // widok zakupionych ksiązek
 
         $user = Auth::user();
 
+        // informacje o danych osobowych użytwkonika
         $userFetchInput = UserFetchInputFactory::createFromRequest($request, User::findOrFail(Auth::user()->id));
         $userInfo = new UserSearchInfo();
 
@@ -44,8 +50,17 @@ class UserController extends Controller
         $quoteFetchInput = QuoteFetchInputFactory::createFromRequest($request, User::findOrFail(Auth::user()->id));
         $myQuotes = new UserSearchQuotes();
 
+        // zakupione ksiązki
+        $transactionFetchInput = TransactionFetchInputFactory::createFromRequest($request, User::findOrFail(Auth::user()->id));
+        $books = new UserShowTransactions();
+        $myBooks = $books->showMyTransactions($transactionFetchInput);
+
+        //tutaj coś jest źle z tym tytułem
+        $bookTitle = new UserShowTransactions();
+        $title = $bookTitle->showBookTitle($transactionFetchInput);
+
         return view('user.show', compact('user'))->with('userInfo', $userInfo->showUserInfo($userFetchInput))
-            ->with('myQuotes', $myQuotes->showMyQuotes($quoteFetchInput));
+            ->with('myQuotes', $myQuotes->showMyQuotes($quoteFetchInput))->with(compact('myBooks', 'title'));
     }
 
     public function showAllQuotes() {
