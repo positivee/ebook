@@ -27,7 +27,7 @@ Route::post('/search/find', 'HomeController@find');
 
 
 //wyszukiwarka ogólna
-Route::post('/search', 'HomeController@searchx')->name('search');
+Route::post('/search', 'HomeController@allSearch')->name('search');
 
 
 

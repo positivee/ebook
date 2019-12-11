@@ -101,18 +101,19 @@ class HomeController extends Controller
     }
 
 
-    public function searchx(Request $request) {
+    public function allSearch(Request $request) {
         //$offers = Book::search($request->name)->get();
         //return view('search', compact('offers'));
 
         $offers = Book::search($request->name)->get();
+        $categories = DB::table('categories')->get();
 
         //$offerFetchInput = OfferFetchInputFactory::createFromRequest($book, null);
         //$allOffers = new UserSearchOffer();
         //$offers = $allOffers->searchOffer($offerFetchInput);
 
 
-        return view('search',compact('offers'));
+        return view('search',compact('offers','categories'));
     }
 
 

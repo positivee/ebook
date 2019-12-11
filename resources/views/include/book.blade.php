@@ -13,13 +13,17 @@
                 <dl>
                     <dt >Ocena:</dt>
                     <dd ><div class="text-warning">
-                            @for ($i = 0; $i < 5; $i++)
-                                @if($i<=(round(DB::table('evaluations')->where('book_id', $offer->getBook()->id)->avg('evaluation'),0)))
-                                    <i class="fa fa-star"></i>
-                                @else
-                                    <i class="fa fa-star-o"></i>
+                            @if(count(DB::table('evaluations')->where('book_id', $offer->getBook()->id)->get()) == null)
+                                Brak ocen
+                            @else
+                                    @for ($i = 0; $i < 5; $i++)
+                                        @if($i<=(round(DB::table('evaluations')->where('book_id', $offer->getBook()->id)->avg('evaluation'),0)))
+                                            <i class="fa fa-star"></i>
+                                        @else
+                                            <i class="fa fa-star-o"></i>
+                                        @endif
+                                    @endfor
                                 @endif
-                            @endfor
                         </div>
                     </dd>
                 </dl>

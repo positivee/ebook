@@ -69,7 +69,8 @@
              </div>
          </div>
      </div>
-{{$allArticlesTwo->links() }}
-
+    <div class="text-center">
+    {{$allArticlesTwo->links() }}
+    </div>
 
 @stop
