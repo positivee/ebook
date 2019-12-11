@@ -12,9 +12,15 @@
 
                 <dl>
                     <dt >Ocena:</dt>
-                    <dd ><div class="text-warning">
-                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>
-                        </div>
+                    <dd >{{--<div class="text-warning">
+                            @for ($i = 0; $i < 5; $i++)
+                                @if($i<=(round(DB::table('evaluations')->where('book_id', tutaj id)->avg('evaluation'),0)))
+                                    <i class="fa fa-star"></i>
+                                @else
+                                    <i class="fa fa-star-o"></i>
+                                @endif
+                            @endfor
+                        </div>--}}
                     </dd>
                 </dl>
                 <dl>

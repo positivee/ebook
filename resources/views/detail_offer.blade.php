@@ -15,13 +15,22 @@
                 <h3 class="title mb-1">{{$offer->title}}</h3>
 
                     <div class="text-warning">
-                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        @for ($i = 0; $i < 5; $i++)
+                            @if($i<=(round(DB::table('evaluations')->where('book_id', $offer->book_id)->avg('evaluation'),0)))
+                                <i class="fa fa-star"></i>
+                            @else
+                                <i class="fa fa-star-o"></i>
+                            @endif
+                        @endfor
                     </div>
 
                     <hr>
                     <span>Cena: </span>
                        <span class="text-success h4">
-                          30 - 55 PLN
+                           {{$price = DB::table('offers')->where('book_id', $offer->id)->min('price')}}-
+                           {{$price = DB::table('offers')->where('book_id', $offer->id)->max('price')}}
+                           PLN
+
                         </span>
                     <hr>
 
@@ -111,8 +120,6 @@
         <div class="row">
             <div class="col-md-12">
                 <h4>Komentarze:</h4>
-                    {{ $avg = \App\Evaluation::avg('evaluation')}}
-
                 <hr>
             </div>
         </div>

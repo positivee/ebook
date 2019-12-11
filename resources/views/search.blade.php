@@ -52,6 +52,20 @@
                                 <!--pole na cene -->
                                 <div class="col-md-4">
                                     <div class="form-group ">
+                                        <select id="category_id" type="text" name="category_id" class="col-12 form-control">
+                                            <option value="" class="hidden" >WSZYSTKIE</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{$category->id}}" class="hidden" >{{$category->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- pole na kategorie-->
+                                <div class="col-md-7">
+                                    <div class="form-group ">
                                         <div class="form-row">
                                             <div class="col-md-6 mb-2">
                                                 <input type="number"  min="0" max="999.00" step="0.01" id="price_from" class="form-control"  name="price_from" placeholder="{{ __('Cena Od') }}">
@@ -62,19 +76,6 @@
 
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <!-- pole na kategorie-->
-                                <div class="col-md-7">
-                                    <div class="form-group ">
-                                        <select id="category_id" type="text" name="category_id" class="col-12 form-control">
-                                            <option value="" class="hidden" >WSZYSTKIE</option>
-                                            @foreach($categories as $category)
-                                                <option value="{{$category->id}}" class="hidden" >{{$category->name}}</option>
-                                            @endforeach
-                                        </select>
                                     </div>
                                 </div>
                             {{--  <!--pole na wyszukiwanie zaawasowane jak będzie -->
