@@ -12,6 +12,7 @@ class QuoteOutputFactory
     static function create(array $data): QuoteOutput {
 
         return new QuoteOutput(
+            $data['id'],
             User::findOrFail($data['user_id']),
             $data['content'],
             $data['book_title'],
@@ -23,6 +24,7 @@ class QuoteOutputFactory
 
     public static function createFromRow(\stdClass $dbRow) : QuoteOutput {
         return static::create([
+            'id' => $dbRow->id,
             'user_id' => $dbRow->user_id,
             'content' => $dbRow->content,
             'book_title' => $dbRow->book_title,

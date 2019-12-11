@@ -109,13 +109,9 @@
                                   „ {{$quote->getBookTitle()}} ” - {{$quote->getBookAuthorName() ." ".$quote->getBookAuthorSurname()}}
                               </p>
                                 <div class="mt-2">
-                                    <button type="button" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash" aria-hidden="true"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-success btn-sm">
-                                        <i class="fa fa-pencil" aria-hidden="true"></i>
-                                    </button>
-                                 </div>
+                                    <a href="/user/quote/delete/{{$quote->getId()}}" class="fa fa-trash btn-danger btn-sm"></a>
+                                    <a href="/user/quote/edit/{{$quote->getId()}}" class="fa fa-pencil btn-success btn-sm"></a>
+                                </div>
 
                           </blockquote>
                       @endforeach

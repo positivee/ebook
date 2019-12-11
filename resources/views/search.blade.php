@@ -53,7 +53,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group ">
                                         <select id="category_id" type="text" name="category_id" class="col-12 form-control">
-                                            <option value="" class="hidden" >WSZYSTKIE</option>
+                                            <option value="" class="hidden" >Kategoria</option>
                                             @foreach($categories as $category)
                                                 <option value="{{$category->id}}" class="hidden" >{{$category->name}}</option>
                                             @endforeach
@@ -72,7 +72,7 @@
 
                                             </div>
                                             <div class="col-md-6 ">
-                                                <input type="number"  min="0" max="999.00" step="0.01" id="price_to" class="form-control" placeholder="{{ __('Do') }}" name="price_to">
+                                                <input type="number"  min="0" max="999.00" step="0.01" id="price_to" class="form-control" placeholder="{{ __('Cena Do') }}" name="price_to">
 
                                             </div>
                                         </div>

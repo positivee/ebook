@@ -4,10 +4,11 @@
 
     <form method="POST" action="{{'/user/quote'}}" class="text-center p-5">
         @csrf
-        <hr>
+
         <p class="h4 mb-4">Dodaj swój cytat</p>
         <div class="form-row">
             <div class="col-md-6 mb-4">
+
                 <!-- Book author name -->
                 <input type="text" id="book_author_name" class="form-control @error('book_author_name') is-invalid @enderror"  name="book_author_name" placeholder="{{ __('Imię Autora Książki') }}" value="{{ old('book_author_name') }}" required autocomplete="book_author_name" autofocus >
                 @error('book_author_name')

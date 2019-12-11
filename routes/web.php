@@ -38,18 +38,25 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 //widoki dla uzytkownka zalogowanego
 Route::get('/user', 'UserController@show');
-/*Route::patch('/user/update','UserController@update');*/
+
 Route::patch('/user/updateProfile','UserController@updateProfile');
 Route::patch('/user/updatePassword','UserController@updatePassword');
 
+
+
+Route::post('/user/evaluation', 'UserController@addEvaluation');
+
+//cytaty obsługa
 Route::get('/user/welcome', 'UserController@showNews');
 Route::get('/user/quotes', 'UserController@showAllQuotes');
 
 Route::get('/user/add_quote', 'UserController@addQuote');
 Route::post('/user/quote', 'UserController@storeQuote');
 
-Route::post('/user/evaluation', 'UserController@addEvaluation');
+Route::get('/user/quote/delete/{id}', 'UserController@deleteQuote');
 
+Route::get('/user/quote/edit/{id}', 'UserController@editQuote');
+Route::patch('/user/quote/update/{id}', 'UserController@updateQuote');
 
 
 //widoki dla zalogowanej ksiegarni

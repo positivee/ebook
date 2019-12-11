@@ -17,6 +17,7 @@ use App\Model\UserSearchInfo;
 use App\Model\UserSearchOffer;
 use App\Model\UserSearchQuotes;
 use App\Model\UserShowTransactions;
+use App\Quote;
 use App\Transaction;
 use App\User;
 use Illuminate\Http\Request;
@@ -173,6 +174,35 @@ class UserController extends Controller
 
         return redirect('/user/quotes')->with('success', 'Dodano nowy cytat!');
 
+    }
+
+    public function deleteQuote($id) {
+        $quote = Quote::findOrFail($id);
+        $quote->delete();
+
+        return redirect('/user')->with('success', 'Usunięto wybrany cytat!');
+    }
+
+    public function editQuote($id) {
+        $quote = Quote::findOrFail($id);
+        return view('user.edit_quote')->with('quote', $quote);
+    }
+
+    public function updateQuote($id, Request $request) {
+        $quote = Quote::findOrFail($id);
+
+        //uzupełnienie nowymi danymi
+        $quote->fill([
+            'book_author_name' => $request->book_author_name,
+            'book_author_surname' => $request->book_author_surname,
+            'book_title' => $request->book_title,
+            //'content' => $request->content, //krzyczy błąd
+        ]);
+
+        //zapis do bazy
+        $quote->save();
+
+        return redirect('/user');
     }
 
 
