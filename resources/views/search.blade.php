@@ -69,8 +69,11 @@
                                 <!-- pole na kategorie-->
                                 <div class="col-md-7">
                                     <div class="form-group ">
-                                        <select id="category" type="text" name="category" class="col-12 form-control">
-                                            <option value="" class="hidden" >Kategoria</option>
+                                        <select id="category_id" type="text" name="category_id" class="col-12 form-control">
+                                            <option value="" class="hidden" >WSZYSTKIE</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{$category->id}}" class="hidden" >{{$category->name}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>

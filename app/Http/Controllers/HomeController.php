@@ -91,8 +91,12 @@ class HomeController extends Controller
 
     public function search()
     {
+        $categories = DB::table('categories')->get();
+
         $allOffers = new BookstoreSearchOffer();
-        return view('search')->with('offers', $allOffers->showAllOffer());
+        $offers = $allOffers->showAllOffer();
+        /*  return view('search')->with('offers', $allOffers->showAllOffer());*/
+        return view('search')->with(compact('offers', 'categories'));
 
     }
 
@@ -118,7 +122,13 @@ class HomeController extends Controller
 
         $offerFetchInput = OfferFetchInputFactory::createFromRequest($request, null);
         $allOffers = new UserSearchOffer();
-        return view('search')->with('offers', $allOffers->searchOffer($offerFetchInput));
+/*        return view('search')->with('offers', $allOffers->searchOffer($offerFetchInput));*/
+
+        $categories = DB::table('categories')->get();
+        $offers = $allOffers->searchOffer($offerFetchInput);
+        return view('search')->with(compact('offers', 'categories'));
+
+
     }
 
 
