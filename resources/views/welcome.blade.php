@@ -66,11 +66,14 @@
                          <!-- /post -->
                      @endif
                  @endforeach
+
+                     <div class="mx-auto">
+                     {{$allArticlesTwo->links() }}
+                    </div>
+
              </div>
          </div>
      </div>
-    <div class="text-center">
-    {{$allArticlesTwo->links() }}
-    </div>
+
 
 @stop

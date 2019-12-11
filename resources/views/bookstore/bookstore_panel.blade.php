@@ -23,31 +23,22 @@
                                     </caption>
                                     <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th scope="col">Tytuł</th>
-                                        <th scope="col">Opis</th>
-                                        <th scope="col">Data dodania</th>
-                                        <th scope="col">Opcje</th>
+                                        <th scope="col" {{--style="width: 1%"--}}>#</th>
+                                        <th scope="col" style="width: 40%">Tytuł</th>
+                                        <th scope="col" style="width: 25%">Opis</th>
+                                        <th scope="col" style="width: 15%">Data dodania</th>
+                                        <th scope="col" style="width: 10%">Opcje</th>
                                     </tr>
                                     </thead>
 
                                     @foreach($myArticles as $article)
 
                                     <tr>
-                                        <td>{{$loop->iteration}}</td>
+                                        <td scope="row"> {{$loop->iteration}}</td>
                                         <td>{{$article->getTitle()}}</td>
-                                        <td>{{Str::limit($article->getContent(),50)}}</td>
+                                        <td>{{Str::limit($article->getContent(),15)}}</td>
                                         <td>{{Str::limit($article->getDate(),10,$end = '')}}</td>
                                         <td>
-                                            {{-- <button type="button" class="btn btn-primary btn-sm">
-                                                 <i class="fa fa-search" aria-hidden="true"></i>
-                                             </button>
-                                             <button type="button" class="btn btn-danger btn-sm">
-                                                 <i class="fa fa-trash" aria-hidden="true"></i>
-                                             </button>
-                                             <button type="button" class="btn btn-success btn-sm">
-                                                 <i class="fa fa-pencil" aria-hidden="true"></i>
-                                             </button>--}}
 
                                             <div class="btn-group text-center" role="group" aria-label="buttons">
                                                 <a href="#" class="btn btn-primary btn-sm">

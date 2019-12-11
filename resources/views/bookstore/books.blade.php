@@ -45,5 +45,9 @@
 
             </div>
 
-{{$pagination->links()}}
+        <div class="d-flex my-5">
+            <div class="mx-auto">
+                {{$pagination->links()}}
+            </div>
+        </div>
 @stop
