@@ -55,7 +55,7 @@
   </small>--}}
 
 <!-- Add quote -->
-    <button class="btn btn-primary my-4 btn-block" type="submit">{{ __('Dodaj cytat') }}</button>
+    <button class="btn btn-primary my-4 btn-block" type="submit">{{ __('Aktualizuj cytat') }}</button>
 
 
 

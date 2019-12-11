@@ -157,19 +157,12 @@
 
                                         <form method="post" action="{{route('search')}}">
                                             @csrf
-
                                             <div class="col">
-                                                <div class="form-group ">
                                                     <input class="form-control form-control-lg form-control-borderless" name="name" type="text" placeholder="Wpisz czego szukasz">
                                                 </div>
+                                            <div class="col-auto">
+                                                <button type="submit" class="btn btn-lg btn-primary">Wyszukaj</button>
                                             </div>
-
-                                            <div class="form-group ">
-                                                <div class="col-auto">
-                                                    <button type="submit" class="btn btn-lg btn-primary">Wyszukaj</button>
-                                                </div>
-                                            </div>
-
                                         </form>
 
                                     </div>

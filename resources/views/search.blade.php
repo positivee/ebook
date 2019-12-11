@@ -49,7 +49,7 @@
                                         <input type="text" id="print" class="form-control"  name="print" placeholder="{{ __('Wydawnictwo') }}">
                                     </div>
                                 </div>
-                                <!--pole na cene -->
+                                <!--pole na kategorie -->
                                 <div class="col-md-4">
                                     <div class="form-group ">
                                         <select id="category_id" type="text" name="category_id" class="col-12 form-control">
@@ -63,7 +63,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <!-- pole na kategorie-->
+                                <!-- pole na cene-->
                                 <div class="col-md-7">
                                     <div class="form-group ">
                                         <div class="form-row">
