@@ -28,21 +28,16 @@
                                         <th scope="col">Data Zakupu</th>
                                         <th scope="col">Książka</th>
                                         <th scope="col">Opcje</th>
-                                        <th scope="col">ID Oferty dla sprawdzenia tylko</th>
                                     </tr>
                                     </thead>
-
-                                    <!-- wyświetlać foreachem transakcje zalogowanego usera
-                                     pobieranie np. getOffer()->download - nazwa kolumny w tabeli offers z linkiem
-                                      do pobrania ksiązki -->
 
                                     @foreach($myBooks as $b)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{Str::limit($b->getDate(),10,$end = '')}}</td>
-                                        <td><a href={{$b->getOffer()->link}}>Link</a></td> <!--problem z wyświetleniem tytułu :/ -->
-                                        <td>#</td>
-                                        <td>{{$b->getOffer()->id}}</td>
+                                        <td>{{$b->getBook()->title}}</td>
+                                        <td><a href={{$b->getOffer()->link}}>Pobierz</a></td>
+
                                     </tr>
                                     @endforeach
                                 </table>

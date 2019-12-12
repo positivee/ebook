@@ -22,6 +22,9 @@ class CreateTransactionsTable extends Migration
             $table->bigInteger('offer_id')->unsigned()->index();
             $table->foreign('offer_id')->references('id')->on('offers')->onDelete('cascade');
 
+            $table->bigInteger('book_id')->unsigned()->index();
+            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

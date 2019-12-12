@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
 use App\Dto\Evaluation\CreateEvaluation;
 use App\Dto\Evaluation\CreateEvaluationFactory;
 use App\Dto\Quote\CreateQuoteFactory;
@@ -17,6 +18,7 @@ use App\Model\UserSearchInfo;
 use App\Model\UserSearchOffer;
 use App\Model\UserSearchQuotes;
 use App\Model\UserShowTransactions;
+use App\Offer;
 use App\Quote;
 use App\Transaction;
 use App\User;
@@ -53,15 +55,10 @@ class UserController extends Controller
 
         // zakupione ksiązki
         $transactionFetchInput = TransactionFetchInputFactory::createFromRequest($request, User::findOrFail(Auth::user()->id));
-        $books = new UserShowTransactions();
-        $myBooks = $books->showMyTransactions($transactionFetchInput);
-
-        //tutaj coś jest źle z tym tytułem
-        $bookTitle = new UserShowTransactions();
-        $title = $bookTitle->showBookTitle($transactionFetchInput);
+        $myBooks = new UserShowTransactions();
 
         return view('user.show', compact('user'))->with('userInfo', $userInfo->showUserInfo($userFetchInput))
-            ->with('myQuotes', $myQuotes->showMyQuotes($quoteFetchInput))->with(compact('myBooks', 'title'));
+            ->with('myQuotes', $myQuotes->showMyQuotes($quoteFetchInput))->with('myBooks', $myBooks->showMyTransactions($transactionFetchInput));
     }
 
     public function showAllQuotes() {

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
-    protected $fillable = ['user_id', 'offer_id',];
+    protected $fillable = ['user_id', 'offer_id', 'book_id'];
 
     public function user() {
         return $this->belongsTo('User');
@@ -16,5 +16,9 @@ class Transaction extends Model
 
     public function offer() {
         return $this->belongsTo('Offer');
+    }
+
+    public function book() {
+        return$this->belongsTo('Book');
     }
 }

@@ -15,7 +15,8 @@ class UserShowTransactions
         $selectedTransations = DB::table('transactions')
             ->join('users', 'users.id', '=', 'transactions.user_id')
             ->join('offers', 'offers.id', '=', 'transactions.offer_id')
-            ->select('transactions.user_id', 'transactions.offer_id', 'transactions.created_at')
+            ->join('books', 'books.id', '=', 'transactions.book_id')
+            ->select('transactions.book_id','books.title','transactions.user_id', 'transactions.offer_id', 'transactions.created_at')
             ->where('transactions.user_id', '=', $fetchInput->getUser()->id)
             ->orderBy('transactions.created_at', 'DESC')
             ->get();
@@ -29,13 +30,4 @@ class UserShowTransactions
         return $transactionOutputArray;
     }
 
-    public function showBookTitle(TransactionFetchInput $fetchInput) {
-        $bookTitle = DB::table('offers')
-            ->join('books', 'books.id', '=', 'offers.book_id')
-            ->select('books.title')
-            ->where('books.id', '=', 'offers.book_id')
-            ->get();
-
-        return $bookTitle;
-    }
 }

@@ -36,4 +36,7 @@ class Book extends Model
         return $this->belongsTo('Category');
     }
 
+    public function transaction(){
+        return $this->hasMany('Transaction');
+    }
 }

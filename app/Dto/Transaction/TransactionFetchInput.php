@@ -4,11 +4,16 @@
 namespace App\Dto\Transaction;
 
 
+use App\Book;
 use App\Offer;
 use App\User;
 
 class TransactionFetchInput
 {
+    /**
+     * @var Book
+     */
+    protected $book = null;
     /**
      * @var Offer
      */
@@ -22,15 +27,24 @@ class TransactionFetchInput
 
     /**
      * TransactionFetchInput constructor.
+     * @param Book $book
      * @param Offer $offer
      * @param User $user
      */
-    public function __construct(?Offer $offer = null, ?User $user = null)
+    public function __construct(?Book $book = null, ?Offer $offer = null, ?User $user = null)
     {
+        $this->book = $book;
         $this->offer = $offer;
         $this->user = $user;
     }
 
+    /**
+     * @return Book
+     */
+    public function getBook(): Book
+    {
+        return $this->book;
+    }
     /**
      * @return Offer
      */
