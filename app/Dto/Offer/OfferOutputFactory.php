@@ -17,6 +17,7 @@ class OfferOutputFactory
         return new OfferOutput(
             Bookstore::findOrFail($data['bookstore_id']),
             Book::findOrFail($data['book_id']),
+            $data['book_id'],
             $data['price'],
             DateTime::createFromFormat('Y-m-d', $data['date_from']),
             DateTime::createFromFormat('Y-m-d', $data['date_to']),

@@ -18,68 +18,74 @@ class OfferOutput
     /**
      * @var Bookstore
      */
-    protected $bookstore;
+    public $bookstore;
     /**
      * @var Book
      */
-    protected $book;
+    public $book;
+
+    /**
+     * @var int
+     */
+    public $id;
     /**
      * @var float
      */
-    protected $price;
+    public $price;
     /**
      * @var DateTime
      */
-    protected $date_from;
+    public $date_from;
     /**
      * @var DateTime
      */
-    protected $date_to;
+    public $date_to;
     /**
      * @var string
      */
-    protected $link;
+    public $link;
     /**
      * @var string
      */
-    protected $title;
+    public $title;
     /**
      * @var string
      */
-    protected $year;
+    public $year;
     /**
      * @var string
      */
-    protected $print;
+    public $print;
     /**
      * @var string
      */
-    protected $picture;
+    public $picture;
     /**
      * @var string
      */
-    protected $description;
+    public $description;
     /**
      * @var string
      */
-    protected $author_name;
+    public $author_name;
     /**
      * @var string
      */
-    protected $author_surname;
+    public $author_surname;
     /**
      * @var string
      */
-    protected $isbn_number;
+    public $isbn_number;
     /**
      * @var Category
      */
-    protected $category;
+    public $category;
 
     /**
      * OfferOutput constructor.
      * @param Bookstore $bookstore
      * @param Book $book
+     * @param int $id
      * @param float $price
      * @param DateTime $date_from
      * @param DateTime $date_to
@@ -94,13 +100,14 @@ class OfferOutput
      * @param string $isbn_number
      * @param Category $category
      */
-    public function __construct(Bookstore $bookstore, Book $book, float $price, DateTime $date_from, DateTime $date_to,
+    public function __construct(Bookstore $bookstore, Book $book, int $id ,float $price, DateTime $date_from, DateTime $date_to,
                                 string $link, string $title, string $year, string $print, string $picture,
                                 string $description, string $author_name, string $author_surname, string $isbn_number,
                                 Category $category)
     {
         $this->bookstore = $bookstore;
         $this->book = $book;
+        $this->id = $id;
         $this->price = $price;
         $this->date_from = $date_from;
         $this->date_to = $date_to;

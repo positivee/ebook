@@ -102,7 +102,8 @@
     {{--wyniki wyszukiwania--}}
     <div class="row">
         {{--<div class="col-12">--}}
-        @include('include.book')
+
+       @include('include.book')
         {{--</div>--}}
     </div>
 
