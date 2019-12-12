@@ -13,18 +13,32 @@ class CreateArticleFactory
     static function create(array $data, Bookstore $bookstore): CreateArticle
     {
 
-        $validator = Validator::make($data, [
-            'title' => 'string|required|max:500',
+        $attributes = [
+            'title' => 'tytuł artykułu',
+            'content' => 'treść artykułu',
+            'photo' => 'zdjęcie artykułu',
+        ];
+
+        Validator::make($data, [
+            'title' => 'required|string|max:500',
             'content' => 'required|string|max:5000',
             'photo' => 'required|max:500'
-        ]);
+        ], [], $attributes)->validate();
 
-        if ($validator->fails()) {
+
+
+/*        Validator::make($data, [
+            'title' => 'required|string|max:500',
+            'content' => 'required|string|max:5000',
+            'photo' => 'required|max:500'
+        ])->validate();*/
+
+       /* if ($validator->fails()) {
             //var_export($validator->errors());
             throw new ModelNotFoundException();
 
 
-        }
+        }*/
 
         return new CreateArticle(
             $bookstore,

@@ -10,7 +10,7 @@
             <div class="col-md-6 mb-4">
 
                 <!-- Book author name -->
-                <input type="text" id="book_author_name" class="form-control @error('book_author_name') is-invalid @enderror"  name="book_author_name" placeholder="{{ __('Imię Autora Książki') }}" value="{{ old('book_author_name') }}" required autocomplete="book_author_name" autofocus >
+                <input type="text" id="book_author_name" class="form-control @error('book_author_name') is-invalid @enderror"  name="book_author_name" placeholder="{{ __('Imię Autora Książki') }}" value="{{ old('book_author_name') }}"  autocomplete="book_author_name" autofocus >
                 @error('book_author_name')
                 <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -19,7 +19,7 @@
             </div>
             <div class="col-md-6 mb-4">
                 <!-- Book autor surename -->
-                <input type="text" id="book_author_surname" class="form-control @error('book_author_surname') is-invalid @enderror" placeholder="{{ __('Nazwisko Autora Książki') }}" name="book_author_surname" value="{{ old('book_author_surname') }}" required autocomplete="book_author_surname">
+                <input type="text" id="book_author_surname" class="form-control @error('book_author_surname') is-invalid @enderror" placeholder="{{ __('Nazwisko Autora Książki') }}" name="book_author_surname" value="{{ old('book_author_surname') }}"  autocomplete="book_author_surname">
                 @error('book_author_surname')
                 <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -30,7 +30,7 @@
         <!-- Book titile-->
         <div class="form-group">
 
-            <input type="text" id="book_title" class="form-control mb-4 @error('book_title') is-invalid @enderror" placeholder="{{ __('Tytuł Książki') }}" name="book_title" value="{{ old('book_title') }}" required autocomplete="book_title">
+            <input type="text" id="book_title" class="form-control mb-4 @error('book_title') is-invalid @enderror" placeholder="{{ __('Tytuł Książki') }}" name="book_title" value="{{ old('book_title') }}"  autocomplete="book_title">
             @error('book_title')
             <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -40,7 +40,7 @@
 
         <!-- Opis -->
         <div class="form-group">
-            <textarea type="text" id="content" class="form-control @error('content') is-invalid @enderror" placeholder="{{ __('Treść Cytatu') }}" name="content" value="{{ old('content') }}" required autocomplete="content" row="3"></textarea>
+            <textarea type="text" id="content" class="form-control @error('content') is-invalid @enderror" placeholder="{{ __('Treść Cytatu') }}" name="content" value="{{ old('content') }}"  autocomplete="content" row="3"></textarea>
 
             @error('content')
             <span class="invalid-feedback" role="alert">

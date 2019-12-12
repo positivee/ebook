@@ -41,7 +41,7 @@
 
     <!-- Opis -->
     <div class="form-group">
-        <textarea type="text" id="content" class="form-control @error('content') is-invalid @enderror" placeholder="{{$quote->content }}" name="content"  required autocomplete="content" row="3"></textarea>
+        <textarea type="text" id="content" class="form-control @error('content') is-invalid @enderror" placeholder="{{$quote->content }}" name="content"  required autocomplete="content" row="3">{{$quote->content }}</textarea>
 
         @error('content')
         <span class="invalid-feedback" role="alert">

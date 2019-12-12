@@ -12,12 +12,27 @@ class CreateQuoteFactory
     static function create(array $data, User $user): CreateQuote
     {
 
+        $attributes = [
+            'content' => 'treść cytatu',
+            'book_title' => 'nazwa książki',
+            'book_author_name' => 'imię autora',
+            'book_author_surname' => 'nazwisko autora'
+        ];
+
         $validator = Validator::make($data, [
+            'content' => 'required|string|max:1000',
+            'book_title' => 'required|string|max:200',
+            'book_author_name' => 'required|string|max:100|regex:/^[A-Z]([A-Za-z])+$/',
+            'book_author_surname' => 'required|string|max:100|regex:/^[A-Z]([A-Za-z])+$/'
+        ], [], $attributes)->validate();
+
+
+      /*  $validator = Validator::make($data, [
             'content' => 'required|string|max:1000',
             'book_title' => 'required|string|max:200',
             'book_author_name' => 'required|string|max:100',
             'book_author_surname' => 'required|string|max:100'
-        ]);
+        ]);*/
 
         if ($validator->fails()) {
             //var_export($validator->errors());

@@ -13,13 +13,30 @@ use Illuminate\Support\Facades\Validator;
 class CreateEvaluationFactory
 {
     static function create(array $data, User $user): CreateEvaluation {
+     /*   $validator = Validator::make($data, [
+            'title' => 'string|required|max:500',
+            'content' => 'string|required|max:3000',
+            'evaluation' => 'int|required|min:1|max:5',
+            'book_id' => 'required|int',
+            'user_id' => 'int|required'
+        ]);*/
+
+        $attributes = [
+            'title' => 'tytuł',
+            'content' => 'treść',
+            'evaluation' => 'ocena',
+            'book_id' => 'książka',
+            'user_id' => 'użytkownik'
+        ];
+
         $validator = Validator::make($data, [
             'title' => 'string|required|max:500',
             'content' => 'string|required|max:3000',
             'evaluation' => 'int|required|min:1|max:5',
             'book_id' => 'required|int',
             'user_id' => 'int|required'
-        ]);
+        ], [], $attributes)->validate();
+
 
 
         if ($validator->fails()) {

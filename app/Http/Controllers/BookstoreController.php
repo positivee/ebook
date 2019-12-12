@@ -93,12 +93,16 @@ class BookstoreController extends Controller
 
     public function addOffer() {
         //formularz dodawania oferty
-        return view('bookstore.add_offers');
+        $books = DB::table('books')->get();
+
+        return view('bookstore.add_offers')->with(compact('books', ));
     }
 
     public function addBook() {
         //formularz dodawania książki
-        return view('bookstore.add_books');
+        $categories = DB::table('categories')->get();
+
+        return view('bookstore.add_books')->with(compact('categories', ));
     }
 
 
