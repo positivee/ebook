@@ -151,7 +151,12 @@ class BookstoreController extends Controller
 
         $newArticle = CreateArticleFactory::create($request->all(),Bookstore::findOrFail(Auth::user()->bookstore_id));
         $result = new BookstoreAddArticle();
+
+
+        /*$newArticle->setPhoto($newArticle->getPhoto()->store());*/
+        $newArticle->setPhoto($request->photo->store('article_images','public'));
         $result->add($newArticle);
+        /*dd( $request->photo->store('uploads','public'));*/
 
         return redirect('/welcome')->with('success', 'Dodano nową ofertę!');
 
