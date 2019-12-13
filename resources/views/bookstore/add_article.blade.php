@@ -2,7 +2,7 @@
 @section('content')
 
 
-    <form method="POST" action="{{'/bookstore/a'}}" class="text-center p-5">
+    <form method="POST" action="{{'/bookstore/a'}}" class="text-center p-5" enctype="multipart/form-data">
         @csrf
         <p class="h4 mb-4">Formularz dodawania nowego artykułu</p>
         <!-- Article titile-->
@@ -33,14 +33,17 @@
 
         <!-- Link do zdjeci artykułu -->
         <div class="form-group">
+{{--
             <input type="text" id="photo" class="form-control @error('photo') is-invalid @enderror" placeholder="{{ __('Link do zdjęcia') }}" name="photo" value="{{ old('photo') }}"  autocomplete="photo" >
-
+--}}           <label for="photo">Zdjęci do artyukułu</label>
+            <input type="file" id="photo" name="photo" class="form-control @error('photo') is-invalid @enderror">
             @error('photo')
             <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
             @enderror
         </div>
+
 
 
     <!-- Add quote -->

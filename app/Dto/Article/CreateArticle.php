@@ -74,6 +74,14 @@ class CreateArticle
         return $this->photo;
     }
 
+    /**
+     * @param string $photo
+     */
+    public function setPhoto(string $photo): void
+    {
+        $this->photo = $photo;
+    }
+
 
 
 }

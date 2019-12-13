@@ -22,9 +22,8 @@ class CreateArticleFactory
         Validator::make($data, [
             'title' => 'required|string|max:500',
             'content' => 'required|string|max:5000',
-            'photo' => 'required|max:500'
+            'photo' => 'required|file|image|max:5000'
         ], [], $attributes)->validate();
-
 
 
 /*        Validator::make($data, [

@@ -28,7 +28,7 @@
                      <!-- post -->
                          <div class="col-md-6 ">
                              <div class="post post-thumb">
-                                 <a class="post-img" href="/article/{{ $article->getId() }}"><img class="max-height" src="{{$article->getPhoto()}}?showinfo=0" frameborder="0" alt=""></a>
+                                 <a class="post-img" href="/article/{{ $article->getId() }}"><img class="max-height" src="/storage/{{$article->getPhoto()}}?showinfo=0" frameborder="0" alt=""></a>
                                  <div class="post-body">
                                      <div class="post-meta">
 
