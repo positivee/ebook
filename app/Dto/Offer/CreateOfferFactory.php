@@ -42,12 +42,12 @@ class CreateOfferFactory
         ], [], $attributes)->validate();
 
 
-        if ($validator->fails()) {
+       /* if ($validator->fails()) {
             //var_export($validator->errors());
             throw new ModelNotFoundException();
 
 
-        }
+        }*/
 
         return new CreateOffer(
             $bookstore,

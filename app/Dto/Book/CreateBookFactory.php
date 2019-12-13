@@ -39,7 +39,7 @@ class CreateBookFactory
             'title' => 'string|required|max:200',
             'year' => 'string|required|max:4|min:4',
             'print' => 'string|required|max:100',
-            'picture' => 'required|string|max:500',
+            'picture' => 'required|file|image|max:5000',
             'description' => 'string|required|max:1000',
             'author_name' => 'string|required|max:100',
             'author_surname' => 'string|required|max:100',
@@ -48,10 +48,10 @@ class CreateBookFactory
         ], [], $attributes)->validate();
 
 
-        if ($validator->fails()) {
+        /*if ($validator->fails()) {
            var_export($validator->errors());
             throw new ModelNotFoundException();
-        }
+        }*/
 
         return new CreateBook(
             $data['title'],

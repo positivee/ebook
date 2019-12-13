@@ -18,7 +18,7 @@
             @foreach($offers as $offer)
                 <div class="col-lg-4 col-sm-6 mb-4">
                     <div class="card h-100">
-                        <a href="/offer/{{$offer->getBook()->id}}"><img class="card-img-top d-block mx-auto p-1 image-size" src="{{$offer->getPicture()}}?showinfo=0" frameborder="0" alt="" ></a>
+                        <a href="/offer/{{$offer->getBook()->id}}"><img class="card-img-top d-block mx-auto p-1 image-size" src="{{asset('storage/' .$offer->getPicture())}}?showinfo=0" frameborder="0" alt="" ></a>
 
                         <div class="card-body d-flex flex-column">
 

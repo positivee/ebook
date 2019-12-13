@@ -142,6 +142,15 @@ class CreateBook
         return $this->category;
     }
 
+    /**
+     * @param String $picture
+     */
+    public function setPicture(String $picture): void
+    {
+        $this->picture = $picture;
+    }
+
+
 
 
 }

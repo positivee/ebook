@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-6 row mx-auto justify-content-center align-items-center flex-column border-right">
                 {{--  <div class="row mx-auto justify-content-center align-items-center flex-column ">    col d-flex align-items-center justify-content-center --}}
-                <img  class="img-fluid m-2" src="{{$book->picture}}" >
+                <img  class="img-fluid m-2" src="{{asset('storage/' .$book->picture)}}" >
                 {{--      </div>--}}
             </div>
             <div class="col-md-6">

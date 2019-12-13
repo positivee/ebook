@@ -1,7 +1,7 @@
 @extends('master')
 @section('content')
 
-    <form method="POST" action="{{'/bookstore/b'}}" class="text-center p-5">
+    <form method="POST" action="{{'/bookstore/b'}}" class="text-center p-5" enctype="multipart/form-data">
             @csrf
         <p class="h4 mb-4">Formularz dodawania książki</p>
         <!-- Book titile-->
@@ -72,13 +72,24 @@
 
         <!-- Okładka -->
         <div class="form-group">
-            <input type="text" id="picture" class="form-control @error('picture') is-invalid @enderror" placeholder="{{ __('Okładka') }}" name="picture" value="{{ old('picture') }}"  autocomplete="picture" >
+           {{-- <input type="text" id="picture" class="form-control @error('picture') is-invalid @enderror" placeholder="{{ __('Okładka') }}" name="picture" value="{{ old('picture') }}"  autocomplete="picture" >
 
             @error('picture')
             <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
-            @enderror
+            @enderror--}}
+
+            <div class="custom-file">
+                <input type="file" class="custom-file-input form-control @error('picture') is-invalid @enderror" id="picture" name="picture" lang="pl">
+                <label class="custom-file-label text-left" for="picture" data-browse="Wybierz" >Wybierz zdjęcie do artykułu</label>
+                @error('picture')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+
         </div>
 
         <!-- ID Kategori -->

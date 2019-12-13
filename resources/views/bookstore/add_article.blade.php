@@ -26,8 +26,8 @@
 
             @error('content')
             <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
+                <strong>{{ $message }}</strong>
+            </span>
             @enderror
         </div>
 
@@ -44,11 +44,11 @@
             @enderror--}}
             <div class="custom-file">
                 <input type="file" class="custom-file-input form-control @error('photo') is-invalid @enderror" id="photo" name="photo" lang="pl">
-                <label class="custom-file-label" for="photo" data-browse="Wybierz" >Wybierz zdjęcie do artykułu</label>
+                <label class="custom-file-label text-left" for="photo" data-browse="Wybierz" >Wybierz zdjęcie do artykułu</label>
                 @error('photo')
-                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
                 @enderror
             </div>
         </div>

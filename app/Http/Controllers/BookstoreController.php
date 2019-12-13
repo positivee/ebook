@@ -97,9 +97,10 @@ class BookstoreController extends Controller
 
     public function storeBook(Request $request){
         //metoda do zapisywania nowej książki z fromularza
-
+        /*dd($request->picture);*/
         $newBook = CreateBookFactory::create($request->all());
         $result = new BookstoreAddBook();
+        $newBook->setPicture($request->picture->store('book_images','public'));
         $result->add($newBook);
 
         return redirect('/bookstore/books')->with('success', 'Dodano nową książkę!');

@@ -14,7 +14,7 @@
 
         <div class="blog-post-body">
             <figure class="text-center">
-                <img class="img-fluid" src="/storage/{{$article->photo}}" alt="image">
+                <img class="img-fluid" src="{{asset('storage/' .$article->photo)}}" alt="image">
                 <figcaption class="figure-caption text-center"></figcaption>
             </figure>
 
