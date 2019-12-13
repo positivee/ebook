@@ -15,9 +15,9 @@ class OfferOutputFactory
     static function create(array $data): OfferOutput {
 
         return new OfferOutput(
+            $data['id'],
             Bookstore::findOrFail($data['bookstore_id']),
             Book::findOrFail($data['book_id']),
-            $data['book_id'],
             $data['price'],
             DateTime::createFromFormat('Y-m-d', $data['date_from']),
             DateTime::createFromFormat('Y-m-d', $data['date_to']),
@@ -30,7 +30,6 @@ class OfferOutputFactory
             $data['author_name'],
             $data['author_surname'],
             $data['isbn_number'],
-
             Category::findOrFail($data['category_id'])
         );
 
@@ -38,6 +37,7 @@ class OfferOutputFactory
 
     public static function createFromRow(\stdClass $dbRow) : OfferOutput {
         return static::create([
+                'id' => $dbRow->id,
                 'bookstore_id' => $dbRow->bookstore_id,
                 'book_id' => $dbRow->book_id,
                 'price' => $dbRow->price,

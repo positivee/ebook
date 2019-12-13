@@ -2,7 +2,7 @@
 @section('content')
 
 
-<form method="post" action="{{'/user/quote/update', $quote->id}}" class="text-center p-5">
+<form method="post" action="/user/quote/update/{{$quote->id}}" class="text-center p-5">
     {{ csrf_field() }}
     {{ method_field('patch') }}
 

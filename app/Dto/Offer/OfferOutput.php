@@ -14,7 +14,10 @@ use DateTime;
 
 class OfferOutput
 {
-
+    /**
+     * @var int
+     */
+    public $id;
     /**
      * @var Bookstore
      */
@@ -23,11 +26,6 @@ class OfferOutput
      * @var Book
      */
     public $book;
-
-    /**
-     * @var int
-     */
-    public $id;
     /**
      * @var float
      */
@@ -83,9 +81,9 @@ class OfferOutput
 
     /**
      * OfferOutput constructor.
+     * @param int $id
      * @param Bookstore $bookstore
      * @param Book $book
-     * @param int $id
      * @param float $price
      * @param DateTime $date_from
      * @param DateTime $date_to
@@ -100,14 +98,11 @@ class OfferOutput
      * @param string $isbn_number
      * @param Category $category
      */
-    public function __construct(Bookstore $bookstore, Book $book, int $id ,float $price, DateTime $date_from, DateTime $date_to,
-                                string $link, string $title, string $year, string $print, string $picture,
-                                string $description, string $author_name, string $author_surname, string $isbn_number,
-                                Category $category)
+    public function __construct(int $id, Bookstore $bookstore, Book $book, float $price, DateTime $date_from, DateTime $date_to, string $link, string $title, string $year, string $print, string $picture, string $description, string $author_name, string $author_surname, string $isbn_number, Category $category)
     {
+        $this->id = $id;
         $this->bookstore = $bookstore;
         $this->book = $book;
-        $this->id = $id;
         $this->price = $price;
         $this->date_from = $date_from;
         $this->date_to = $date_to;
@@ -121,6 +116,14 @@ class OfferOutput
         $this->author_surname = $author_surname;
         $this->isbn_number = $isbn_number;
         $this->category = $category;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
     }
 
     /**

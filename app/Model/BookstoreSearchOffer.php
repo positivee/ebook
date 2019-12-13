@@ -18,7 +18,7 @@ class BookstoreSearchOffer
         $allOffersSelect = DB::table('offers')
             ->join('bookstores', 'bookstores.id', '=', 'offers.bookstore_id')
             ->join('books', 'books.id', '=', 'offers.book_id')
-            ->select('books.title', 'books.year', 'books.print', 'books.picture',
+            ->select('offers.id','books.title', 'books.year', 'books.print', 'books.picture',
                 'books.description', 'books.author_name', 'books.author_surname',
                 'books.category_id','offers.bookstore_id', 'offers.book_id', 'offers.price',
                 'offers.date_from', 'offers.date_to', 'offers.link', 'books.isbn_number')

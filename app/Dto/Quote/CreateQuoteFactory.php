@@ -34,12 +34,10 @@ class CreateQuoteFactory
             'book_author_surname' => 'required|string|max:100'
         ]);*/
 
-        if ($validator->fails()) {
+        //if ($validator->fails()) {
             //var_export($validator->errors());
-            throw new ModelNotFoundException();
-
-
-        }
+            //throw new ModelNotFoundException();
+       // }
 
         return new CreateQuote(
             $user,

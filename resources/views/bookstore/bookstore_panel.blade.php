@@ -41,13 +41,13 @@
                                         <td>
 
                                             <div class="btn-group text-center" role="group" aria-label="buttons">
-                                                <a href="#" class="btn btn-primary btn-sm">
+                                                <a href="/article/{{$article->getId()}}" class="btn btn-primary btn-sm">
                                                     <i class="fa fa-search mr-1" aria-hidden="true"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-success btn-sm">
+                                                <a href="/bookstore/article/edit/{{$article->getId()}}" class="btn btn-success btn-sm">
                                                     <i class="fa fa-pencil " aria-hidden="true"></i>
                                                 </a>
-                                                <a href="#" class="btn btn-danger btn-sm">
+                                                <a href="/bookstore/article/delete/{{$article->getId()}}" class="btn btn-danger btn-sm">
                                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                                 </a>
                                             </div>
@@ -56,9 +56,6 @@
 
                                     </tr>
                                     @endforeach
-
-
-                                    </tbody>
                                 </table>
                             </table>
                         </div>

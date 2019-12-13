@@ -2,25 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Book;
-use App\Dto\Evaluation\CreateEvaluation;
 use App\Dto\Evaluation\CreateEvaluationFactory;
 use App\Dto\Quote\CreateQuoteFactory;
-use App\Dto\Offer\OfferFetchInputFactory;
 use App\Dto\Quote\QuoteFetchInputFactory;
 use App\Dto\Transaction\TransactionFetchInputFactory;
 use App\Dto\User\UserFetchInputFactory;
 use App\Model\AddEvaluation;
-use App\Model\BookstoreSearchOffer;
 use App\Model\BookstoreShowArticle;
 use App\Model\UserAddQuote;
 use App\Model\UserSearchInfo;
-use App\Model\UserSearchOffer;
 use App\Model\UserSearchQuotes;
 use App\Model\UserShowTransactions;
-use App\Offer;
 use App\Quote;
-use App\Transaction;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -36,6 +29,12 @@ class UserController extends Controller
 
         $this->middleware('checkUser');
         $this->middleware('auth');
+    }
+
+    public function showNews() {
+        //wyswietlenie artykułów
+        $allArticles = new BookstoreShowArticle();
+        return view('welcome')->with('articles', $allArticles->showAllArticles());
     }
 
     public function show(Request $request) {
@@ -61,23 +60,8 @@ class UserController extends Controller
             ->with('myQuotes', $myQuotes->showMyQuotes($quoteFetchInput))->with('myBooks', $myBooks->showMyTransactions($transactionFetchInput));
     }
 
-    public function showAllQuotes() {
-        //wyswietla wszystkie cytaty
-        $quotes = new UserSearchQuotes();
-        $allQuotes = $quotes->showAllQuotes();
 
-
-        $pagination = DB::table('quotes')
-            ->join('users', 'users.id', '=', 'quotes.user_id')
-            ->select('user_id','quotes.id', 'quotes.content', 'quotes.book_title', 'quotes.book_author_name',
-                'quotes.book_author_surname', 'users.name', 'users.surname')
-            ->orderBy('quotes.created_at', 'DESC')
-            ->paginate(6);
-
-        return view('user.quotes')->with(compact('allQuotes', 'pagination'));
-
-    }
-
+/*-----------------------------------------USER - CRUD-----------------------------------------------------*/
 
     public function updateProfile(Request $request)
     {
@@ -137,15 +121,7 @@ class UserController extends Controller
         return redirect('/user');
     }
 
-    public function contact() {
-        return view('user.contact');
-    }
-
-    public function showNews() {
-        //wyswietlenie artykułów
-        $allArticles = new BookstoreShowArticle();
-        return view('welcome')->with('articles', $allArticles->showAllArticles());
-    }
+    /*------------------------------OCENY - Dodawanie--------------------------------------------------------*/
 
     public function addEvaluation(Request $request) {
         ///metoda zapisywania nowej recenzji z formularza
@@ -157,10 +133,32 @@ class UserController extends Controller
 
     }
 
+/*--------------------------------- CYTATY - CRUD-----------------------------------------------------*/
+
+
+
+    public function showAllQuotes() {
+        //wyswietla wszystkie cytaty
+        $quotes = new UserSearchQuotes();
+        $allQuotes = $quotes->showAllQuotes();
+
+
+        $pagination = DB::table('quotes')
+            ->join('users', 'users.id', '=', 'quotes.user_id')
+            ->select('user_id','quotes.id', 'quotes.content', 'quotes.book_title', 'quotes.book_author_name',
+                'quotes.book_author_surname', 'users.name', 'users.surname')
+            ->orderBy('quotes.created_at', 'DESC')
+            ->paginate(6);
+
+        return view('user.quotes')->with(compact('allQuotes', 'pagination'));
+
+    }
+
     public function addQuote() {
         //formularz dodawania cytatu
         return view('user.add_quote');
     }
+
 
     public function storeQuote(Request $request){
         //metoda do zapisywania nowego cytatu z formularza
@@ -193,13 +191,14 @@ class UserController extends Controller
             'book_author_name' => $request->book_author_name,
             'book_author_surname' => $request->book_author_surname,
             'book_title' => $request->book_title,
-            //'content' => $request->content, //krzyczy błąd
+            'content' => $request->content, //nie wiem czemu podkreśla, działa prawidłowo
+
         ]);
 
         //zapis do bazy
         $quote->save();
 
-        return redirect('/user');
+        return redirect('/user/quotes');
     }
 
 

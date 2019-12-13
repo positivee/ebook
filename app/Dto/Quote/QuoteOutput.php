@@ -9,7 +9,7 @@ use App\User;
 class QuoteOutput {
 
     /**
-     * @var $id
+     * @var int
      */
     protected $id;
     /**

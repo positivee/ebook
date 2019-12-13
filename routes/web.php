@@ -81,7 +81,18 @@ Route::get('/bookstore/books', 'BookstoreController@showBooks');
 
 //widok dodanych ofert dla danej ksiegarni
 Route::get('/bookstore/offers', 'BookstoreController@showOffers');
-
 Route::get('/bookstore/book/{id}', 'BookstoreController@showDetailOfBook');
 
+//usuwanie oferty
+Route::get('/bookstore/offer/delete/{id}', 'BookstoreController@deleteOffer');
 
+//usuwanie artykulu
+Route::get('/bookstore/article/delete/{id}', 'BookstoreController@deleteArticle');
+
+//edycja oferty
+Route::get('/bookstore/offer/edit/{id}', 'UserController@editOffer');
+Route::patch('/bookstore/offer/update/{id}', 'UserController@updateOffer');
+
+//edycja artykułu
+Route::get('/bookstore/article/edit/{id}', 'UserController@editArticle');
+Route::patch('/bookstore/article/update/{id}', 'UserController@updateArticle');
