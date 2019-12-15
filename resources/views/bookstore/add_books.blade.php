@@ -82,7 +82,7 @@
 
             <div class="custom-file">
                 <input type="file" class="custom-file-input form-control @error('picture') is-invalid @enderror" id="picture" name="picture" lang="pl">
-                <label class="custom-file-label text-left" for="picture" data-browse="Wybierz" >Wybierz zdjęcie do artykułu</label>
+                <label class="custom-file-label text-left" for="picture" data-browse="Wybierz" >Wybierz zdjęcie na okładkę książki</label>
                 @error('picture')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
