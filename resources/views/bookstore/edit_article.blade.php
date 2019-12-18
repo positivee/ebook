@@ -1,8 +1,7 @@
 @extends('master')
 @section('content')
 
-
-    <form method="post" action="/bookstore/article/update/{{$article->getId()}}" class="text-center p-5">
+    <form method="post" action="/bookstore/article/update/{{$article->id}}" class="text-center p-5">
         {{ csrf_field() }}
         {{ method_field('patch') }}
 
@@ -12,7 +11,7 @@
 
         <div class="form-group">
 
-            <input type="text" id="title" class="form-control mb-3 @error('title') is-invalid @enderror" placeholder="{{ __('Tytuł artykułu') }}" name="title" value="{{ $article->getBookTitle() }}"  autocomplete="title" autofocus>
+            <input type="text" id="title" class="form-control mb-3 @error('title') is-invalid @enderror" placeholder="{{ __('Tytuł artykułu') }}" name="title" value="{{ $article->title}}"  autocomplete="title" autofocus>
             @error('title')
             <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -24,7 +23,7 @@
 
         <!-- Article description -->
         <div class="form-group">
-            <textarea type="text" id="content" class="form-control @error('content') is-invalid @enderror" placeholder="{{ __('Treść') }}" name="content"  autocomplete="content" rows="4" {{$article->getContent()}} ></textarea>
+            <textarea type="text" id="content" class="form-control @error('content') is-invalid @enderror" placeholder="{{ __('Treść') }}" name="content"  autocomplete="content" rows="4"> {{$article->content}} ></textarea>
 
 
             @error('content')
@@ -38,13 +37,22 @@
         <div class="form-group">
             {{--
                         <input type="text" id="photo" class="form-control @error('photo') is-invalid @enderror" placeholder="{{ __('Link do zdjęcia') }}" name="photo" value="{{ old('photo') }}"  autocomplete="photo" >
-            --}}           <label for="photo">Zdjęci do artyukułu</label>
+            --}}          {{-- <label for="photo">Zdjęci do artyukułu</label>
             <input type="file" id="photo" name="photo" class="form-control @error('photo') is-invalid @enderror">
             @error('photo')
             <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
-            @enderror
+            @enderror--}}
+            <div class="custom-file">
+                <input type="file" class="custom-file-input form-control @error('photo') is-invalid @enderror" id="photo" name="photo" lang="pl">
+                <label class="custom-file-label text-left" for="photo" data-browse="Wybierz" >Wybierz zdjęcie do artykułu</label>
+                @error('photo')
+                <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
         </div>
 
 
@@ -58,8 +66,6 @@
 
 
     </form>
-
-
 
 
 

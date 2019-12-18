@@ -25,7 +25,6 @@ class CreateOffersTable extends Migration
 
             $table->bigInteger('book_id')->unsigned()->index();
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
-
             $table->timestamps();
         });
     }

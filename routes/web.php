@@ -90,9 +90,9 @@ Route::get('/bookstore/offer/delete/{id}', 'BookstoreController@deleteOffer');
 Route::get('/bookstore/article/delete/{id}', 'BookstoreController@deleteArticle');
 
 //edycja oferty
-Route::get('/bookstore/offer/edit/{id}', 'UserController@editOffer');
-Route::patch('/bookstore/offer/update/{id}', 'UserController@updateOffer');
+Route::get('/bookstore/offer/edit/{id}', 'BookstoreController@editOffer');
+Route::patch('/bookstore/offer/update/{id}', 'BookstoreController@updateOffer');
 
 //edycja artykułu
-Route::get('/bookstore/article/edit/{id}', 'UserController@editArticle');
-Route::patch('/bookstore/article/update/{id}', 'UserController@updateArticle');
+Route::get('/bookstore/article/edit/{id}', 'BookstoreController@editArticle');
+Route::patch('/bookstore/article/update/{id}', 'BookstoreController@updateArticle');

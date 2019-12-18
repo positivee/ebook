@@ -137,8 +137,9 @@ class BookstoreController extends Controller
     }
 
     public function editOffer($id) {
+        $books = DB::table('books')->get();
         $offer = Offer::findOrFail($id);
-        return view('bookstore.edit_offer')->with('offer', $offer);
+        return view('bookstore.edit_offer')->with(compact('offer', 'books'));
     }
 
     public function updateOffer($id, Request $request) {
@@ -186,7 +187,6 @@ class BookstoreController extends Controller
         /*$newArticle->setPhoto($newArticle->getPhoto()->store());*/
         $newArticle->setPhoto($request->photo->store('article_images','public'));
         $result->add($newArticle);
-        /*dd( $request->photo->store('uploads','public'));*/
 
         return redirect('/welcome')->with('success', 'Dodano nowy artykuł!');
     }
@@ -203,12 +203,12 @@ class BookstoreController extends Controller
         $article->fill([
             'title' => $request->title,
             'content' => $request->content, //to samo co w UserController, może chodzi o nazwe zmiennej?
-            'photo' => $request->photo,
+            'photo' => $request->photo
         ]);
 
         $article->save();
 
-        return redirect('bookstore')->with('success', 'Zaktualizowao wybrany artykuł');
+        return redirect('/bookstore')->with('success', 'Zaktualizowao wybrany artykuł');
     }
 
     public function deleteArticle($id) {
