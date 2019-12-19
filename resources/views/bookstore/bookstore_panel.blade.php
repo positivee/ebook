@@ -113,8 +113,9 @@
 
 
                                         <div class="form-group row">
-                                            <div class="offset-4 col-8">
+                                          <div class="offset-4 col-8">
                                                 <button name="submit" type="submit" class="btn btn-primary">Zaktualizuj profil</button>
+                                                <a href="#" class=" fa fa-trash  btn  btn-danger"> Usuń konto</a>
                                             </div>
                                         </div>
                                     </form>

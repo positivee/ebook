@@ -220,7 +220,14 @@ class BookstoreController extends Controller
     public function updateArticle($id, Request $request) {
         $article = Article::findOrFail($id);
 
-       $article->photo=$request->photo->store('article_images','public');
+/*        dd($request->all());*/
+       /* if($request->photo.startsWith('article_images')   startsWith('article_images')) $article->photo=$request->photo->store('article_images','public');*/
+        $article->fill([
+            'title' => $request->title,
+            'content' => $request->content,
+        ]);
+        if($request->photo != null) { $article->photo = ($request->photo->store('article_images','public'));}
+
 
         $attributes = [
             'title' => 'tytuł artykułu',
@@ -234,6 +241,7 @@ class BookstoreController extends Controller
             'photo' => 'nullable|file|image|max:5000'
         ], [], $attributes)->validate();
 
+/*        dd($article);*/
         $article->save();
 
         return redirect('/bookstore')->with('success', 'Zaktualizowao wybrany artykuł');
