@@ -15,13 +15,17 @@
                 <h3 class="title mb-1">{{$offer->title}}</h3>
 
                     <div class="text-warning">
-                        @for ($i = 0; $i < 5; $i++)
-                            @if($i<=(round(DB::table('evaluations')->where('book_id', $offer->book_id)->avg('evaluation'),0)))
-                                <i class="fa fa-star"></i>
-                            @else
-                                <i class="fa fa-star-o"></i>
-                            @endif
-                        @endfor
+                        @if(count(DB::table('evaluations')->where('book_id',$offer->id)->get()) == null)
+                            Brak ocen
+                        @else
+                            @for ($i = 0; $i < 5; $i++)
+                                @if($i<=(round(DB::table('evaluations')->where('book_id', $offer->id)->avg('evaluation'),0)))
+                                    <i class="fa fa-star"></i>
+                                @else
+                                    <i class="fa fa-star-o"></i>
+                                @endif
+                            @endfor
+                        @endif
                     </div>
 
                     <hr>
