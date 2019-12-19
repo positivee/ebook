@@ -38,7 +38,7 @@ class UserSearchQuotes
             ->orderBy('created_at', 'DESC');
 
         if($fetchInput->getUser()) {
-            $myQuotes->where('quotes.user_id', '=' , $fetchInput->getUser()->id);
+            $myQuotes->where('quotes.user_id', '=' , $fetchInput->getUser()->id)->paginate(8);
         }
 
         $quoteOutputArray = [];

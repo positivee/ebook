@@ -32,9 +32,9 @@
                 <blockquote class="quote-card shadow my-3 ">
                     <cite class="col-9 text-justify">
                         {{$quote->getContent()}}
+                        <hr>
                     </cite>
                     <p>
-                       <hr>
                     „ {{$quote->getBookTitle()}} ” - {{$quote->getBookAuthorName() ." ".$quote->getBookAuthorSurname()}}
                     </p>
                 </blockquote>

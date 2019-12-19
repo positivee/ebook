@@ -52,11 +52,20 @@ class UserController extends Controller
         $quoteFetchInput = QuoteFetchInputFactory::createFromRequest($request, User::findOrFail(Auth::user()->id));
         $myQuotes = new UserSearchQuotes();
 
+        $pagination = DB::table('quotes')
+            ->select( 'user_id','id','content', 'book_title', 'book_author_name',
+                'book_author_surname')
+            ->orderBy('created_at', 'DESC')
+            ->where('quotes.user_id', '=' , $quoteFetchInput->getUser()->id)
+            ->paginate(8);
+
+
         // zakupione ksiązki
         $transactionFetchInput = TransactionFetchInputFactory::createFromRequest($request, User::findOrFail(Auth::user()->id));
         $myBooks = new UserShowTransactions();
 
-        return view('user.show', compact('user'))->with('userInfo', $userInfo->showUserInfo($userFetchInput))
+
+        return view('user.show', compact('user','pagination'))->with('userInfo', $userInfo->showUserInfo($userFetchInput))
             ->with('myQuotes', $myQuotes->showMyQuotes($quoteFetchInput))->with('myBooks', $myBooks->showMyTransactions($transactionFetchInput));
     }
 

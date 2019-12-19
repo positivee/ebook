@@ -110,6 +110,13 @@
 
                           </blockquote>
                       @endforeach
+                         <div class="d-flex my-5">
+                             <div class="mx-auto">
+                                 {{$pagination->links()}}
+                             </div>
+                         </div>
+
+
                 </div>
                 <div class="tab-pane fade" id="list-password" role="tabpanel" aria-labelledby="list-password-list">
                     <div class="card">

@@ -116,7 +116,27 @@ class BookstoreController extends Controller
         $allOffers = new BookstoreSearchOffer();
         $offers = $allOffers->showBookstoreOffer($offerFetchInput);
 
-        return view('bookstore.offers')->with('offers', $offers);
+
+     /*   $pag= DB::table('articles')
+            ->join('bookstores', 'bookstores.id', '=', 'articles.bookstore_id')
+            ->select('articles.id','bookstore_id','articles.title', 'articles.content', 'articles.photo',
+                'articles.created_at', 'bookstores.name')
+            ->orderBy('created_at', 'DESC')
+            ->paginate(5);*/
+        $pagination =  DB::table('offers')
+            ->join('bookstores', 'bookstores.id', '=', 'offers.bookstore_id')
+            ->join('books', 'books.id', '=', 'offers.book_id')
+            ->select('offers.id','books.title', 'books.year', 'books.print', 'books.picture',
+                'books.description', 'books.author_name', 'books.author_surname',
+                'books.category_id','offers.bookstore_id', 'offers.book_id', 'offers.price',
+                'offers.date_from', 'offers.date_to', 'offers.link', 'books.isbn_number')
+            ->where('offers.bookstore_id', '=' , $offerFetchInput->getBookstore()->id)
+            ->orderBy('offers.date_to', 'ASC')
+            ->paginate(9);
+
+
+
+        return view('bookstore.offers')->with(compact('offers', 'pagination'));
     }
 
     public function addOffer() {

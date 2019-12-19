@@ -46,7 +46,7 @@ class HomeController extends Controller
             ->select('articles.id','bookstore_id','articles.title', 'articles.content', 'articles.photo',
                 'articles.created_at', 'bookstores.name')
             ->orderBy('created_at', 'DESC')
-            ->paginate(5);
+            ->paginate(9);
 
         return view('welcome')->with(compact('articlese', 'allArticlesTwo'));
 
@@ -96,6 +96,9 @@ class HomeController extends Controller
         $allOffers = new BookstoreSearchOffer();
         $offers = $allOffers->showAllOffer();
         /*  return view('search')->with('offers', $allOffers->showAllOffer());*/
+
+
+
         return view('search')->with(compact('offers', 'categories'));
 
     }
@@ -107,7 +110,6 @@ class HomeController extends Controller
 
         $offers = Book::search($request->name)->get();
         $categories = DB::table('categories')->get();
-
         //$offerFetchInput = OfferFetchInputFactory::createFromRequest($book, null);
         //$allOffers = new UserSearchOffer();
         //$offers = $allOffers->searchOffer($offerFetchInput);
@@ -127,6 +129,9 @@ class HomeController extends Controller
 
         $categories = DB::table('categories')->get();
         $offers = $allOffers->searchOffer($offerFetchInput);
+
+
+
         return view('search')->with(compact('offers', 'categories'));
 
 

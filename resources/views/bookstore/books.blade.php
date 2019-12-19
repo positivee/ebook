@@ -24,7 +24,7 @@
                             <div class="card-body d-flex flex-column">
 
                                 <h4 class="card-title">
-                                    <a href="#">{{ $book->getTitle() }}</a>
+                                    <a href="/bookstore/book/{{$book->getId()}}">{{ $book->getTitle() }}</a>
                                 </h4>
                                 <dl>
                                     <dt>ID Książki:</dt>

@@ -24,7 +24,7 @@ class BookstoreSearchOffer
                 'offers.date_from', 'offers.date_to', 'offers.link', 'books.isbn_number')
             ->where('offers.bookstore_id', '=' , $fetchInput->getBookstore()->id)
             ->orderBy('offers.date_to', 'ASC')
-            ->get();
+            ->paginate(9)/*get()*/;
 
         $offerOutputArray = [];
 
@@ -48,7 +48,7 @@ class BookstoreSearchOffer
                 'books.category_id','offers.bookstore_id', 'offers.book_id', 'offers.price',
                 'offers.date_from', 'offers.date_to', 'offers.link', 'books.isbn_number')
             ->orderBy('books.title', 'ASC')
-            ->get()->unique('title', true);
+            ->paginate(6);
 
 
 
