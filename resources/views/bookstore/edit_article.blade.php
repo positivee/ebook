@@ -1,7 +1,7 @@
 @extends('master')
 @section('content')
 
-    <form method="post" action="/bookstore/article/update/{{$article->id}}" class="text-center p-5">
+    <form method="POST" action="/bookstore/article/update/{{$article->id}}" class="text-center p-5" enctype="multipart/form-data">
         {{ csrf_field() }}
         {{ method_field('patch') }}
 
@@ -44,6 +44,10 @@
                                                     <strong>{{ $message }}</strong>
                                                 </span>
             @enderror--}}
+
+            <img  class="img-fluid m-2" id="photo-change" src="{{asset('storage/' .$article->photo)}}" >
+            {{--<img  class="img-fluid m-2" id="photo-change" src="" >--}}
+
             <div class="custom-file">
                 <input type="file" class="custom-file-input form-control @error('photo') is-invalid @enderror" id="photo" name="photo" lang="pl">
                 <label class="custom-file-label text-left" for="photo" data-browse="Wybierz" >Wybierz zdjęcie do artykułu</label>
@@ -52,6 +56,7 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
+
             </div>
         </div>
 
@@ -66,7 +71,6 @@
 
 
     </form>
-
 
 
 @stop
