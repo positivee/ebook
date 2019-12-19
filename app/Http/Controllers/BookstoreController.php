@@ -200,7 +200,7 @@ class BookstoreController extends Controller
 
     public function storeArticle(Request $request){
         //metoda zapisu nowego artykułu
-
+        /*dd($request->photo);*/
         $newArticle = CreateArticleFactory::create($request->all(),Bookstore::findOrFail(Auth::user()->bookstore_id));
         $result = new BookstoreAddArticle();
 
@@ -220,11 +220,19 @@ class BookstoreController extends Controller
     public function updateArticle($id, Request $request) {
         $article = Article::findOrFail($id);
 
-        $article->fill([
-            'title' => $request->title,
-            'content' => $request->content, //to samo co w UserController, może chodzi o nazwe zmiennej?
-            'photo' => $request->photo
-        ]);
+       $article->photo=$request->photo->store('article_images','public');
+
+        $attributes = [
+            'title' => 'tytuł artykułu',
+            'content' => 'treść artykułu',
+            'photo' => 'zdjęcie artykułu',
+        ];
+
+        Validator::make($request->all(), [
+            'title' => 'required|string|max:500',
+            'content' => 'required|string|max:5000',
+            'photo' => 'nullable|file|image|max:5000'
+        ], [], $attributes)->validate();
 
         $article->save();
 
