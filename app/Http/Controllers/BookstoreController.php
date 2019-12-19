@@ -174,6 +174,22 @@ class BookstoreController extends Controller
             'link' => $request->link,
         ]);
 
+        $attributes = [
+            'book_id' => 'książka',
+            'price' => 'cena',
+            'date_from' => 'data dodania',
+            'date_to' => 'data wygaśnięcia',
+            'link' => 'link'
+        ];
+
+        $validator = Validator::make($request->all(), [
+            'book_id' => 'int|required',
+            'price' => 'required|numeric',
+            'date_from' => 'required|date',
+            'date_to' => 'required|date|after:date_from',
+            'link' => 'string|required|max:400'
+        ], [], $attributes)->validate();
+
         //zapis do bazy
         $offer->save();
 
