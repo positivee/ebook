@@ -14,8 +14,11 @@ use App\Model\BookstoreShowArticle;
 use App\Model\ShowEvaluation;
 use App\Model\UserSearchOffer;
 use App\Offer;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
@@ -136,6 +139,10 @@ class HomeController extends Controller
 
 
     }
+
+
+
+
 
 
 

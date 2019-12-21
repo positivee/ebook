@@ -12,8 +12,6 @@
 */
 
 
-
-//widoki bez logowania:
 use Illuminate\Http\Request;
 
 Route::get('/home', 'HomeController@index');
@@ -42,6 +40,8 @@ Route::get('/user', 'UserController@show');
 Route::patch('/user/updateProfile','UserController@updateProfile');
 Route::patch('/user/updatePassword','UserController@updatePassword');
 
+//usuwanie konta
+Route::get('/user/delete/account/{id}', 'UserController@deleteProfile');
 
 
 Route::post('/user/evaluation', 'UserController@addEvaluation');
@@ -96,3 +96,6 @@ Route::patch('/bookstore/offer/update/{id}', 'BookstoreController@updateOffer');
 //edycja artykułu
 Route::get('/bookstore/article/edit/{id}', 'BookstoreController@editArticle');
 Route::patch('/bookstore/article/update/{id}', 'BookstoreController@updateArticle');
+
+//usuwanie konta
+Route::get('/bookstore/delete/account/{id}', 'BookstoreController@deleteProfile');

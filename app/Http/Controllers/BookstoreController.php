@@ -276,9 +276,16 @@ class BookstoreController extends Controller
     /*--------------------------------USER - CRUD ----------------------------------------*/
 
     public function deleteProfile($id) {
-        //jak zrobisz gdzieś przycisk to zrobie
-    }
+        //usuwanie profilu zalogowanego pracownika
+        $user = User::findOrFail($id);
+        Auth::logout();
 
+        if ($user->delete()) {
+
+            return redirect('/welcome')->with('success', 'Usunięto konto!');
+        }
+
+    }
 
     public function updateProfile(Request $request)
     {

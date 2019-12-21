@@ -13,6 +13,7 @@ use App\Model\UserAddQuote;
 use App\Model\UserSearchInfo;
 use App\Model\UserSearchQuotes;
 use App\Model\UserShowTransactions;
+use App\Offer;
 use App\Quote;
 use App\User;
 use Illuminate\Http\Request;
@@ -71,6 +72,18 @@ class UserController extends Controller
 
 
 /*-----------------------------------------USER - CRUD-----------------------------------------------------*/
+
+    public function deleteProfile($id) {
+        //usuwanie profilu zalogowanego pracownika
+        $user = User::findOrFail($id);
+        Auth::logout();
+
+        if ($user->delete()) {
+
+            return redirect('/welcome')->with('success', 'Usunięto konto!');
+        }
+
+    }
 
     public function updateProfile(Request $request)
     {
@@ -138,7 +151,7 @@ class UserController extends Controller
         $result = new AddEvaluation();
         $result->add($newEvaluation);
 
-        return redirect('/welcome')->with('success', 'dodano nową opinie');
+        return redirect('/search')->with('success', 'Dodano nową opinię');
 
     }
 
