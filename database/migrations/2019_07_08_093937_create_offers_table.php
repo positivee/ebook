@@ -19,6 +19,7 @@ class CreateOffersTable extends Migration
             $table->date('date_from');
             $table->date('date_to');
             $table->string('link', '400');
+            $table->string('file', '400');
 
             $table->bigInteger('bookstore_id')->unsigned()->index();
             $table->foreign('bookstore_id')->references('id')->on('bookstores')->onDelete('cascade');

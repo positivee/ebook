@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Offer extends Model
 {
-    protected $fillable = ['price', 'date_from', 'date_to', 'link', 'bookstore_id', 'book_id'];
+    protected $fillable = ['price', 'date_from', 'date_to', 'link', 'file', 'bookstore_id', 'book_id'];
 
     public function book() {
         return $this->belongsTo('Book');

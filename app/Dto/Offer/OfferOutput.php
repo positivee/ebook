@@ -45,6 +45,10 @@ class OfferOutput
     /**
      * @var string
      */
+    public $file;
+    /**
+     * @var string
+     */
     public $title;
     /**
      * @var string
@@ -88,6 +92,7 @@ class OfferOutput
      * @param DateTime $date_from
      * @param DateTime $date_to
      * @param string $link
+     * @param string $file
      * @param string $title
      * @param string $year
      * @param string $print
@@ -98,7 +103,7 @@ class OfferOutput
      * @param string $isbn_number
      * @param Category $category
      */
-    public function __construct(int $id, Bookstore $bookstore, Book $book, float $price, DateTime $date_from, DateTime $date_to, string $link, string $title, string $year, string $print, string $picture, string $description, string $author_name, string $author_surname, string $isbn_number, Category $category)
+    public function __construct(int $id, Bookstore $bookstore, Book $book, float $price, DateTime $date_from, DateTime $date_to, string $link, string $file, string $title, string $year, string $print, string $picture, string $description, string $author_name, string $author_surname, string $isbn_number, Category $category)
     {
         $this->id = $id;
         $this->bookstore = $bookstore;
@@ -107,6 +112,7 @@ class OfferOutput
         $this->date_from = $date_from;
         $this->date_to = $date_to;
         $this->link = $link;
+        $this->file = $file;
         $this->title = $title;
         $this->year = $year;
         $this->print = $print;
@@ -172,6 +178,14 @@ class OfferOutput
     public function getLink(): string
     {
         return $this->link;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFile(): string
+    {
+        return $this->file;
     }
 
     /**

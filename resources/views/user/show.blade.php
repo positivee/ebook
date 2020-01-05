@@ -36,7 +36,7 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{Str::limit($b->getDate(),10,$end = '')}}</td>
                                         <td>{{$b->getBook()->title}}</td>
-                                        <td><a href={{$b->getOffer()->link}}>Pobierz</a></td>
+                                        <td><a href={{$b->getOffer()->file}}>Pobierz</a></td>
 
                                     </tr>
                                     @endforeach
