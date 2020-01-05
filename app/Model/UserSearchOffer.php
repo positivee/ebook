@@ -20,7 +20,7 @@ class UserSearchOffer
             ->select('books.title','books.id', 'books.year', 'books.print', 'books.picture',
                 'books.description', 'books.author_name', 'books.author_surname',
                 'books.category_id','offers.bookstore_id', 'offers.book_id', 'offers.price',
-                'offers.date_from', 'offers.date_to', 'offers.link', 'books.isbn_number')
+                'offers.date_from', 'offers.date_to', 'offers.link', 'offers.file', 'books.isbn_number')
             ->orderBy('books.title', 'ASC');
 
        if ($fetchInput->getTitle() !== '') {

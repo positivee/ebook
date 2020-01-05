@@ -218,7 +218,7 @@
                     <div class="form-group row">
                         <label for="content" class="col-4 col-form-label">{{ __('Recenzja') }}</label>
                         <div class="col-8">
-                            <textarea id="content" name="content" value="{{ old('content') }}" class="form-control @error('content') is-invalid @enderror"  type="text" required autocomplete="content" rows="6"></textarea>
+                            <textarea id="content" name="content" class="form-control @error('content') is-invalid @enderror"  type="text" required autocomplete="content" rows="6"></textarea>
 
                         </div>
                     </div>

@@ -21,7 +21,7 @@ class BookstoreSearchOffer
             ->select('offers.id','books.title', 'books.year', 'books.print', 'books.picture',
                 'books.description', 'books.author_name', 'books.author_surname',
                 'books.category_id','offers.bookstore_id', 'offers.book_id', 'offers.price',
-                'offers.date_from', 'offers.date_to', 'offers.link', 'books.isbn_number')
+                'offers.date_from', 'offers.date_to', 'offers.link','offers.file', 'books.isbn_number')
             ->where('offers.bookstore_id', '=' , $fetchInput->getBookstore()->id)
             ->orderBy('offers.date_to', 'ASC')
             ->paginate(9)/*get()*/;
@@ -69,7 +69,7 @@ class BookstoreSearchOffer
             ->select('books.id','books.title', 'books.year', 'books.print', 'books.picture',
                 'books.description', 'books.author_name', 'books.author_surname',
                 'books.category_id','offers.bookstore_id', 'offers.book_id', 'offers.price',
-                'offers.date_from', 'offers.date_to', 'offers.link', 'books.isbn_number')
+                'offers.date_from', 'offers.date_to', 'offers.link', 'offers.file', 'books.isbn_number')
             ->where('books.id', '=', $id)
             ->orderBy('books.title', 'ASC');
 
