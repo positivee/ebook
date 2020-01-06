@@ -18,7 +18,7 @@
                                 Brak ocen
                             @else
                                     @for ($i = 0; $i < 5; $i++)
-                                        @if($i<=(round(DB::table('evaluations')->where('book_id', $offer->id)->avg('evaluation'),0)))
+                                        @if($i<(round(DB::table('evaluations')->where('book_id', $offer->id)->avg('evaluation'),0)))
                                             <i class="fa fa-star"></i>
                                         @else
                                             <i class="fa fa-star-o"></i>
