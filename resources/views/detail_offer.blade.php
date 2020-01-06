@@ -189,7 +189,7 @@
 
         <div class="row">
             <div class="col collapse"  id="collapseReview">
-                <form method="POST" action="{{'/user/evaluation'}}" >
+                <form method="POST" action="{{ route('add_evaluation', ['book_id' => $offer->id]) }}" >
                 @csrf
                     <div class="form-group row ">
                         <label for="evaluation" class="col-4 col-form-label">{{ __('Ocena Książki') }}</label>
@@ -222,6 +222,9 @@
 
                         </div>
                     </div>
+                    {{$offer->id}}
+
+
 
                     <div class="form-group row mb-2">
                         <div class="offset-4 col-8">
@@ -229,6 +232,8 @@
                         </div>
                     </div>
                     <hr>
+
+
                 </form>
             </div>
         </div>

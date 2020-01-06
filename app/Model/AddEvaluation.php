@@ -16,7 +16,7 @@ class AddEvaluation
         $evaluation->title = $createEvaluation->getTitle();
         $evaluation->content = $createEvaluation->getContent();
         $evaluation->evaluation = $createEvaluation->getEvaluation();
-        $evaluation->book_id = $createEvaluation->getBook()->id;
+        $evaluation->book_id = $createEvaluation->getBookId();
         $evaluation->user_id = $createEvaluation->getUser()->id;
 
         $evaluation->save();

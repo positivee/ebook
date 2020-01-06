@@ -23,9 +23,9 @@ class CreateEvaluation
      */
     protected $evaluation;
     /**
-     * @var Book
+     * @var int
      */
-    protected $book;
+    protected $book_id;
     /**
      * @var User
      */
@@ -33,19 +33,21 @@ class CreateEvaluation
 
     /**
      * CreateEvaluation constructor.
+     * @param User $user
      * @param String $title
      * @param String $content
      * @param int $evaluation
-     * @param Book $book
-     * @param User $user
+     * @param int $book_id
+     *
      */
-    public function __construct(String $title, String $content, int $evaluation, Book $book, User $user)
+    public function __construct(User $user,String $title, String $content, int $evaluation, int $book_id )
     {
+        $this->user = $user;
         $this->title = $title;
         $this->content = $content;
         $this->evaluation = $evaluation;
-        $this->book = $book;
-        $this->user = $user;
+        $this->book_id = $book_id;
+
     }
 
     /**
@@ -73,11 +75,11 @@ class CreateEvaluation
     }
 
     /**
-     * @return Book
+     * @return int
      */
-    public function getBook(): Book
+    public function getBookId(): int
     {
-        return $this->book;
+        return $this->book_id;
     }
 
     /**

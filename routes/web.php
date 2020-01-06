@@ -44,7 +44,7 @@ Route::patch('/user/updatePassword','UserController@updatePassword');
 Route::get('/user/delete/account/{id}', 'UserController@deleteProfile');
 
 
-Route::post('/user/evaluation', 'UserController@addEvaluation');
+Route::post('/user/evaluation', 'UserController@addEvaluation')->name('add_evaluation');
 
 //cytaty obsługa
 Route::get('/user/welcome', 'UserController@showNews');
