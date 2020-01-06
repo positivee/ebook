@@ -16,15 +16,6 @@ class CreateOfferFactory
 {
     static function create(array $data, Bookstore $bookstore): CreateOffer
     {
-
-     /*   $validator = Validator::make($data, [
-            'book_id' => 'int|required',
-            'price' => 'required|numeric',
-            'date_from' => 'required|date',
-            'date_to' => 'required|date|after:date_from',
-            'link' => 'string|required|max:400'
-        ]);*/
-
         $attributes = [
             'book_id' => 'książka',
             'price' => 'cena',
@@ -41,13 +32,6 @@ class CreateOfferFactory
             'link' => 'string|required|max:400'
         ], [], $attributes)->validate();
 
-
-       /* if ($validator->fails()) {
-            //var_export($validator->errors());
-            throw new ModelNotFoundException();
-
-
-        }*/
 
         return new CreateOffer(
             $bookstore,

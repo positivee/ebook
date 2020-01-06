@@ -22,22 +22,10 @@ class CreateQuoteFactory
         $validator = Validator::make($data, [
             'content' => 'required|string|max:1000',
             'book_title' => 'required|string|max:200',
-            'book_author_name' => 'required|string|max:100|regex:/^[A-Z]([A-Za-z])+$/',
-            'book_author_surname' => 'required|string|max:100|regex:/^[A-Z]([A-Za-z])+$/'
+            'book_author_name' => 'required|string|max:100|regex:/^[A-Z-ŻŹĆĄŚĘŁÓŃ]([A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ])+$/',
+            'book_author_surname' => 'required|string|max:100|regex:/^[A-Z-ŻŹĆĄŚĘŁÓŃ]([A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ])+$/'
         ], [], $attributes)->validate();
 
-
-      /*  $validator = Validator::make($data, [
-            'content' => 'required|string|max:1000',
-            'book_title' => 'required|string|max:200',
-            'book_author_name' => 'required|string|max:100',
-            'book_author_surname' => 'required|string|max:100'
-        ]);*/
-
-        //if ($validator->fails()) {
-            //var_export($validator->errors());
-            //throw new ModelNotFoundException();
-       // }
 
         return new CreateQuote(
             $user,

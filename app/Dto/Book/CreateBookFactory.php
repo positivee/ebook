@@ -11,17 +11,6 @@ use Illuminate\Support\Facades\Validator;
 class CreateBookFactory
 {
     static function create(array $data): CreateBook {
-       /* $validator = Validator::make($data, [
-            'title' => 'string|required|max:200',
-            'year' => 'string|required|max:4|min:4',
-            'print' => 'string|required|max:100',
-            'picture' => 'required|string|max:500',
-            'description' => 'string|required|max:1000',
-            'author_name' => 'string|required|max:100',
-            'author_surname' => 'string|required|max:100',
-            'isbn_number' => 'string|required|max:13|min:13',
-            'category_id' => 'int|required'
-        ]);*/
 
         $attributes = [
             'title' => 'tytuł',
@@ -47,11 +36,6 @@ class CreateBookFactory
             'category_id' => 'int|required'
         ], [], $attributes)->validate();
 
-
-        /*if ($validator->fails()) {
-           var_export($validator->errors());
-            throw new ModelNotFoundException();
-        }*/
 
         return new CreateBook(
             $data['title'],

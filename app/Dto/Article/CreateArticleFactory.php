@@ -26,19 +26,6 @@ class CreateArticleFactory
         ], [], $attributes)->validate();
 
 
-/*        Validator::make($data, [
-            'title' => 'required|string|max:500',
-            'content' => 'required|string|max:5000',
-            'photo' => 'required|max:500'
-        ])->validate();*/
-
-       /* if ($validator->fails()) {
-            //var_export($validator->errors());
-            throw new ModelNotFoundException();
-
-
-        }*/
-
         return new CreateArticle(
             $bookstore,
             $data['title'],
