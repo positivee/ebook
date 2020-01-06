@@ -23,7 +23,7 @@
 
         <!-- Article description -->
         <div class="form-group">
-            <textarea type="text" id="content" class="form-control @error('content') is-invalid @enderror" placeholder="{{ __('Treść') }}" name="content"  autocomplete="content" rows="4"> {{$article->content}} ></textarea>
+            <textarea type="text" id="content" class="form-control @error('content') is-invalid @enderror" placeholder="{{ __('Treść') }}" name="content"  autocomplete="content" rows="4"> {{$article->content}} </textarea>
 
 
             @error('content')
