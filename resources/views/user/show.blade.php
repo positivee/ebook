@@ -16,6 +16,9 @@
                 <div class="tab-pane fade show active" id="list-yourbook" role="tabpanel" aria-labelledby="list-yourbook-list">
                     <div class="col-12">
                         <h4>Książki zakupione przez ciebie</h4>
+
+                        <hr>
+                        <h5>Możesz je czytać, pobierając naszą aplikację mobilną!</h5>
                         <div class="table-responsive-md">
                             <table class="table">
                                 <table class="table">
@@ -27,7 +30,7 @@
                                         <th>#</th>
                                         <th scope="col">Data Zakupu</th>
                                         <th scope="col">Książka</th>
-                                        <th scope="col">Opcje</th>
+                                        <th scope="col">Cena</th>
                                     </tr>
                                     </thead>
 
@@ -36,8 +39,7 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{Str::limit($b->getDate(),10,$end = '')}}</td>
                                         <td>{{$b->getBook()->title}}</td>
-                                        <td><a href={{$b->getOffer()->file}}>Pobierz</a></td>
-
+                                        <td>{{$b->getOffer()->price .' zł'}}</td>
                                     </tr>
                                     @endforeach
                                 </table>
