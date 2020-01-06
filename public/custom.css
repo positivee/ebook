@@ -6,7 +6,7 @@
 
 .mynav{
     padding-top: 0.5%;
-    background-image: url('http://localhost:8000/img/panel-2.jpg');
+    background-image: url('/img/panel-2.jpg');
     height:70vh;
 }
 .navbar{
