@@ -60,7 +60,7 @@
 
 /* BANNER */
 .jumbotron{
-    background-image: url('http://localhost:8000/img/panel-2.jpg');
+    background-image: url('/img/panel-2.jpg');
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -86,7 +86,7 @@
 }
 
 .bg-image {
-    background-image: url('http://localhost:8000/img/side-panel.jpg');
+    background-image: url('/img/side-panel.jpg');
     background-size: cover;
     background-position: center;
 }
