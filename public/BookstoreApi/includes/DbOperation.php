@@ -80,8 +80,9 @@ class DbOperation
 	}
 	
 		function getUser($id){
-		$stmt = $this->con->prepare("SELECT name, surname, email, password from users where id = 3");
-				
+		$stmt = $this->con->prepare("SELECT name, surname, email, password from users where id = ?");
+		$stmt->bind_param("s", $id);
+
 		$stmt->execute();
 		$stmt->bind_result($name, $surname, $email, $password);
 		$stmt->fetch();
@@ -200,8 +201,8 @@ class DbOperation
 	function getUserQuotes($userId){
 		$stmt = $this->con->prepare("SELECT q.id, content, book_title, b.picture from quotes q
 									join books b on b.title = q.book_title
-									where q.user_id = 1");
-		//$stmt->bind_param("i", $userId);
+									where q.user_id = ?");
+		$stmt->bind_param("i", $userId);
 
 		$stmt->execute();
 		$stmt->bind_result($id, $content, $bookTitle, $picture);
@@ -225,8 +226,8 @@ class DbOperation
 		$stmt = $this->con->prepare("SELECT q.id, content, book_title, b.picture from quotes q
 									join books b on b.title = q.book_title
                                     join transactions t on b.id = t.book_id 
-									where t.user_id = 1");
-		//$stmt->bind_param("i", $userId);
+									where t.user_id = ?");
+		$stmt->bind_param("i", $userId);
 		$stmt->execute();
 		$stmt->bind_result($id, $content, $bookTitle, $picture);
 		
@@ -249,8 +250,8 @@ class DbOperation
 	function getBookComments($bookId){
 		$stmt = $this->con->prepare("SELECT e.id, content, evaluation, concat(u.name,' ', u.surname) as username from evaluations e
 									left join users u on e.user_id = u.id
-									where book_id = 1");
-		//$stmt->bind_param("i", $bookId);
+									where book_id = ?");
+		$stmt->bind_param("i", $bookId);
 
 		$stmt->execute();
 		$stmt->bind_result($id, $content, $rating, $username);
@@ -338,9 +339,9 @@ class DbOperation
 		}
 	}	
 	
-	function addBookQuote($content, $bookId, $userId){
+	function addBookQuote($content, $bookTitle, $bookAuthorName, $bookAuthorSurname, $userId){
 		$stmt = $this->con->prepare("INSERT INTO quotes (content, book_title, book_author_name, book_author_surname, user_id) VALUES (?, ?, ?, ?, ?)");
-		$stmt->bind_param("ssssi", $content, $bookId);
+		$stmt->bind_param("ssssi", $content, $bookTitle, $bookAuthorName, $bookAuthorSurname, $userId);
 		if($stmt->execute()){
 			return true; 
 		} else { 
